@@ -35,5 +35,16 @@ export function compareField(field: string, spec: FieldSpec, actual: string[]): 
       unexpected,
     };
   }
+  if (spec.mode === 'must_include') {
+    const got = actual.map(normalize).filter((v) => v.length > 0);
+    if (spec.keywords.length === 0) {
+      return { field, mode: 'must_include', pass: got.length > 0, missing: [], unexpected: [] };
+    }
+    const missing = spec.keywords
+      .map(normalize)
+      .filter((kw) => !got.some((v) => v.includes(kw)));
+    return { field, mode: 'must_include', pass: missing.length === 0, missing, unexpected: [] };
+  }
+
   throw new Error(`mode not implemented yet: ${spec.mode}`);
 }
