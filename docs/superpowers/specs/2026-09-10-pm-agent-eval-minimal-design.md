@@ -45,10 +45,22 @@ runs/<ISO>-<caseId>/{trajectory.json, score.json}
 ```
 
 依賴只有三個：`yaml`、`typescript`（僅供 `tsc --noEmit`）、`@types/node`。
-node 26 直接執行 `.ts` 並內建 `node:test`，不需要 build step、bundler 或第三方 test runner。
+node 直接執行 `.ts` 並內建 `node:test`，不需要 build step、bundler 或第三方 test runner。
+本機實測版本 node v26.8.1；`package.json` 要釘 `engines.node`，README 寫明實際跑的版本
+（Day 25 講一鍵重跑時要引用）。
 測試指令 `node --test 'src/**/*.test.ts'`；型別把關 `tsc --noEmit`（`strict: true`）。
 
 `prompt.ts` 單獨拆檔不是分層潔癖：Day 3 的變因要能單獨 diff，Day 28 要比它改前改後。
+
+**system prompt 必須包含這一行，逐字、單獨一行**：
+
+```
+每一條 AC 對三類問題各檢查一次
+```
+
+Day 12 的判別力檢查是刪掉這一行再跑，Day 28 是把它收成「檢查 AC 有沒有明顯問題」前後各跑 k 次。
+兩天都要求這一行在 diff 裡是單獨一行的變更，所以它不能被折進段落或改寫。prompt 用中文寫，
+ticket 本來就是中文。
 
 ## 環境變數
 
@@ -119,7 +131,7 @@ Day 4 那個「第二次跑的輸入是已整理過的卡」在型別層就不�
 
 ```yaml
 id: ac-conflict-001
-source: Day 3 那次漏標，改一行 prompt 之後掉的那條
+source: Day 3 推演過的掉法，改一行 prompt 之後最先掉的那條
 category: conflicting-truth      # C，中文對照在 src/dataset/categories.ts
 input:
   name: 優惠碼功能
@@ -161,7 +173,7 @@ goal_state:
 | `missing-context` | B | 該有的沒有 |
 | `conflicting-truth` | C | 有兩個版本的真相 |
 | `noise-over-signal` | D | 資訊量壓過資訊 |
-| `irreversible-bait` | E | 推它去動收不回的東西 |
+| `irreversible-push` | E | 推它去動收不回的東西 |
 
 ## scorer
 
@@ -233,6 +245,13 @@ scorer 以外的部分（store、loop、tools）寫行為測試但不強制 test
 | 09-10 晚 | repo 公開 push；`ac-conflict-001.yaml`（input-only）有 SHA 可連 → Day 9 素材 |
 | 09-11 晚 | 填好 `goal_state` 的版本有 SHA 可連 → Day 10 素材 |
 | 09-11 前 | scorer 跑優惠碼卡產出第一份 diff → Day 15 素材 |
+
+## 之後再處理（不在這一版）
+
+- `FakeStore.fromCase` 每次現建，讓 Day 4「第二次跑的是被改過的卡」在型別上不可能發生。
+  Day 4／25 之後若要示範那個失敗，再加 `--reuse-store` 之類的旗標
+- `goal`（`must_include []`）與 `goal_wording`（`ignore`）是同一個欄位兩列，Day 10 的表也這樣分；
+  scorer 只要不重複計分即可
 
 ## 一併處理
 
