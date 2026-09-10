@@ -14,7 +14,7 @@
 
 - TypeScript `strict: true`；`tsc --noEmit` 必須乾淨
 - 依賴只有 `yaml`、`typescript`、`@types/node`。不得引入 test runner、bundler、HTTP client、schema library
-- node v26.8.1；`package.json` 釘 `engines.node`，README 寫明實測版本
+- node v26.8.1；`package.json` 的 `engines.node` 釘成 `>=26.8.1 <27`，README 寫明實測版本
 - 所有 import 相對路徑必須帶 `.ts` 副檔名（node 原生 type stripping 的要求）
 - 語言：code 與註解英文；`src/agent/prompt.ts` 的 prompt、`dataset/*.yaml` 的內容、README 用繁體中文
 - **禁用詞**：「壞輸入」與其英譯 `bad input`，code、註解、README、commit message 一律不得出現
@@ -67,7 +67,7 @@
 ```bash
 npm init -y
 npm pkg set type=module
-npm pkg set engines.node=">=26.0.0"
+npm pkg set engines.node=">=26.8.1 <27"
 npm pkg set scripts.test="node --test 'src/**/*.test.ts' 'dataset/**/*.test.ts'"
 npm pkg set scripts.typecheck="tsc --noEmit"
 npm pkg set license=MIT
@@ -155,12 +155,15 @@ test('ac-conflict-001 carries the full original ticket', () => {
   const raw = readFileSync('dataset/ac-conflict-001.yaml', 'utf8');
   const doc = parse(raw) as {
     id: string;
+    source: string;
     category: string;
     input: { name: string; description: string; acceptance_criteria: string[] };
   };
 
   assert.equal(doc.id, 'ac-conflict-001');
   assert.equal(doc.category, 'conflicting-truth');
+  // 這行會逐字貼進 Day 9，且「那次漏標」是 facts.md 的禁用寫法。
+  assert.equal(doc.source, 'Day 3 推演過的掉法，改一行 prompt 之後最先掉的那條');
   assert.equal(doc.input.acceptance_criteria.length, 7);
   assert.match(doc.input.description, /結帳頁很慢/);
   assert.match(doc.input.acceptance_criteria[2]!, /無限次/);
@@ -170,7 +173,7 @@ test('ac-conflict-001 carries the full original ticket', () => {
 - [ ] **Step 7: 跑測試確認它通過**
 
 Run: `npm test`
-Expected: `pass 1`、`fail 0`。若 glob 沒有被展開（`tests 0`），改用 `node --test dataset/case.test.ts` 確認測試本身可跑，再修 package.json 的 glob 引號。
+Expected: `pass 1`、`fail 0`（單一測試內含多條 assert）。若 glob 沒有被展開（`tests 0`），改用 `node --test dataset/case.test.ts` 確認測試本身可跑，再修 package.json 的 glob 引號。
 
 - [ ] **Step 8: 跑 typecheck**
 
@@ -1349,8 +1352,12 @@ git commit -m "feat(llm): LlmClient 介面與 OpenAI 相容實作，OpenAI 與 o
 export const READONLY_STUB: Record<string, string> = {
   search_web: '找到三篇活動優惠碼的一般性介紹，沒有本專案特有的資訊。',
   read_docs: '內部文件沒有優惠碼相關章節。',
-  search_repo: 'src/checkout/ 底下沒有 promo code 的實作；有一個三個月前的 TODO 提到結帳頁效能。',
-  query_db: '沒有 coupons 或 promo_codes 資料表。',
+  search_repo:
+    'src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，' +
+    '只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。',
+  query_db:
+    'coupons 資料表不存在。promo_codes 有 4 筆測試資料，欄位 code、discount_type、' +
+    'discount_value、created_at，沒有 expires_at，也沒有記錄誰用過。',
 };
 ```
 
@@ -1387,7 +1394,7 @@ test('there are exactly seven tools, four read-only and three writers', () => {
 test('read-only tools answer without touching the store', async () => {
   const store = FakeStore.fromTicket(seed());
   const out = await dispatch({ id: 'c', name: 'search_repo', args: { query: 'promo' } }, store);
-  assert.match(out, /結帳頁效能/);
+  assert.match(out, /promo\.ts/);
   assert.deepEqual((await store.getTicket('T-1')).comments, []);
 });
 
@@ -1632,8 +1639,10 @@ export const SYSTEM_PROMPT = `你是需求釐清 agent。你的工作是把需�
 四個步驟：
 1. 拆 description：哪句講目標、哪句畫範圍、哪句其實是其他 ticket 的事
 2. 查背景：需要什麼就用對外查資料的工具去查，查幾次由你決定
-3. 逐條檢查 AC：每一條 AC 對三類問題各檢查一次
+3. 逐條檢查 AC
 4. 寫回去：用 update_ticket 把結果寫回卡上
+
+每一條 AC 對三類問題各檢查一次
 
 三類問題：
 - conflict：這條 AC 跟另一條互相打架
@@ -1659,14 +1668,19 @@ import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
 import { SYSTEM_PROMPT } from './prompt.ts';
 
-test('the Day 3 line exists verbatim on a line of its own', () => {
+const DAY3_LINE = '每一條 AC 對三類問題各檢查一次';
+
+test('the Day 3 line is a whole line, nothing else on it', () => {
   // Day 12 刪掉這一行再跑，Day 28 把它收短前後各跑 k 次。
-  // 兩天都要求它在 diff 裡是單獨一行的變更，所以它不能被折進段落。
+  // 兩天都要求它在 diff 裡是單獨一行的變更，所以它不能被折進別的句子裡。
   const lines = SYSTEM_PROMPT.split('\n').map((l) => l.trim());
-  assert.ok(
-    lines.some((l) => l.endsWith('每一條 AC 對三類問題各檢查一次')),
-    'the line must stay on its own line',
-  );
+  assert.ok(lines.includes(DAY3_LINE), 'the line must exist verbatim, alone on its line');
+});
+
+test('the Day 3 line appears exactly once, so deleting one line removes it', () => {
+  const hits = SYSTEM_PROMPT.split('\n').filter((l) => l.includes('三類問題各檢查一次'));
+  assert.equal(hits.length, 1);
+  assert.equal(hits[0]!.trim(), DAY3_LINE);
 });
 
 test('the prompt names the three flag types by their enum values', () => {
@@ -1679,7 +1693,7 @@ test('the prompt names the three flag types by their enum values', () => {
 - [ ] **Step 2: 跑 prompt 測試確認它通過**
 
 Run: `node --test src/agent/prompt.test.ts`
-Expected: `pass 2`、`fail 0`
+Expected: `pass 3`、`fail 0`
 
 - [ ] **Step 3: 寫 loop 的失敗測試**
 
@@ -1879,11 +1893,11 @@ git commit -m "feat(agent): system prompt 與 tool-use 迴圈"
 **Files:**
 - Create: `src/cli/run-case.ts`, `src/cli/report.ts`
 - Test: `src/cli/report.test.ts`
-- Modify: `package.json`（加 `run` script）
+- Modify: `package.json`（加 `run-case` script）
 
 **Interfaces:**
 - Consumes: `loadCase`／`toTicket`、`FakeStore.fromTicket`、`runAgent`、`actualFields`、`scoreCase`、`OpenAiCompatClient`
-- Produces: `formatScore(score: CaseScore): string`；`node --env-file=.env src/cli/run-case.ts dataset/ac-conflict-001.yaml`
+- Produces: `formatScore(score: CaseScore): string`；`npm run run-case -- dataset/ac-conflict-001.yaml`
 
 - [ ] **Step 1: 寫報表的失敗測試**
 
@@ -2009,7 +2023,7 @@ process.exitCode = score.pass ? 0 : 1;
 - [ ] **Step 6: 加 npm script**
 
 ```bash
-npm pkg set scripts.run="node --env-file=.env src/cli/run-case.ts"
+npm pkg set scripts["run-case"]="node --env-file=.env src/cli/run-case.ts"
 ```
 
 - [ ] **Step 7: 跑全部測試與 typecheck**
@@ -2026,25 +2040,23 @@ git commit -m "feat(cli): 一鍵跑一筆 case，印 diff 並寫進 runs/"
 
 ---
 
-### Task 13: 填 goal_state，跑出第一份 diff
+### Task 13: 填 goal_state（Day 10 的 SHA）
 
-這個 task 的 commit 是 Day 10 要連的 permalink。
+這個 task 只動 dataset，不需要 LLM 連得上。它的 commit 就是 Day 10 要連的 permalink，
+所以刻意跟「真的跑一次」分開 —— 文章的死線不該綁在當晚 API 通不通。
 
 **Files:**
-- Modify: `dataset/ac-conflict-001.yaml`, `dataset/case.test.ts`, `README.md`
-- Create: `runs/<timestamp>-ac-conflict-001/`（跑出來的產物）
+- Modify: `dataset/ac-conflict-001.yaml`, `dataset/case.test.ts`
 
 **Interfaces:**
-- Consumes: Task 12 的 `npm run`
+- Consumes: Task 7 的 `loadCase`
 - Produces: 填好 `goal_state` 的 `dataset/ac-conflict-001.yaml`
 
 - [ ] **Step 1: 追加會失敗的測試**
 
-在 `dataset/case.test.ts` 追加：
+在 `dataset/case.test.ts` 追加（檔頭補 `import { loadCase } from '../src/dataset/case.ts';`）：
 
 ```ts
-import { loadCase } from '../src/dataset/case.ts';
-
 test('ac-conflict-001 pins the four flags as a set', () => {
   const c = loadCase('dataset/ac-conflict-001.yaml');
   assert.deepEqual(c.goalState.ac_flags, {
@@ -2061,12 +2073,19 @@ test('ac-conflict-001 keeps the ungradable cells written down', () => {
     assert.equal(c.goalState[field]!.mode, 'ignore', `${field} must stay written down`);
   }
 });
+
+test('scope_out is must_include, not exact_set', () => {
+  // Day 10 的決定：exact_set 只留給 AC 標註集合。
+  // 「結帳頁效能」對「結帳頁效能問題」不該紅，而降檔是 dataset 的一次變更、留 diff。
+  const c = loadCase('dataset/ac-conflict-001.yaml');
+  assert.equal(c.goalState.scope_out!.mode, 'must_include');
+});
 ```
 
 - [ ] **Step 2: 跑測試確認它失敗**
 
 Run: `node --test dataset/case.test.ts`
-Expected: FAIL —— `goalState.ac_flags` 是 `undefined`
+Expected: FAIL —— `c.goalState.ac_flags` 是 `undefined`
 
 - [ ] **Step 3: 把 goal_state 填進 dataset/ac-conflict-001.yaml**
 
@@ -2085,35 +2104,74 @@ goal_state:
   goal_wording:    { mode: ignore, note: 判不到 —— 這句寫得夠不夠精準沒有程式判得出來 }
 ```
 
-- [ ] **Step 4: 跑測試確認它通過**
+- [ ] **Step 4: 跑全部測試與 typecheck**
 
-Run: `npm test`
+Run: `npm test && npm run typecheck`
 Expected: 全綠
 
-- [ ] **Step 5: 真的跑一次**
-
-先確認 `.env` 有三個變數，然後：
-
-Run: `npm run dataset/ac-conflict-001.yaml`
-
-Expected: 印出 `PASS` 或 `FAIL` 加逐格 diff，並在 `runs/` 生出一個目錄。**第一次跑很可能是 FAIL，那是正常的** —— 這份 diff 本身就是 Day 15 的材料。不要為了讓它變綠而改 goal state；要改就改 prompt，而且改 prompt 之後要重跑並留下第二筆 `runs/`。
-
-- [ ] **Step 6: 更新 README 的「目前實作到哪」**
-
-改成：Day 9 的 case 檔（輸入本體 + goal state）、Day 10 的 goal state 三檔、Day 2 的 7 個 tool 與四個區塊、Day 4 的多輪 tool-use 迴圈、Day 15 的第一份 diff。唯讀四工具仍是固定回傳，Day 11 的 fixture 錄放尚未實作。
-
-- [ ] **Step 7: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
-git add dataset/ README.md runs/
-git commit -m "feat(dataset): ac-conflict-001 的 goal state，並跑出第一份 diff"
+git add dataset/
+git commit -m "feat(dataset): ac-conflict-001 的 goal state"
 ```
 
-- [ ] **Step 8: 請 Ray 點頭後 push，並把 SHA 回報給 ironman2026 session**
+- [ ] **Step 6: 請 Ray 點頭後 push，並把 SHA 回報給 ironman2026 session**
 
 ```bash
 git push origin main
 git rev-parse HEAD
+```
+
+這個 SHA 是 Day 10 的 permalink。
+
+---
+
+### Task 14: 跑出第一份 diff
+
+**Files:**
+- Modify: `README.md`
+- Create: `runs/<timestamp>-ac-conflict-001/`（跑出來的產物）
+
+**Interfaces:**
+- Consumes: Task 12 的 `npm run run-case`、Task 13 填好的 goal state
+- Produces: 第一筆 `runs/` 紀錄（Day 15 的材料）
+
+- [ ] **Step 1: 確認 .env 三個變數都在**
+
+```bash
+node --env-file=.env -e "for (const k of ['LLM_BASE_URL','LLM_API_KEY','LLM_MODEL']) if (!process.env[k]) throw new Error('missing ' + k); console.log('env ok')"
+```
+
+Expected: `env ok`。缺變數就停在這裡問 Ray，不要自己編一個值。
+
+- [ ] **Step 2: 真的跑一次**
+
+Run: `npm run run-case -- dataset/ac-conflict-001.yaml`
+
+Expected: 印出 `PASS` 或 `FAIL` 加逐格 diff，並在 `runs/` 生出一個目錄。
+
+**第一次跑很可能是 FAIL，那是正常的** —— 這份 diff 本身就是 Day 15 的材料。
+不要為了讓它變綠而改 goal state。要改就改 `src/agent/prompt.ts`，而且改完要重跑並留下第二筆 `runs/`，
+兩筆都進 repo：那個前後對照是 Day 28 的材料。
+
+- [ ] **Step 3: 更新 README 的「目前實作到哪」**
+
+改成：Day 2 的 7 個 tool 與四個區塊、Day 4 的多輪 tool-use 迴圈、Day 9 的 case 檔輸入本體、
+Day 10 的 goal state 三檔、Day 15 的第一份 diff。註明唯讀四工具仍是固定回傳，
+Day 11 的 fixture 錄放尚未實作。
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add runs/ README.md
+git commit -m "chore: 第一份 diff 與 runs/ 紀錄"
+```
+
+- [ ] **Step 5: 請 Ray 點頭後 push**
+
+```bash
+git push origin main
 ```
 
 ---
@@ -2134,11 +2192,11 @@ git rev-parse HEAD
 | scorer 三檔與 `CaseScore` | 3／4／5 |
 | 欄位到 store 的對應 | 8 |
 | TDD 六步順序 | 2（normalize）→3（exact_set＋canonical key）→4（must_include）→5（ignore＋組裝＋Day 3 掉法） |
-| `runs/` 從第一次跑就寫 | 12 |
+| `runs/` 從第一次跑就寫 | 12（寫檔）、14（第一筆紀錄） |
 | `.gitignore` 補 `raw/` | 1 |
 | prompt 那一行逐字單獨一行 | 11（含守它的測試） |
 | `engines.node` 與 README 版本 | 1 |
-| 兩個 SHA（Day 9／Day 10） | 1 Step 11／13 Step 8 |
+| 兩個 SHA（Day 9／Day 10） | 1 Step 11／13 Step 6 —— 兩者都不依賴 LLM 連得上 |
 
 **Placeholder scan:** 無 TBD／TODO；每個 code step 都有可貼上的完整程式碼；沒有「參考 Task N」。
 
