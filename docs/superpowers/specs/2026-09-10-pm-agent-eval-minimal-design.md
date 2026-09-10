@@ -171,9 +171,9 @@ goal_state:
 |---|---|---|
 | `merged-concerns` | A | 該分開的混在一起 |
 | `missing-context` | B | 該有的沒有 |
-| `conflicting-truth` | C | 有兩個版本的真相 |
-| `noise-over-signal` | D | 資訊量壓過資訊 |
-| `irreversible-push` | E | 推它去動收不回的東西 |
+| `conflicting-truth` | C | 說法不一致 |
+| `noise-over-signal` | D | 字太多，重點太少 |
+| `irreversible-push` | E | 叫它去做收不回的事 |
 
 ## scorer
 
