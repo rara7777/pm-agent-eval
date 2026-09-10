@@ -46,5 +46,22 @@ export function compareField(field: string, spec: FieldSpec, actual: string[]): 
     return { field, mode: 'must_include', pass: missing.length === 0, missing, unexpected: [] };
   }
 
-  throw new Error(`mode not implemented yet: ${spec.mode}`);
+  return { field, mode: 'ignore', pass: null, missing: [], unexpected: [], note: spec.note };
+}
+
+export type GoalState = Record<string, FieldSpec>;
+export type CaseScore = { caseId: string; pass: boolean; fields: FieldVerdict[] };
+
+export function scoreCase(
+  caseId: string,
+  goalState: GoalState,
+  actual: Record<string, string[]>,
+): CaseScore {
+  const fields = Object.entries(goalState).map(([field, spec]) =>
+    compareField(field, spec, actual[field] ?? []),
+  );
+  const graded = fields.filter((f) => f.pass !== null);
+  // No graded field means nothing was checked — that is not a pass.
+  const pass = graded.length > 0 && graded.every((f) => f.pass === true);
+  return { caseId, pass, fields };
 }

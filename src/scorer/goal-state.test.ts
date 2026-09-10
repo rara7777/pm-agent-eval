@@ -76,3 +76,58 @@ test('must_include never reports unexpected elements', () => {
   assert.equal(v.pass, true);
   assert.deepEqual(v.unexpected, []);
 });
+
+import { scoreCase, type GoalState } from './goal-state.ts';
+
+const promoGoalState: GoalState = {
+  goal: { mode: 'must_include', keywords: [] },
+  scope_in: { mode: 'must_include', keywords: ['優惠碼套用', '後台建立', '過期處理'] },
+  scope_out: { mode: 'must_include', keywords: ['結帳頁效能'] },
+  ac_flags: {
+    mode: 'exact_set',
+    values: ['3:conflict', '3:mismatch', '4:unverifiable', '7:unverifiable'],
+  },
+  comment_wording: { mode: 'ignore', note: '措辭不比' },
+};
+
+const promoActual = {
+  goal: ['活動期間可用的優惠碼，前台可套用、後台可建立'],
+  scope_in: ['優惠碼套用', '後台建立', '過期處理'],
+  scope_out: ['結帳頁效能'],
+  ac_flags: ['3:conflict', '3:mismatch', '4:unverifiable', '7:unverifiable'],
+  comment_wording: ['隨便寫什麼都不影響'],
+};
+
+test('ignore is not graded and never contributes a green light', () => {
+  const score = scoreCase('ac-conflict-001', promoGoalState, promoActual);
+  const wording = score.fields.find((f) => f.field === 'comment_wording')!;
+  assert.equal(wording.pass, null);
+  assert.equal(wording.note, '措辭不比');
+});
+
+test('a fully correct run passes', () => {
+  assert.equal(scoreCase('ac-conflict-001', promoGoalState, promoActual).pass, true);
+});
+
+test('an ignored field alone cannot make a case pass', () => {
+  const score = scoreCase('x', { only: { mode: 'ignore', note: '判不到' } }, { only: [] });
+  // 沒有任何一格被評分，就沒有任何依據說它通過。
+  assert.equal(score.pass, false);
+});
+
+test('Day 3 的掉法：少掉 3:mismatch 必須紅，且 diff 指得出來', () => {
+  const dropped = {
+    ...promoActual,
+    ac_flags: ['3:conflict', '4:unverifiable', '7:unverifiable'],
+  };
+  const score = scoreCase('ac-conflict-001', promoGoalState, dropped);
+  assert.equal(score.pass, false);
+  const flags = score.fields.find((f) => f.field === 'ac_flags')!;
+  assert.deepEqual(flags.missing, ['3:mismatch']);
+  assert.deepEqual(flags.unexpected, []);
+});
+
+test('a field present in actual but absent from the goal state is not graded', () => {
+  const score = scoreCase('x', { a: { mode: 'must_include', keywords: [] } }, { a: ['v'], b: ['w'] });
+  assert.deepEqual(score.fields.map((f) => f.field), ['a']);
+});
