@@ -141,3 +141,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Redmine 拉下來的原始 ticket，永遠不進 repo
+raw/
