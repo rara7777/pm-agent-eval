@@ -14,4 +14,13 @@ input:
     - 後台可以設定折扣百分比或固定金額
     - 活動結束後過期的碼不能用，但已套用的訂單不受影響
     - 手機版體驗要好
-# goal_state 明天填（Day 10）
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [優惠碼套用, 後台建立, 過期處理] }
+  scope_out: { mode: must_include, keywords: [結帳頁效能] }
+  ac_flags:
+    mode: exact_set
+    values: [3:conflict, 3:mismatch, 4:unverifiable, 7:unverifiable]
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 —— 這句寫得夠不夠精準沒有程式判得出來 }
