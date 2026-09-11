@@ -1,6 +1,9 @@
 import type { ToolCall, ToolSchema } from '../llm/client.ts';
 import type { AcFlag, FlagType, TicketStore } from '../store/ticket-store.ts';
 import { READONLY_STUB } from './readonly-stub.ts';
+import { STUB_SOURCE, type ReadonlySource } from '../fixture/fixture.ts';
+
+const READONLY_TOOLS = new Set(Object.keys(READONLY_STUB));
 
 const FLAG_TYPES: FlagType[] = ['conflict', 'unverifiable', 'mismatch'];
 
@@ -84,9 +87,13 @@ export const TOOL_SCHEMAS: ToolSchema[] = [
   },
 ];
 
-export async function dispatch(call: ToolCall, store: TicketStore): Promise<string> {
-  const stub = READONLY_STUB[call.name];
-  if (stub !== undefined) return stub;
+export async function dispatch(
+  call: ToolCall,
+  store: TicketStore,
+  source: ReadonlySource = STUB_SOURCE,
+): Promise<string> {
+  // A missing fixture must fail the whole run, so this sits outside the catch below.
+  if (READONLY_TOOLS.has(call.name)) return source.fetch(call.name, call.args);
 
   const args = call.args as Record<string, any>;
   const ticketId = String(args.ticket_id ?? '');

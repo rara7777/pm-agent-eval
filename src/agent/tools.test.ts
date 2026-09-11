@@ -3,6 +3,7 @@ import { strict as assert } from 'node:assert';
 import { TOOL_SCHEMAS, dispatch } from './tools.ts';
 import { FakeStore } from '../store/fake-store.ts';
 import type { Ticket } from '../store/ticket-store.ts';
+import { MissingFixtureError, ReplayingSource } from '../fixture/fixture.ts';
 
 const seed = (): Ticket => ({
   id: 'T-1',
@@ -98,4 +99,24 @@ test('post_comment appends a comment', async () => {
 test('an unknown tool name comes back as an error string, not a throw', async () => {
   const store = FakeStore.fromTicket(seed());
   assert.match(await dispatch({ id: 'c', name: 'nope', args: {} }, store), /nope/);
+});
+
+test('read-only tools go through the source they are given', async () => {
+  const store = FakeStore.fromTicket(seed());
+  const source = {
+    async fetch(tool: string, args: Record<string, unknown>) {
+      return `${tool} 被問了 ${JSON.stringify(args)}`;
+    },
+  };
+  const out = await dispatch({ id: 'c', name: 'search_web', args: { query: '優惠碼' } }, store, source);
+  assert.equal(out, 'search_web 被問了 {"query":"優惠碼"}');
+});
+
+test('a fixture miss fails the run instead of coming back as a tool result', async () => {
+  const store = FakeStore.fromTicket(seed());
+  const source = new ReplayingSource({ caseId: 'c', recordedAt: 'x', calls: [] });
+  await assert.rejects(
+    () => dispatch({ id: 'c', name: 'read_docs', args: { path: '/promo' } }, store, source),
+    MissingFixtureError,
+  );
 });

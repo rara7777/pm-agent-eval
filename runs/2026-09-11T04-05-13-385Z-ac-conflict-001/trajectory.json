@@ -1,0 +1,100 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description 與檢查 AC，必要時查背景資料。",
+      "toolCalls": [
+        {
+          "id": "call_Ry3X1nYpOxdQjGL5H0DIVdPz",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "提供可在前台套用、後台可設定的優惠碼功能",
+            "scope_in": [
+              "使用者可輸入優惠碼並看到折扣後金額",
+              "後台可新增與設定優惠碼",
+              "優惠碼可設定折扣百分比或固定金額",
+              "活動結束後，未使用的優惠碼失效，但已套用的訂單不受影響",
+              "手機版可使用優惠碼功能"
+            ],
+            "scope_out": [
+              "結帳流程優化或效能改善",
+              "其他與優惠碼無關的活動規則或促銷功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3 互斥：一人只能用一次 vs 無限次使用"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2 互斥：無限次使用 vs 一人只能用一次"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "只有『要順』，沒有定義完成標準、效能指標或流程範圍"
+              },
+              {
+                "ac": 7,
+                "type": "unverifiable",
+                "note": "只有『體驗要好』，沒有可驗證的標準，例如響應時間、版面或可用性條件"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "提供可在前台套用、後台可設定的優惠碼功能",
+        "scope_in": [
+          "使用者可輸入優惠碼並看到折扣後金額",
+          "後台可新增與設定優惠碼",
+          "優惠碼可設定折扣百分比或固定金額",
+          "活動結束後，未使用的優惠碼失效，但已套用的訂單不受影響",
+          "手機版可使用優惠碼功能"
+        ],
+        "scope_out": [
+          "結帳流程優化或效能改善",
+          "其他與優惠碼無關的活動規則或促銷功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3 互斥：一人只能用一次 vs 無限次使用"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2 互斥：無限次使用 vs 一人只能用一次"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "只有『要順』，沒有定義完成標準、效能指標或流程範圍"
+          },
+          {
+            "ac": 7,
+            "type": "unverifiable",
+            "note": "只有『體驗要好』，沒有可驗證的標準，例如響應時間、版面或可用性條件"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。\n\n標記結果：\n- AC 2：conflict\n- AC 3：conflict\n- AC 4：unverifiable\n- AC 7：unverifiable\n\n如果你要，我也可以下一步幫你把這張 ticket 重新整理成更乾淨的需求描述版本。",
+      "toolCalls": []
+    }
+  ],
+  "stoppedBy": "no_tool_calls"
+}

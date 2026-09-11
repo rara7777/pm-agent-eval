@@ -2,6 +2,7 @@ import type { LlmClient, LlmMessage, ToolCall } from '../llm/client.ts';
 import type { Ticket, TicketStore } from '../store/ticket-store.ts';
 import { SYSTEM_PROMPT } from './prompt.ts';
 import { TOOL_SCHEMAS, dispatch } from './tools.ts';
+import type { ReadonlySource } from '../fixture/fixture.ts';
 
 export type TrajectoryStep =
   | { kind: 'assistant'; text: string | null; toolCalls: ToolCall[] }
@@ -17,6 +18,7 @@ export async function runAgent(opts: {
   ticketId: string;
   store: TicketStore;
   llm: LlmClient;
+  source?: ReadonlySource;
   maxTurns?: number;
 }): Promise<Trajectory> {
   const maxTurns = opts.maxTurns ?? 12;
@@ -39,7 +41,7 @@ export async function runAgent(opts: {
     messages.push({ role: 'assistant', content: reply.text, toolCalls: reply.toolCalls });
 
     for (const call of reply.toolCalls) {
-      const result = await dispatch(call, opts.store);
+      const result = await dispatch(call, opts.store, opts.source);
       steps.push({ kind: 'tool_result', name: call.name, args: call.args, result });
       messages.push({ role: 'tool', toolCallId: call.id, content: result });
     }
