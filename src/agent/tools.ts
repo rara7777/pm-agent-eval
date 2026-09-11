@@ -2,6 +2,7 @@ import type { ToolCall, ToolSchema } from '../llm/client.ts';
 import type { AcFlag, FlagType, TicketStore } from '../store/ticket-store.ts';
 import { READONLY_STUB } from './readonly-stub.ts';
 import { STUB_SOURCE, type ReadonlySource } from '../fixture/fixture.ts';
+import { checkGate, type GateBlock } from '../gates/gates.ts';
 
 const READONLY_TOOLS = new Set(Object.keys(READONLY_STUB));
 
@@ -91,9 +92,16 @@ export async function dispatch(
   call: ToolCall,
   store: TicketStore,
   source: ReadonlySource = STUB_SOURCE,
+  blocks?: GateBlock[],
 ): Promise<string> {
   // A missing fixture must fail the whole run, so this sits outside the catch below.
   if (READONLY_TOOLS.has(call.name)) return source.fetch(call.name, call.args);
+
+  const block = checkGate(call);
+  if (block) {
+    blocks?.push(block);
+    return block.reason;
+  }
 
   const args = call.args as Record<string, any>;
   const ticketId = String(args.ticket_id ?? '');
@@ -121,11 +129,6 @@ export async function dispatch(
         });
         return '已寫回卡上。';
       }
-
-      case 'replace_acceptance_criteria':
-        // Day 22 會把這條抽成 src/gates/。最小版就先拒絕，
-        // 不能推一個預設會覆寫需求方 AC 的東西到公開 repo。
-        return '拒絕：覆寫需求方寫的 AC 是不可逆的動作，需要人確認之後才能執行。請改用 post_comment 說明你想改什麼。';
 
       case 'post_comment':
         await store.postComment(ticketId, String(args.body), (args.mentions ?? []).map(String));

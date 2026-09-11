@@ -92,6 +92,8 @@ export async function runOnce(opts: {
   writeFileSync(join(dir, 'trajectory.json'), JSON.stringify(trajectory, null, 2));
   writeFileSync(join(dir, 'score.json'), JSON.stringify(score, null, 2));
   writeFileSync(join(dir, 'final-ticket.json'), JSON.stringify(finalTicket, null, 2));
+  // Written every run, empty or not: "no gate fired" is also a result worth keeping.
+  writeFileSync(join(dir, 'gate-blocks.json'), JSON.stringify(trajectory.blocks, null, 2));
   writeFileSync(
     join(dir, 'model.json'),
     JSON.stringify(

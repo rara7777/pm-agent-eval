@@ -19,6 +19,17 @@ npm test          # 跑測試
 npm run typecheck # tsc --noEmit
 ```
 
+跑一筆 case，以及同一筆重跑 k 次：
+
+```bash
+npm run run-case -- dataset/ac-conflict-001.yaml
+npm run run-case -- dataset/ac-conflict-001.yaml --rerecord  # 重錄 fixture，明確動作
+npm run run-k    -- dataset/ac-conflict-001.yaml --k 3
+```
+
+第一次跑會把外部回應錄進 `fixtures/<caseId>.yaml`，之後每次重播。
+鍵是工具名加參數，不是呼叫順序；重播時對不上就讓整趟失敗，並印出沒對上的那個請求。
+
 真的驅動 agent 需要一個 OpenAI 相容的端點（OpenAI 或 ollama 都可以）。
 複製 `.env.example` 成 `.env` 並填三個變數：
 
@@ -36,7 +47,10 @@ npm run typecheck # tsc --noEmit
 | `src/store/` | `TicketStore` 介面與本機假 store |
 | `src/scorer/` | goal state 比對 |
 | `dataset/` | 一筆一檔的 case：輸入原文、來源、類別、goal state |
-| `runs/` | 每次跑的分數與 trajectory |
+| `src/fixture/` | 外部回應的錄與放 |
+| `src/gates/` | 破壞性動作的 safety gate |
+| `fixtures/` | 一個 case 一份，錄下來的外部回應 |
+| `runs/` | 每次跑的分數與 trajectory，重跑 k 次的批次帶 prompt 版本 |
 
 ## 這隻 agent
 
@@ -57,10 +71,13 @@ npm run typecheck # tsc --noEmit
 | 多輪 tool-use 迴圈 | Day 4 |
 | `dataset/ac-conflict-001.yaml` 的輸入本體 | Day 9 |
 | goal state 與 scorer 三檔 | Day 10 |
+| fixture 的錄與放 | Day 11 |
 | 第一份 diff 與 `runs/` 紀錄 | Day 15 |
+| 重跑 k 次、pass@k 與 pass^k | Day 19 |
+| 覆寫需求方 AC 之前的 safety gate | Day 22 |
 
-唯讀那四個工具目前不看參數、固定回傳，fixture 錄放（Day 11）尚未實作。
-`RedmineStore`（Day 25）也還沒有。
+外面那個世界目前由 `src/agent/readonly-stub.ts` 這張固定回答的表扮演，錄放機制照樣走它。
+`RedmineStore`（Day 25）還沒有。
 
 ## 資料
 
