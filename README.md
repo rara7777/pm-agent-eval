@@ -53,10 +53,14 @@ npm run typecheck # tsc --noEmit
 
 | 已經有的 | 對應到哪一天 |
 |---|---|
+| 7 個 tool 與整理後的四個區塊 | Day 2 |
+| 多輪 tool-use 迴圈 | Day 4 |
 | `dataset/ac-conflict-001.yaml` 的輸入本體 | Day 9 |
+| goal state 與 scorer 三檔 | Day 10 |
+| 第一份 diff 與 `runs/` 紀錄 | Day 15 |
 
-尚未實作：agent loop、7 個 tool、假 store、goal state scorer、fixture 錄放（Day 11）、
-`RedmineStore`（Day 25）。
+唯讀那四個工具目前不看參數、固定回傳，fixture 錄放（Day 11）尚未實作。
+`RedmineStore`（Day 25）也還沒有。
 
 ## 資料
 

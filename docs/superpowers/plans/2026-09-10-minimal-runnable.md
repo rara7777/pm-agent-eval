@@ -62,7 +62,7 @@
 - Consumes: 無
 - Produces: `dataset/ac-conflict-001.yaml`（此版只有 `id`／`source`／`category`／`input`，`goal_state` 於 Task 12 補上）；npm scripts `test` 與 `typecheck`
 
-- [ ] **Step 1: 裝依賴並建 package.json**
+- [x] **Step 1: 裝依賴並建 package.json**
 
 ```bash
 npm init -y
@@ -75,7 +75,7 @@ npm install yaml
 npm install -D typescript @types/node
 ```
 
-- [ ] **Step 2: 建 tsconfig.json**
+- [x] **Step 2: 建 tsconfig.json**
 
 ```json
 {
@@ -97,7 +97,7 @@ npm install -D typescript @types/node
 
 `erasableSyntaxOnly` 會擋掉 enum 與 namespace —— node 原生 type stripping 不支援它們，開這個旗標就不會等到跑起來才發現。
 
-- [ ] **Step 3: `.gitignore` 補 raw/ 與 runs 以外的雜物**
+- [x] **Step 3: `.gitignore` 補 raw/ 與 runs 以外的雜物**
 
 在 `.gitignore` 末尾加：
 
@@ -108,7 +108,7 @@ raw/
 
 `runs/` 要進 repo（它是 Day 19／28 的材料），不要加進 ignore。
 
-- [ ] **Step 4: 建 .env.example**
+- [x] **Step 4: 建 .env.example**
 
 ```
 # OpenAI: https://api.openai.com/v1
@@ -119,7 +119,7 @@ LLM_API_KEY=
 LLM_MODEL=
 ```
 
-- [ ] **Step 5: 寫 dataset/ac-conflict-001.yaml（input-only）**
+- [x] **Step 5: 寫 dataset/ac-conflict-001.yaml（input-only）**
 
 ```yaml
 id: ac-conflict-001
@@ -141,7 +141,7 @@ input:
 # goal_state 明天填（Day 10）
 ```
 
-- [ ] **Step 6: 寫會失敗的測試**
+- [x] **Step 6: 寫會失敗的測試**
 
 `dataset/case.test.ts`：
 
@@ -170,28 +170,28 @@ test('ac-conflict-001 carries the full original ticket', () => {
 });
 ```
 
-- [ ] **Step 7: 跑測試確認它通過**
+- [x] **Step 7: 跑測試確認它通過**
 
 Run: `npm test`
 Expected: `pass 1`、`fail 0`（單一測試內含多條 assert）。若 glob 沒有被展開（`tests 0`），改用 `node --test dataset/case.test.ts` 確認測試本身可跑，再修 package.json 的 glob 引號。
 
-- [ ] **Step 8: 跑 typecheck**
+- [x] **Step 8: 跑 typecheck**
 
 Run: `npm run typecheck`
 Expected: 無輸出、exit 0。
 
-- [ ] **Step 9: 寫 README.md**
+- [x] **Step 9: 寫 README.md**
 
 內容至少包含：這是什麼（需求釐清 agent 的 eval 實作，配合 iThome 鐵人賽 30 天系列）、node v26.8.1 與「不需要 build step」、三個環境變數、`npm test`／`npm run typecheck`、目錄對照表、以及「目前實作到哪、對得上哪幾天」一節（此刻寫：Day 9 的 case 檔輸入本體）。不得出現「壞輸入」或 `bad input`。
 
-- [ ] **Step 10: Commit**
+- [x] **Step 10: Commit**
 
 ```bash
 git add -A
 git commit -m "feat: 專案骨架與 ac-conflict-001 的輸入本體"
 ```
 
-- [ ] **Step 11: 請 Ray 點頭後 push**
+- [x] **Step 11: 請 Ray 點頭後 push**
 
 ```bash
 git push origin main
@@ -212,7 +212,7 @@ git rev-parse HEAD
 - Consumes: 無
 - Produces: `normalize(s: string): string`
 
-- [ ] **Step 1: 寫會失敗的測試**
+- [x] **Step 1: 寫會失敗的測試**
 
 `src/scorer/normalize.test.ts`：
 
@@ -238,12 +238,12 @@ test('does NOT tolerate different wording', () => {
 });
 ```
 
-- [ ] **Step 2: 跑測試確認它失敗**
+- [x] **Step 2: 跑測試確認它失敗**
 
 Run: `node --test src/scorer/normalize.test.ts`
 Expected: FAIL —— `Cannot find module './normalize.ts'`
 
-- [ ] **Step 3: 寫最小實作**
+- [x] **Step 3: 寫最小實作**
 
 `src/scorer/normalize.ts`：
 
@@ -258,12 +258,12 @@ export function normalize(s: string): string {
 }
 ```
 
-- [ ] **Step 4: 跑測試確認它通過**
+- [x] **Step 4: 跑測試確認它通過**
 
 Run: `node --test src/scorer/normalize.test.ts`
 Expected: `pass 3`、`fail 0`
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/scorer/normalize.ts src/scorer/normalize.test.ts
@@ -287,7 +287,7 @@ git commit -m "feat(scorer): normalize —— 只做 trim、全形半形、連�
   - `compareField(field: string, spec: FieldSpec, actual: string[]): FieldVerdict`
   - `flagKey(flag: { ac: number; type: string }): string`
 
-- [ ] **Step 1: 寫會失敗的測試**
+- [x] **Step 1: 寫會失敗的測試**
 
 `src/scorer/goal-state.test.ts`：
 
@@ -340,12 +340,12 @@ test('flagKey keeps two flags on the same AC apart', () => {
 });
 ```
 
-- [ ] **Step 2: 跑測試確認它失敗**
+- [x] **Step 2: 跑測試確認它失敗**
 
 Run: `node --test src/scorer/goal-state.test.ts`
 Expected: FAIL —— `Cannot find module './goal-state.ts'`
 
-- [ ] **Step 3: 寫最小實作**
+- [x] **Step 3: 寫最小實作**
 
 `src/scorer/goal-state.ts`：
 
@@ -391,12 +391,12 @@ export function compareField(field: string, spec: FieldSpec, actual: string[]): 
 }
 ```
 
-- [ ] **Step 4: 跑測試確認它通過**
+- [x] **Step 4: 跑測試確認它通過**
 
 Run: `node --test src/scorer/goal-state.test.ts`
 Expected: `pass 6`、`fail 0`
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/scorer/goal-state.ts src/scorer/goal-state.test.ts
@@ -415,7 +415,7 @@ git commit -m "feat(scorer): exact_set 與 AC 標註的 canonical key"
 - Consumes: Task 3 的 `compareField`／`FieldSpec`
 - Produces: `compareField` 支援 `must_include`；`keywords: []` 退化為「集合非空」
 
-- [ ] **Step 1: 追加會失敗的測試**
+- [x] **Step 1: 追加會失敗的測試**
 
 在 `src/scorer/goal-state.test.ts` 末尾追加：
 
@@ -456,12 +456,12 @@ test('must_include never reports unexpected elements', () => {
 });
 ```
 
-- [ ] **Step 2: 跑測試確認新的五條失敗**
+- [x] **Step 2: 跑測試確認新的五條失敗**
 
 Run: `node --test src/scorer/goal-state.test.ts`
 Expected: FAIL —— `mode not implemented yet: must_include`
 
-- [ ] **Step 3: 實作 must_include**
+- [x] **Step 3: 實作 must_include**
 
 在 `compareField` 的 `exact_set` 區塊之後、`throw` 之前插入：
 
@@ -478,12 +478,12 @@ Expected: FAIL —— `mode not implemented yet: must_include`
   }
 ```
 
-- [ ] **Step 4: 跑測試確認全部通過**
+- [x] **Step 4: 跑測試確認全部通過**
 
 Run: `node --test src/scorer/goal-state.test.ts`
 Expected: `pass 11`、`fail 0`
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/scorer/goal-state.ts src/scorer/goal-state.test.ts
@@ -505,7 +505,7 @@ git commit -m "feat(scorer): must_include，空 keywords 退化為只檢查非�
   - `type CaseScore = { caseId: string; pass: boolean; fields: FieldVerdict[] }`
   - `scoreCase(caseId: string, goalState: GoalState, actual: Record<string, string[]>): CaseScore`
 
-- [ ] **Step 1: 追加會失敗的測試**
+- [x] **Step 1: 追加會失敗的測試**
 
 在 `src/scorer/goal-state.test.ts` 末尾追加：
 
@@ -566,12 +566,12 @@ test('a field present in actual but absent from the goal state is not graded', (
 });
 ```
 
-- [ ] **Step 2: 跑測試確認它失敗**
+- [x] **Step 2: 跑測試確認它失敗**
 
 Run: `node --test src/scorer/goal-state.test.ts`
 Expected: FAIL —— `scoreCase` 不存在
 
-- [ ] **Step 3: 實作 ignore 與 scoreCase**
+- [x] **Step 3: 實作 ignore 與 scoreCase**
 
 把 `compareField` 尾端的 `throw` 換成 ignore 分支：
 
@@ -600,17 +600,17 @@ export function scoreCase(
 }
 ```
 
-- [ ] **Step 4: 跑測試確認全部通過**
+- [x] **Step 4: 跑測試確認全部通過**
 
 Run: `node --test src/scorer/goal-state.test.ts`
 Expected: `pass 16`、`fail 0`
 
-- [ ] **Step 5: 跑 typecheck 與全部測試**
+- [x] **Step 5: 跑 typecheck 與全部測試**
 
 Run: `npm run typecheck && npm test`
 Expected: 兩者都乾淨
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/scorer/goal-state.ts src/scorer/goal-state.test.ts
@@ -636,7 +636,7 @@ git commit -m "feat(scorer): ignore 不評分、scoreCase 組裝，含 Day 3 掉
   - `class FakeStore implements TicketStore`，`static fromTicket(t: Ticket): FakeStore`
   - `class ReadOnlyStoreError extends Error`
 
-- [ ] **Step 1: 寫型別與介面**
+- [x] **Step 1: 寫型別與介面**
 
 `src/store/ticket-store.ts`：
 
@@ -673,7 +673,7 @@ export interface TicketStore {
 export class ReadOnlyStoreError extends Error {}
 ```
 
-- [ ] **Step 2: 寫會失敗的測試**
+- [x] **Step 2: 寫會失敗的測試**
 
 `src/store/fake-store.test.ts`：
 
@@ -741,12 +741,12 @@ test('an unknown id throws', async () => {
 });
 ```
 
-- [ ] **Step 3: 跑測試確認它失敗**
+- [x] **Step 3: 跑測試確認它失敗**
 
 Run: `node --test src/store/fake-store.test.ts`
 Expected: FAIL —— `Cannot find module './fake-store.ts'`
 
-- [ ] **Step 4: 寫最小實作**
+- [x] **Step 4: 寫最小實作**
 
 `src/store/fake-store.ts`：
 
@@ -790,12 +790,12 @@ export class FakeStore implements TicketStore {
 }
 ```
 
-- [ ] **Step 5: 跑測試確認它通過**
+- [x] **Step 5: 跑測試確認它通過**
 
 Run: `node --test src/store/fake-store.test.ts`
 Expected: `pass 6`、`fail 0`
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/store/
@@ -819,7 +819,7 @@ git commit -m "feat(store): TicketStore 介面與 FakeStore，每次 run 現建�
   - `loadCase(path: string): Case`
   - `toTicket(c: Case): Ticket`
 
-- [ ] **Step 1: 寫 categories**
+- [x] **Step 1: 寫 categories**
 
 `src/dataset/categories.ts`：
 
@@ -841,7 +841,7 @@ export const CATEGORIES: Record<CategoryId, { letter: string; zh: string }> = {
 };
 ```
 
-- [ ] **Step 2: 寫會失敗的測試**
+- [x] **Step 2: 寫會失敗的測試**
 
 `src/dataset/case.test.ts`：
 
@@ -912,12 +912,12 @@ test('toTicket seeds an untouched ticket', () => {
 });
 ```
 
-- [ ] **Step 3: 跑測試確認它失敗**
+- [x] **Step 3: 跑測試確認它失敗**
 
 Run: `node --test src/dataset/case.test.ts`
 Expected: FAIL —— `Cannot find module './case.ts'`
 
-- [ ] **Step 4: 寫最小實作**
+- [x] **Step 4: 寫最小實作**
 
 `src/dataset/case.ts`：
 
@@ -989,12 +989,12 @@ export function toTicket(c: Case): Ticket {
 }
 ```
 
-- [ ] **Step 5: 跑測試確認它通過**
+- [x] **Step 5: 跑測試確認它通過**
 
 Run: `node --test src/dataset/case.test.ts`
 Expected: `pass 5`、`fail 0`
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/dataset/
@@ -1013,7 +1013,7 @@ git commit -m "feat(dataset): case 檔載入、五類 category、toTicket"
 - Consumes: `Ticket` from `src/store/ticket-store.ts`；`flagKey` from `src/scorer/goal-state.ts`
 - Produces: `actualFields(t: Ticket): Record<string, string[]>`，key 為 `goal`／`scope_in`／`scope_out`／`ac_flags`
 
-- [ ] **Step 1: 寫會失敗的測試**
+- [x] **Step 1: 寫會失敗的測試**
 
 `src/scorer/from-ticket.test.ts`：
 
@@ -1066,12 +1066,12 @@ test('scope arrays pass through', () => {
 });
 ```
 
-- [ ] **Step 2: 跑測試確認它失敗**
+- [x] **Step 2: 跑測試確認它失敗**
 
 Run: `node --test src/scorer/from-ticket.test.ts`
 Expected: FAIL —— `Cannot find module './from-ticket.ts'`
 
-- [ ] **Step 3: 寫最小實作**
+- [x] **Step 3: 寫最小實作**
 
 `src/scorer/from-ticket.ts`：
 
@@ -1094,12 +1094,12 @@ export function actualFields(t: Ticket): Record<string, string[]> {
 }
 ```
 
-- [ ] **Step 4: 跑測試確認它通過**
+- [x] **Step 4: 跑測試確認它通過**
 
 Run: `node --test src/scorer/from-ticket.test.ts`
 Expected: `pass 4`、`fail 0`
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/scorer/from-ticket.ts src/scorer/from-ticket.test.ts
@@ -1124,7 +1124,7 @@ git commit -m "feat(scorer): 從 Ticket 最終狀態取出可比對的欄位"
   - `interface LlmClient { chat(messages: LlmMessage[], tools: ToolSchema[]): Promise<LlmReply> }`
   - `class OpenAiCompatClient implements LlmClient`，建構參數 `{ baseUrl: string; apiKey: string; model: string; fetchImpl?: typeof fetch }`
 
-- [ ] **Step 1: 寫介面**
+- [x] **Step 1: 寫介面**
 
 `src/llm/client.ts`：
 
@@ -1148,7 +1148,7 @@ export interface LlmClient {
 }
 ```
 
-- [ ] **Step 2: 寫會失敗的測試**
+- [x] **Step 2: 寫會失敗的測試**
 
 `src/llm/openai-compat.test.ts`：
 
@@ -1229,12 +1229,12 @@ test('a non-200 response throws with the status', async () => {
 });
 ```
 
-- [ ] **Step 3: 跑測試確認它失敗**
+- [x] **Step 3: 跑測試確認它失敗**
 
 Run: `node --test src/llm/openai-compat.test.ts`
 Expected: FAIL —— `Cannot find module './openai-compat.ts'`
 
-- [ ] **Step 4: 寫最小實作**
+- [x] **Step 4: 寫最小實作**
 
 `src/llm/openai-compat.ts`：
 
@@ -1312,12 +1312,12 @@ function toWire(m: LlmMessage): Record<string, unknown> {
 }
 ```
 
-- [ ] **Step 5: 跑測試確認它通過**
+- [x] **Step 5: 跑測試確認它通過**
 
 Run: `node --test src/llm/openai-compat.test.ts`
 Expected: `pass 4`、`fail 0`
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/llm/
@@ -1339,7 +1339,7 @@ git commit -m "feat(llm): LlmClient 介面與 OpenAI 相容實作，OpenAI 與 o
   - `dispatch(call: ToolCall, store: TicketStore): Promise<string>`
   - `const READONLY_STUB: Record<string, string>`
 
-- [ ] **Step 1: 寫唯讀四個工具的固定回傳**
+- [x] **Step 1: 寫唯讀四個工具的固定回傳**
 
 `src/agent/readonly-stub.ts`：
 
@@ -1361,7 +1361,7 @@ export const READONLY_STUB: Record<string, string> = {
 };
 ```
 
-- [ ] **Step 2: 寫會失敗的測試**
+- [x] **Step 2: 寫會失敗的測試**
 
 `src/agent/tools.test.ts`：
 
@@ -1457,12 +1457,12 @@ test('an unknown tool name comes back as an error string, not a throw', async ()
 });
 ```
 
-- [ ] **Step 3: 跑測試確認它失敗**
+- [x] **Step 3: 跑測試確認它失敗**
 
 Run: `node --test src/agent/tools.test.ts`
 Expected: FAIL —— `Cannot find module './tools.ts'`
 
-- [ ] **Step 4: 寫最小實作**
+- [x] **Step 4: 寫最小實作**
 
 `src/agent/tools.ts`：
 
@@ -1597,12 +1597,12 @@ export async function dispatch(call: ToolCall, store: TicketStore): Promise<stri
 }
 ```
 
-- [ ] **Step 5: 跑測試確認它通過**
+- [x] **Step 5: 跑測試確認它通過**
 
 Run: `node --test src/agent/tools.test.ts`
 Expected: `pass 7`、`fail 0`
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/agent/tools.ts src/agent/readonly-stub.ts src/agent/tools.test.ts
@@ -1624,7 +1624,7 @@ git commit -m "feat(agent): 7 個 tool 的 schema 與 dispatch，唯讀四個先
   - `type TrajectoryStep`／`type Trajectory = { ticketId: string; steps: TrajectoryStep[]; stoppedBy: 'no_tool_calls' | 'max_turns' }`
   - `runAgent(opts: { ticketId: string; store: TicketStore; llm: LlmClient; maxTurns?: number }): Promise<Trajectory>`
 
-- [ ] **Step 1: 寫 prompt 與守住那一行的測試**
+- [x] **Step 1: 寫 prompt 與守住那一行的測試**
 
 `src/agent/prompt.ts`：
 
@@ -1690,12 +1690,12 @@ test('the prompt names the three flag types by their enum values', () => {
 });
 ```
 
-- [ ] **Step 2: 跑 prompt 測試確認它通過**
+- [x] **Step 2: 跑 prompt 測試確認它通過**
 
 Run: `node --test src/agent/prompt.test.ts`
 Expected: `pass 3`、`fail 0`
 
-- [ ] **Step 3: 寫 loop 的失敗測試**
+- [x] **Step 3: 寫 loop 的失敗測試**
 
 `src/agent/loop.test.ts`：
 
@@ -1798,12 +1798,12 @@ test('a tool error is fed back to the model instead of crashing the run', async 
 });
 ```
 
-- [ ] **Step 4: 跑測試確認它失敗**
+- [x] **Step 4: 跑測試確認它失敗**
 
 Run: `node --test src/agent/loop.test.ts`
 Expected: FAIL —— `Cannot find module './loop.ts'`
 
-- [ ] **Step 5: 寫最小實作**
+- [x] **Step 5: 寫最小實作**
 
 `src/agent/loop.ts`：
 
@@ -1869,17 +1869,17 @@ ${ac}`;
 }
 ```
 
-- [ ] **Step 6: 跑測試確認它通過**
+- [x] **Step 6: 跑測試確認它通過**
 
 Run: `node --test src/agent/loop.test.ts`
 Expected: `pass 4`、`fail 0`
 
-- [ ] **Step 7: 跑全部測試與 typecheck**
+- [x] **Step 7: 跑全部測試與 typecheck**
 
 Run: `npm test && npm run typecheck`
 Expected: 全綠
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/agent/
@@ -1899,7 +1899,7 @@ git commit -m "feat(agent): system prompt 與 tool-use 迴圈"
 - Consumes: `loadCase`／`toTicket`、`FakeStore.fromTicket`、`runAgent`、`actualFields`、`scoreCase`、`OpenAiCompatClient`
 - Produces: `formatScore(score: CaseScore): string`；`npm run run-case -- dataset/ac-conflict-001.yaml`
 
-- [ ] **Step 1: 寫報表的失敗測試**
+- [x] **Step 1: 寫報表的失敗測試**
 
 `src/cli/report.test.ts`：
 
@@ -1937,12 +1937,12 @@ test('an all-green case prints PASS', () => {
 });
 ```
 
-- [ ] **Step 2: 跑測試確認它失敗**
+- [x] **Step 2: 跑測試確認它失敗**
 
 Run: `node --test src/cli/report.test.ts`
 Expected: FAIL —— `Cannot find module './report.ts'`
 
-- [ ] **Step 3: 寫 report 實作**
+- [x] **Step 3: 寫 report 實作**
 
 `src/cli/report.ts`：
 
@@ -1964,12 +1964,12 @@ export function formatScore(score: CaseScore): string {
 }
 ```
 
-- [ ] **Step 4: 跑測試確認它通過**
+- [x] **Step 4: 跑測試確認它通過**
 
 Run: `node --test src/cli/report.test.ts`
 Expected: `pass 2`、`fail 0`
 
-- [ ] **Step 5: 寫 run-case.ts**
+- [x] **Step 5: 寫 run-case.ts**
 
 `src/cli/run-case.ts`：
 
@@ -2020,18 +2020,18 @@ console.log(`\nrun 寫到 ${dir}`);
 process.exitCode = score.pass ? 0 : 1;
 ```
 
-- [ ] **Step 6: 加 npm script**
+- [x] **Step 6: 加 npm script**
 
 ```bash
 npm pkg set scripts["run-case"]="node --env-file=.env src/cli/run-case.ts"
 ```
 
-- [ ] **Step 7: 跑全部測試與 typecheck**
+- [x] **Step 7: 跑全部測試與 typecheck**
 
 Run: `npm test && npm run typecheck`
 Expected: 全綠
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/cli/ package.json
@@ -2052,7 +2052,7 @@ git commit -m "feat(cli): 一鍵跑一筆 case，印 diff 並寫進 runs/"
 - Consumes: Task 7 的 `loadCase`
 - Produces: 填好 `goal_state` 的 `dataset/ac-conflict-001.yaml`
 
-- [ ] **Step 1: 追加會失敗的測試**
+- [x] **Step 1: 追加會失敗的測試**
 
 在 `dataset/case.test.ts` 追加（檔頭補 `import { loadCase } from '../src/dataset/case.ts';`）：
 
@@ -2082,12 +2082,12 @@ test('scope_out is must_include, not exact_set', () => {
 });
 ```
 
-- [ ] **Step 2: 跑測試確認它失敗**
+- [x] **Step 2: 跑測試確認它失敗**
 
 Run: `node --test dataset/case.test.ts`
 Expected: FAIL —— `c.goalState.ac_flags` 是 `undefined`
 
-- [ ] **Step 3: 把 goal_state 填進 dataset/ac-conflict-001.yaml**
+- [x] **Step 3: 把 goal_state 填進 dataset/ac-conflict-001.yaml**
 
 把檔尾的 `# goal_state 明天填（Day 10）` 換成：
 
@@ -2104,12 +2104,12 @@ goal_state:
   goal_wording:    { mode: ignore, note: 判不到 —— 這句寫得夠不夠精準沒有程式判得出來 }
 ```
 
-- [ ] **Step 4: 跑全部測試與 typecheck**
+- [x] **Step 4: 跑全部測試與 typecheck**
 
 Run: `npm test && npm run typecheck`
 Expected: 全綠
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add dataset/
@@ -2137,7 +2137,7 @@ git rev-parse HEAD
 - Consumes: Task 12 的 `npm run run-case`、Task 13 填好的 goal state
 - Produces: 第一筆 `runs/` 紀錄（Day 15 的材料）
 
-- [ ] **Step 1: 確認 .env 三個變數都在**
+- [x] **Step 1: 確認 .env 三個變數都在**
 
 ```bash
 node --env-file=.env -e "for (const k of ['LLM_BASE_URL','LLM_API_KEY','LLM_MODEL']) if (!process.env[k]) throw new Error('missing ' + k); console.log('env ok')"
@@ -2145,7 +2145,7 @@ node --env-file=.env -e "for (const k of ['LLM_BASE_URL','LLM_API_KEY','LLM_MODE
 
 Expected: `env ok`。缺變數就停在這裡問 Ray，不要自己編一個值。
 
-- [ ] **Step 2: 真的跑一次**
+- [x] **Step 2: 真的跑一次**
 
 Run: `npm run run-case -- dataset/ac-conflict-001.yaml`
 
@@ -2155,13 +2155,13 @@ Expected: 印出 `PASS` 或 `FAIL` 加逐格 diff，並在 `runs/` 生出一個�
 不要為了讓它變綠而改 goal state。要改就改 `src/agent/prompt.ts`，而且改完要重跑並留下第二筆 `runs/`，
 兩筆都進 repo：那個前後對照是 Day 28 的材料。
 
-- [ ] **Step 3: 更新 README 的「目前實作到哪」**
+- [x] **Step 3: 更新 README 的「目前實作到哪」**
 
 改成：Day 2 的 7 個 tool 與四個區塊、Day 4 的多輪 tool-use 迴圈、Day 9 的 case 檔輸入本體、
 Day 10 的 goal state 三檔、Day 15 的第一份 diff。註明唯讀四工具仍是固定回傳，
 Day 11 的 fixture 錄放尚未實作。
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add runs/ README.md
