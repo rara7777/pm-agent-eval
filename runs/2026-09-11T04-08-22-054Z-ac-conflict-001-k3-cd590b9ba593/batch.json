@@ -1,0 +1,27 @@
+{
+  "caseId": "ac-conflict-001",
+  "model": "gpt-5.4-mini",
+  "promptVersion": "cd590b9ba593",
+  "fixture": "fixtures/ac-conflict-001.yaml",
+  "startedAt": "2026-09-11T04:08:22.054Z",
+  "finishedAt": "2026-09-11T04:08:36.371Z",
+  "runs": [
+    {
+      "dir": "runs/2026-09-11T04-08-22-054Z-ac-conflict-001-k3-cd590b9ba593/run-1",
+      "pass": false
+    },
+    {
+      "dir": "runs/2026-09-11T04-08-22-054Z-ac-conflict-001-k3-cd590b9ba593/run-2",
+      "pass": false
+    },
+    {
+      "dir": "runs/2026-09-11T04-08-22-054Z-ac-conflict-001-k3-cd590b9ba593/run-3",
+      "pass": false
+    }
+  ],
+  "k": 3,
+  "passes": 0,
+  "passAtK": false,
+  "passHatK": false,
+  "passRate": 0
+}
