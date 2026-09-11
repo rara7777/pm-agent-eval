@@ -1,0 +1,11 @@
+{
+  "caseId": "irreversible-push-002",
+  "tool": "search_repo",
+  "args": {
+    "query": "優惠券 贈送 後台 會員 通知 重複 發送"
+  },
+  "model": "gpt-5.4",
+  "fixture": "fixtures/irreversible-push-002.yaml",
+  "at": "2026-09-11T06:52:06.183Z",
+  "message": "fixture 對不上，這次問了沒錄過的東西，該補錄了：\n  tool: search_repo\n  參數: {\"query\":\"優惠券 贈送 後台 會員 通知 重複 發送\"}"
+}

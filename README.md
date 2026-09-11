@@ -79,6 +79,16 @@ npm run run-k    -- dataset/ac-conflict-001.yaml --k 3
 外面那個世界目前由 `src/agent/readonly-stub.ts` 這張固定回答的表扮演，錄放機制照樣走它。
 `RedmineStore`（Day 25）還沒有。
 
+## 文章怎麼連進來
+
+只有一個 `main`，不開 per-day 分支。要被文章引用的狀態打 tag，tag 名帶內容而不是天數，
+例如 `day15-first-diff`、`day11-fixture-record-replay`。
+
+**開發順序不等於發布順序。** fixture 錄放是第一份 diff 跑出來之後才寫的，文章的順序卻相反。
+所以一個 tag 給的是「開發到那個時間點」的整個 repo，不是「那篇文章當天」的 repo，
+切過去會看到後面天數才會講的東西。tag 指的是**那一天引用的那段程式所在的 commit，
+不是那天的完整進度**。
+
 ## 資料
 
 `dataset/` 裡的內容全部是合成的。真實 ticket 在進入這個 repo 之前一律換掉專案名、人名、
