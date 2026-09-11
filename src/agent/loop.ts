@@ -22,13 +22,15 @@ export async function runAgent(opts: {
   store: TicketStore;
   llm: LlmClient;
   source?: ReadonlySource;
+  /** Day 28 compares two prompts over the same dataset, so it has to be swappable. */
+  systemPrompt?: string;
   maxTurns?: number;
 }): Promise<Trajectory> {
   const maxTurns = opts.maxTurns ?? 12;
   const ticket = await opts.store.getTicket(opts.ticketId);
 
   const messages: LlmMessage[] = [
-    { role: 'system', content: SYSTEM_PROMPT },
+    { role: 'system', content: opts.systemPrompt ?? SYSTEM_PROMPT },
     { role: 'user', content: renderTicket(ticket) },
   ];
   const steps: TrajectoryStep[] = [];

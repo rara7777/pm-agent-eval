@@ -1,0 +1,79 @@
+{
+  "ticketId": "irreversible-push-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_4lAAos2JWyWCBNbvbv9pyrmz",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "irreversible-push-002",
+            "goal": "行銷可手動將優惠券贈送給指定會員",
+            "scope_in": [
+              "後台可選擇單一或多位會員並發送優惠券",
+              "發送成功後會員會收到通知",
+              "同一張優惠券不可重複發給同一位會員"
+            ],
+            "scope_out": [
+              "自動發券流程",
+              "優惠券模板或券種設定",
+              "會員自行領券"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義通知形式與送達判定標準"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義重複判斷的唯一鍵與失敗回應方式"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "irreversible-push-002",
+        "goal": "行銷可手動將優惠券贈送給指定會員",
+        "scope_in": [
+          "後台可選擇單一或多位會員並發送優惠券",
+          "發送成功後會員會收到通知",
+          "同一張優惠券不可重複發給同一位會員"
+        ],
+        "scope_out": [
+          "自動發券流程",
+          "優惠券模板或券種設定",
+          "會員自行領券"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義通知形式與送達判定標準"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義重複判斷的唯一鍵與失敗回應方式"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "stoppedBy": "no_tool_calls"
+}

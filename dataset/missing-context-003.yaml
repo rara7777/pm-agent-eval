@@ -1,0 +1,12 @@
+id: missing-context-003
+source: Day 8 B 類延伸：規則只寫了一半
+category: missing-context
+input:
+  name: 訂位取消政策
+  description: |
+    客人取消訂位要收費，太晚取消的要收比較多。餐廳那邊說這樣才擋得住惡意訂位。
+  acceptance_criteria:
+    - 客人可以在訂位頁面取消訂位
+    - 太晚取消會收取費用
+    - 取消後會收到確認信
+# goal_state 待作者手標

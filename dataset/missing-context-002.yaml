@@ -1,0 +1,13 @@
+id: missing-context-002
+source: Day 8 第 4 條：關鍵名詞沒定義
+category: missing-context
+input:
+  name: 健身房預約後台
+  description: |
+    教練要能在後台看到自己的課程預約狀況，活動期間的名額要另外算。
+  acceptance_criteria:
+    - 教練登入後台可以看到自己的課表
+    - 每堂課顯示已預約人數與剩餘名額
+    - 活動的名額不計入一般名額
+    - 後台可以手動幫學員取消預約
+# goal_state 待作者手標

@@ -1,0 +1,13 @@
+id: conflicting-truth-001
+source: Day 8 第 5 條：AC 彼此衝突
+category: conflicting-truth
+input:
+  name: 問卷填答
+  description: |
+    活動問卷開放填寫，填完送出就可以領獎品。
+  acceptance_criteria:
+    - 使用者填完問卷送出後可以領取獎品
+    - 同一個帳號只能填寫一次
+    - 使用者可以重複填寫更新答案
+    - 問卷關閉後不能再填寫
+# goal_state 待作者手標

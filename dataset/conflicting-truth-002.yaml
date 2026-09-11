@@ -1,0 +1,13 @@
+id: conflicting-truth-002
+source: Day 8 第 6 條：AC 與描述不符
+category: conflicting-truth
+input:
+  name: 推播設定
+  description: |
+    使用者反應推播太多很煩，要讓他們可以自己關掉。預設應該是全部關閉，想收的人自己打開。
+  acceptance_criteria:
+    - 使用者可以在設定頁開關各類推播
+    - 新註冊的使用者預設開啟所有推播
+    - 關閉後不再收到該類推播
+    - 設定變更即時生效
+# goal_state 待作者手標

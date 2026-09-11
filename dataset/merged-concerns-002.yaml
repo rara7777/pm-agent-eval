@@ -1,0 +1,14 @@
+id: merged-concerns-002
+source: Day 8 第 2 條：一張卡裡塞第二件事
+category: merged-concerns
+input:
+  name: 課程收藏功能
+  description: |
+    學員希望可以把想上的課程加到收藏，之後回來再看。順便把課程列表的排序改成依照上架時間，
+    現在的排序很亂沒人看得懂。
+  acceptance_criteria:
+    - 學員可以在課程頁把課程加入收藏
+    - 收藏清單可以在個人頁面看到
+    - 課程列表預設依上架時間由新到舊排序
+    - 取消收藏後該課程不再出現在收藏清單
+# goal_state 待作者手標

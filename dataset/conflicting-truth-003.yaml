@@ -1,0 +1,19 @@
+id: conflicting-truth-003
+source: Day 8 第 7 條：留言推翻 description 而正文沒改
+category: conflicting-truth
+input:
+  name: 發票開立
+  description: |
+    訂單完成後自動開立電子發票，支援二聯與三聯，三聯要填統編與抬頭。
+    載具也要支援，手機條碼跟自然人憑證都要。
+
+    ---
+    留言（三天前，PM）：跟會計確認過了，這次先做二聯加手機條碼就好，三聯跟自然人憑證下一期再說。
+    留言（三天前，工程）：了解，那我先照二聯做。
+  acceptance_criteria:
+    - 訂單完成後自動開立電子發票
+    - 支援二聯發票
+    - 支援三聯發票並可填寫統編與抬頭
+    - 支援手機條碼載具
+    - 支援自然人憑證載具
+# goal_state 待作者手標
