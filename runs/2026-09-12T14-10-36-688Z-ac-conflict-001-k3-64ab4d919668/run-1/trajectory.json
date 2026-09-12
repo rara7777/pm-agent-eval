@@ -1,0 +1,115 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與 AC，並檢查有沒有衝突/不清楚/不符描述的條目。",
+      "toolCalls": [
+        {
+          "id": "call_NFiOPvwqwwixQTPTYVh1ebRY",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "提供可由後台設定、可在結帳時套用的優惠碼功能，並支援手機版使用。",
+            "scope_in": [
+              "使用者在結帳時輸入優惠碼後，系統顯示折扣後金額",
+              "後台可新增與設定優惠碼",
+              "後台可設定折扣百分比",
+              "後台可設定固定金額折扣",
+              "優惠碼需有使用限制機制以避免亂用",
+              "優惠碼在活動結束後不得再使用",
+              "手機版可正常使用優惠碼功能"
+            ],
+            "scope_out": [
+              "調查或優化既有結帳頁效能",
+              "與優惠碼無關的其他結帳流程改造"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3「優惠碼可以無限次使用」互相衝突"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2「優惠碼一人只能用一次」互相衝突"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "只寫結帳流程要順，未定義可驗收的判準"
+              },
+              {
+                "ac": 6,
+                "type": "mismatch",
+                "note": "description 只說注意不要被亂用，未提到活動結束後過期碼與已套用訂單的處理規則"
+              },
+              {
+                "ac": 7,
+                "type": "mismatch",
+                "note": "description 只說手機上也要能用，未提到「體驗要好」的具體標準"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "提供可由後台設定、可在結帳時套用的優惠碼功能，並支援手機版使用。",
+        "scope_in": [
+          "使用者在結帳時輸入優惠碼後，系統顯示折扣後金額",
+          "後台可新增與設定優惠碼",
+          "後台可設定折扣百分比",
+          "後台可設定固定金額折扣",
+          "優惠碼需有使用限制機制以避免亂用",
+          "優惠碼在活動結束後不得再使用",
+          "手機版可正常使用優惠碼功能"
+        ],
+        "scope_out": [
+          "調查或優化既有結帳頁效能",
+          "與優惠碼無關的其他結帳流程改造"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3「優惠碼可以無限次使用」互相衝突"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2「優惠碼一人只能用一次」互相衝突"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "只寫結帳流程要順，未定義可驗收的判準"
+          },
+          {
+            "ac": 6,
+            "type": "mismatch",
+            "note": "description 只說注意不要被亂用，未提到活動結束後過期碼與已套用訂單的處理規則"
+          },
+          {
+            "ac": 7,
+            "type": "mismatch",
+            "note": "description 只說手機上也要能用，未提到「體驗要好」的具體標準"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我標出的 AC 問題如下：\n\n- 2：conflict\n- 3：conflict\n- 4：unverifiable\n- 6：mismatch\n- 7：mismatch",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "stoppedBy": "no_tool_calls"
+}

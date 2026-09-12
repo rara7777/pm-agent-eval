@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { runOnce, promptVersion, fixturePathFor } from '../runner/run-once.ts';
 import { MissingFixtureError } from '../fixture/fixture.ts';
@@ -14,8 +14,13 @@ const kFlag = argv.indexOf('--k');
 const k = kFlag === -1 ? 3 : Number(argv[kFlag + 1]);
 if (!Number.isInteger(k) || k < 1) throw new Error(`--k 要是正整數，收到 ${String(argv[kFlag + 1])}`);
 
+// A prompt variant makes a before/after possible without editing prompt.ts.
+const promptFlag = argv.indexOf('--prompt');
+const systemPrompt =
+  promptFlag === -1 ? undefined : readFileSync(String(argv[promptFlag + 1]), 'utf8');
+
 const caseId = loadCase(casePath).id;
-const version = promptVersion();
+const version = promptVersion(systemPrompt);
 const startedAt = new Date();
 const batchDir = join(
   'runs',
@@ -23,14 +28,14 @@ const batchDir = join(
 );
 mkdirSync(batchDir, { recursive: true });
 // The prompt goes in beside the scores: a later before/after needs both halves.
-writeFileSync(join(batchDir, 'prompt.txt'), SYSTEM_PROMPT);
+writeFileSync(join(batchDir, 'prompt.txt'), systemPrompt ?? SYSTEM_PROMPT);
 
 console.log(`${caseId} × ${k}   prompt ${version}   → ${batchDir}\n`);
 
 const runs: { dir: string; pass: boolean }[] = [];
 for (let i = 1; i <= k; i++) {
   try {
-    const run = await runOnce({ casePath, outDir: join(batchDir, `run-${i}`) });
+    const run = await runOnce({ casePath, systemPrompt, outDir: join(batchDir, `run-${i}`) });
     runs.push({ dir: run.dir, pass: run.score.pass });
     console.log(`  run ${i}/${k}  ${run.score.pass ? 'PASS' : 'FAIL'}`);
   } catch (err) {
