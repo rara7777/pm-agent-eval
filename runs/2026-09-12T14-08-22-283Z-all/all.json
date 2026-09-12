@@ -1,0 +1,42 @@
+{
+  "k": 2,
+  "rows": [
+    {
+      "caseId": "ac-conflict-001",
+      "category": "conflicting-truth",
+      "k": 2,
+      "passes": 0,
+      "counts": {
+        "truePositives": 6,
+        "falsePositives": 6,
+        "falseNegatives": 2,
+        "missed": [
+          "3:mismatch",
+          "3:mismatch"
+        ],
+        "extra": [
+          "2:conflict",
+          "4:mismatch",
+          "7:mismatch",
+          "2:conflict",
+          "6:mismatch",
+          "2:mismatch"
+        ]
+      },
+      "annotation": [
+        "3:conflict",
+        "3:mismatch",
+        "4:unverifiable",
+        "7:unverifiable"
+      ],
+      "flagged": [
+        "2:conflict",
+        "3:conflict",
+        "4:unverifiable",
+        "7:unverifiable",
+        "6:mismatch",
+        "2:mismatch"
+      ]
+    }
+  ]
+}

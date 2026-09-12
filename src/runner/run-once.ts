@@ -18,6 +18,8 @@ import {
 
 export type RunResult = {
   score: CaseScore;
+  /** The final state projected onto the goal state's fields, for the flag maths. */
+  actual: Record<string, string[]>;
   trajectory: Trajectory;
   dir: string;
   fixtureMode: 'record' | 'replay';
@@ -34,8 +36,8 @@ function required(name: string): string {
  * Which prompt produced a run. A score history is only readable if a batch can
  * be told apart from the batch on the other side of a prompt change.
  */
-export function promptVersion(prompt: string = SYSTEM_PROMPT): string {
-  return createHash('sha256').update(prompt).digest('hex').slice(0, 12);
+export function promptVersion(prompt: string | undefined = SYSTEM_PROMPT): string {
+  return createHash('sha256').update(prompt ?? SYSTEM_PROMPT).digest('hex').slice(0, 12);
 }
 
 export function fixturePathFor(caseId: string): string {
@@ -64,6 +66,8 @@ export function writeFixture(recorder: RecordingSource, caseId: string): void {
 export async function runOnce(opts: {
   casePath: string;
   rerecord?: boolean;
+  /** A prompt variant, for a before/after over the same dataset. */
+  systemPrompt?: string;
   /** Where the run lands. Defaults to a timestamped directory under runs/. */
   outDir?: string;
 }): Promise<RunResult> {
@@ -79,11 +83,18 @@ export async function runOnce(opts: {
   });
 
   const startedAt = new Date();
-  const trajectory = await runAgent({ ticketId: testCase.id, store, llm, source });
+  const trajectory = await runAgent({
+    ticketId: testCase.id,
+    store,
+    llm,
+    source,
+    systemPrompt: opts.systemPrompt,
+  });
   if (recorder) writeFixture(recorder, testCase.id);
 
   const finalTicket = await store.getTicket(testCase.id);
-  const score = scoreCase(testCase.id, testCase.goalState, actualFields(finalTicket));
+  const actual = actualFields(finalTicket);
+  const score = scoreCase(testCase.id, testCase.goalState, actual);
 
   const dir =
     opts.outDir ??
@@ -99,7 +110,7 @@ export async function runOnce(opts: {
     JSON.stringify(
       {
         model: process.env.LLM_MODEL,
-        promptVersion: promptVersion(),
+        promptVersion: promptVersion(opts.systemPrompt),
         fixture: fixturePathFor(testCase.id),
         fixtureMode: recorder ? 'record' : 'replay',
         startedAt: startedAt.toISOString(),
@@ -112,9 +123,10 @@ export async function runOnce(opts: {
 
   return {
     score,
+    actual,
     trajectory,
     dir,
     fixtureMode: recorder ? 'record' : 'replay',
-    promptVersion: promptVersion(),
+    promptVersion: promptVersion(opts.systemPrompt),
   };
 }

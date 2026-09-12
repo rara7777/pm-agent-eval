@@ -10,7 +10,8 @@
     "test": "node --test 'src/**/*.test.ts' 'dataset/**/*.test.ts'",
     "typecheck": "tsc --noEmit",
     "run-case": "node --env-file=.env src/cli/run-case.ts",
-    "run-k": "node --env-file=.env src/cli/run-k.ts"
+    "run-k": "node --env-file=.env src/cli/run-k.ts",
+    "run-all": "node --env-file=.env src/cli/run-all.ts"
   },
   "repository": {
     "type": "git",

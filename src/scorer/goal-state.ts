@@ -65,3 +65,9 @@ export function scoreCase(
   const pass = graded.length > 0 && graded.every((f) => f.pass === true);
   return { caseId, pass, fields };
 }
+
+/** The author's annotation for a case: the AC flags its goal state expects. */
+export function expectedFlags(goalState: GoalState): string[] {
+  const spec = goalState.ac_flags;
+  return spec?.mode === 'exact_set' ? [...spec.values] : [];
+}
