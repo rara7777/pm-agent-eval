@@ -1,0 +1,5 @@
+{
+  "_": "search_repo 在 production 模式可以 git grep 的目錄，絕對路徑。空的就代表這個工具不提供。",
+  "roots": [],
+  "maxHits": 30
+}

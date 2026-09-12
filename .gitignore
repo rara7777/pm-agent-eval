@@ -144,3 +144,7 @@ vite.config.ts.timestamp-*
 
 # Redmine 拉下來的原始 ticket，永遠不進 repo
 raw/
+
+# production 模式的產物：裡面有真實 ticket 的內容，永遠不進版控。
+# 只有 docs/production-runs.md 那種不含卡片內容的統計會進來。
+runs-private/
