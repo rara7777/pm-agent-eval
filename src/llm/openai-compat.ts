@@ -44,7 +44,13 @@ export class OpenAiCompatClient implements LlmClient {
       args: JSON.parse(c.function.arguments || '{}') as Record<string, unknown>,
     }));
 
-    return { text: message.content ?? null, toolCalls };
+    const u = json.usage;
+    const usage =
+      u && typeof u.prompt_tokens === 'number' && typeof u.completion_tokens === 'number'
+        ? { promptTokens: u.prompt_tokens, completionTokens: u.completion_tokens }
+        : undefined;
+
+    return { text: message.content ?? null, toolCalls, ...(usage ? { usage } : {}) };
   }
 }
 

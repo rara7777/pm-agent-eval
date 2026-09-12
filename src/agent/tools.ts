@@ -88,6 +88,17 @@ export const TOOL_SCHEMAS: ToolSchema[] = [
   },
 ];
 
+/**
+ * Never offer the model a tool nothing can answer. In eval mode the fixture
+ * answers all four, so the list is whole; in production only the ones with a
+ * backend survive, and the three writers always do.
+ */
+export function toolsFor(readOnlyAvailable: string[]): ToolSchema[] {
+  return TOOL_SCHEMAS.filter(
+    (s) => !READONLY_TOOLS.has(s.function.name) || readOnlyAvailable.includes(s.function.name),
+  );
+}
+
 export async function dispatch(
   call: ToolCall,
   store: TicketStore,

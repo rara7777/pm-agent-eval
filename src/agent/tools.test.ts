@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
-import { TOOL_SCHEMAS, dispatch } from './tools.ts';
+import { TOOL_SCHEMAS, dispatch, toolsFor } from './tools.ts';
 import { FakeStore } from '../store/fake-store.ts';
 import type { Ticket } from '../store/ticket-store.ts';
 import { MissingFixtureError, ReplayingSource } from '../fixture/fixture.ts';
@@ -119,4 +119,19 @@ test('a fixture miss fails the run instead of coming back as a tool result', asy
     () => dispatch({ id: 'c', name: 'read_docs', args: { path: '/promo' } }, store, source),
     MissingFixtureError,
   );
+});
+
+test('a tool with no backend is not offered to the model', () => {
+  const names = toolsFor(['search_repo']).map((s) => s.function.name);
+  assert.deepEqual(names, [
+    'search_repo',
+    'update_ticket',
+    'replace_acceptance_criteria',
+    'post_comment',
+  ]);
+});
+
+test('with every backend available the list is the whole seven', () => {
+  const all = ['search_web', 'read_docs', 'search_repo', 'query_db'];
+  assert.equal(toolsFor(all).length, 7);
 });

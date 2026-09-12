@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "run-case": "node --env-file=.env src/cli/run-case.ts",
     "run-k": "node --env-file=.env src/cli/run-k.ts",
-    "run-all": "node --env-file=.env src/cli/run-all.ts"
+    "run-all": "node --env-file=.env src/cli/run-all.ts",
+    "triage": "node --env-file=.env src/cli/triage.ts"
   },
   "repository": {
     "type": "git",

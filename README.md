@@ -30,6 +30,17 @@ npm run run-k    -- dataset/ac-conflict-001.yaml --k 3
 第一次跑會把外部回應錄進 `fixtures/<caseId>.yaml`，之後每次重播。
 鍵是工具名加參數，不是呼叫順序；重播時對不上就讓整趟失敗，並印出沒對上的那個請求。
 
+整理一張真的卡（**不會碰 Redmine**）：
+
+```bash
+npm run triage -- --ticket runs-private/inbox/4821.json
+```
+
+卡從哪裡來不歸這個 repo 管 —— Claude Code 用它自己的 Redmine MCP 把 issue 存成檔案，
+這裡只讀那個檔案。跑完把最終狀態寫成 `runs-private/<時間>-<id>/proposal.md` 給人看，
+人看過說可以，才由 Claude Code 用同一個 MCP 把留言貼回去。
+agent 這一側從頭到尾沒有一條線通到 Redmine。
+
 真的驅動 agent 需要一個 OpenAI 相容的端點（OpenAI 或 ollama 都可以）。
 複製 `.env.example` 成 `.env` 並填三個變數：
 
@@ -49,6 +60,9 @@ npm run run-k    -- dataset/ac-conflict-001.yaml --k 3
 | `dataset/` | 一筆一檔的 case：輸入原文、來源、類別、goal state |
 | `src/fixture/` | 外部回應的錄與放 |
 | `src/gates/` | 破壞性動作的 safety gate |
+| `src/runner/` | 跑一次、跑一批、提案的格式 |
+| `config/` | production 模式下 `search_repo` 與 `read_docs` 准碰的目錄 |
+| `runs-private/` | 真卡的提案與紀錄，已 gitignore，永遠不進版控 |
 | `fixtures/` | 一個 case 一份，錄下來的外部回應 |
 | `runs/` | 每次跑的分數與 trajectory，重跑 k 次的批次帶 prompt 版本 |
 

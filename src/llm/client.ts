@@ -10,7 +10,10 @@ export type LlmMessage =
   | { role: 'assistant'; content: string | null; toolCalls?: ToolCall[] }
   | { role: 'tool'; toolCallId: string; content: string };
 
-export type LlmReply = { text: string | null; toolCalls: ToolCall[] };
+/** Token usage as the endpoint reported it, absent when it reported none. */
+export type LlmUsage = { promptTokens: number; completionTokens: number };
+
+export type LlmReply = { text: string | null; toolCalls: ToolCall[]; usage?: LlmUsage };
 
 export interface LlmClient {
   chat(messages: LlmMessage[], tools: ToolSchema[]): Promise<LlmReply>;
