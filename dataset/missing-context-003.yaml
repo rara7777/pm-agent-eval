@@ -9,4 +9,13 @@ input:
     - 客人可以在訂位頁面取消訂位
     - 太晚取消會收取費用
     - 取消後會收到確認信
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [2:unverifiable]   # 作者 2026-09-16：「太晚」是多晚、收多少都沒寫；第 3 條確認信只是用詞，有寄信就驗得了，不掛
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

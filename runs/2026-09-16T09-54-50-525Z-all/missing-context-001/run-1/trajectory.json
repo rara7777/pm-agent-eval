@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆解票面內容與 AC，這張票描述太少，且「上次那樣」「上次一樣」都缺乏可驗證的參照。先直接整理可確定的目標與範圍，並標註 AC 問題；不做外查，因為目前沒有足夠上下文可對齊。",
+      "toolCalls": [
+        {
+          "id": "call_faYoFaxb5Cn9pDt0XvUhtvpD",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+            "scope_in": [
+              "出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "未定義的其他通知流程",
+              "是否與上次完全相同的細節與格式"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "與描述一致，屬於目標陳述。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "描述只提到出貨通知，未明確要求一定包含物流單號；需補上下文或確認。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『跟上次一樣』缺乏可比對的具體基準，無法判定完成標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+        "scope_in": [
+          "出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "未定義的其他通知流程",
+          "是否與上次完全相同的細節與格式"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "與描述一致，屬於目標陳述。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "描述只提到出貨通知，未明確要求一定包含物流單號；需補上下文或確認。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『跟上次一樣』缺乏可比對的具體基準，無法判定完成標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回票上。\n\n重點：\n- goal：訂單出貨後發送寵物訂閱盒的出貨通知\n- scope_in：出貨後發送通知、通知內容包含物流單號\n- scope_out：未定義的其他通知流程、是否與上次完全相同的細節與格式\n- AC 標註：\n  - 2：mismatch\n  - 3：unverifiable\n\n如果你要，我也可以幫你把這張票補成更完整、可執行的需求版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2004,
+    "completionTokens": 409
+  },
+  "stoppedBy": "no_tool_calls"
+}

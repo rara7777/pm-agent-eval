@@ -11,4 +11,13 @@ input:
     - 點退訂連結後不需登入即可完成退訂
     - 退訂後不再收到行銷信
     - 退訂原因會記錄下來給行銷看
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: []   # 作者 2026-09-16：四條都具體可驗、跟 description 一致
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

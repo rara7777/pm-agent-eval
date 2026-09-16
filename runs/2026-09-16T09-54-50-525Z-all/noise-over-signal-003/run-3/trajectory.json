@@ -1,0 +1,101 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求與檢查 AC，這題不需要外部查資料。",
+      "toolCalls": [
+        {
+          "id": "call_bziB97kGSCDBOQfAvvAPN0Lz",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位並匯出報表",
+            "scope_in": [
+              "提供報表匯出功能",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 匯出"
+            ],
+            "scope_out": [
+              "直接串接 BI",
+              "其他未定義的報表格式"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義匯出成功的判定條件、匯出哪些資料範圍，以及是否有格式/欄位限制。"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 強調的是可自行選欄位後匯出，AC 只寫可匯出報表，少了核心需求。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義可選欄位清單、是否允許多選、以及選完後如何確認已套用。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 提到業務偏好 Excel、財務偏好 CSV，且重點是可自行匯出；AC 只限定 CSV，範圍過窄。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位並匯出報表",
+        "scope_in": [
+          "提供報表匯出功能",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 匯出"
+        ],
+        "scope_out": [
+          "直接串接 BI",
+          "其他未定義的報表格式"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義匯出成功的判定條件、匯出哪些資料範圍，以及是否有格式/欄位限制。"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 強調的是可自行選欄位後匯出，AC 只寫可匯出報表，少了核心需求。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義可選欄位清單、是否允許多選、以及選完後如何確認已套用。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 提到業務偏好 Excel、財務偏好 CSV，且重點是可自行匯出；AC 只限定 CSV，範圍過窄。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2277,
+    "completionTokens": 314
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -10,4 +10,13 @@ input:
     - 新註冊的使用者預設開啟所有推播
     - 關閉後不再收到該類推播
     - 設定變更即時生效
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [2:mismatch]   # 作者 2026-09-16：description 說預設全部關閉，第 2 條卻預設開啟
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

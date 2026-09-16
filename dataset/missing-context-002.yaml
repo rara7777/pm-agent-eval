@@ -10,4 +10,13 @@ input:
     - 每堂課顯示已預約人數與剩餘名額
     - 活動的名額不計入一般名額
     - 後台可以手動幫學員取消預約
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [3:unverifiable]   # 作者 2026-09-16：哪個活動、名額怎麼另外算沒寫在卡上；第 4 條取消預約是範圍多出來，歸 Scope out 不掛標註
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

@@ -1,0 +1,93 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_xnjkOOq5XnvRIMEYOsQOXrEE",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人可在訂位頁面取消訂位，並依取消時間收取費用與寄出確認信。",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "取消訂位時依規則收取費用",
+              "取消後寄送確認信"
+            ],
+            "scope_out": [
+              "惡意訂位防堵策略本身",
+              "餐廳端後台流程調整",
+              "取消費用金額與計算規則的細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "沒有定義訂位頁面是哪些頁面、取消入口位置或成功標準。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "沒有定義什麼叫太晚取消、費用金額、計算方式與生效條件。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "沒有定義確認信內容、寄送時機與寄送對象。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人可在訂位頁面取消訂位，並依取消時間收取費用與寄出確認信。",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "取消訂位時依規則收取費用",
+          "取消後寄送確認信"
+        ],
+        "scope_out": [
+          "惡意訂位防堵策略本身",
+          "餐廳端後台流程調整",
+          "取消費用金額與計算規則的細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "沒有定義訂位頁面是哪些頁面、取消入口位置或成功標準。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "沒有定義什麼叫太晚取消、費用金額、計算方式與生效條件。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "沒有定義確認信內容、寄送時機與寄送對象。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1977,
+    "completionTokens": 238
+  },
+  "stoppedBy": "no_tool_calls"
+}

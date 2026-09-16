@@ -1,0 +1,111 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與 AC，並檢查是否需要外部背景資料。這張卡看起來是一般功能需求，暫時不需要查外部資料。接著我會把目標、範圍與 AC 問題標註寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_icaT7b3CP1Ry1LhASUZa25Xy",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "新增可由後台設定的優惠碼功能，供使用者在結帳時使用並影響金額",
+            "scope_in": [
+              "使用者可輸入優惠碼",
+              "系統可計算並顯示折扣後金額",
+              "後台可新增與設定優惠碼",
+              "優惠碼可設定折扣百分比",
+              "優惠碼可設定固定金額折扣",
+              "優惠碼需避免被濫用",
+              "手機版可使用優惠碼"
+            ],
+            "scope_out": [
+              "結帳流程效能優化",
+              "結帳頁面整體流程改版",
+              "活動結束後的優惠碼失效規則以外的歷史訂單處理"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2「一人只能用一次」互相衝突。"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "description 提到的是『順便看一下』結帳頁很慢，較像效能優化/其他 ticket，不是此優惠碼功能的主要需求。"
+              },
+              {
+                "ac": 6,
+                "type": "mismatch",
+                "note": "description 只有提到活動下週要跑與避免亂用，未明確說明活動結束後的到期規則與已套用訂單不受影響。"
+              },
+              {
+                "ac": 7,
+                "type": "mismatch",
+                "note": "description 只說手機上也要能用，沒有定義什麼叫『體驗要好』，驗收標準不清楚。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "新增可由後台設定的優惠碼功能，供使用者在結帳時使用並影響金額",
+        "scope_in": [
+          "使用者可輸入優惠碼",
+          "系統可計算並顯示折扣後金額",
+          "後台可新增與設定優惠碼",
+          "優惠碼可設定折扣百分比",
+          "優惠碼可設定固定金額折扣",
+          "優惠碼需避免被濫用",
+          "手機版可使用優惠碼"
+        ],
+        "scope_out": [
+          "結帳流程效能優化",
+          "結帳頁面整體流程改版",
+          "活動結束後的優惠碼失效規則以外的歷史訂單處理"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2「一人只能用一次」互相衝突。"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "description 提到的是『順便看一下』結帳頁很慢，較像效能優化/其他 ticket，不是此優惠碼功能的主要需求。"
+          },
+          {
+            "ac": 6,
+            "type": "mismatch",
+            "note": "description 只有提到活動下週要跑與避免亂用，未明確說明活動結束後的到期規則與已套用訂單不受影響。"
+          },
+          {
+            "ac": 7,
+            "type": "mismatch",
+            "note": "description 只說手機上也要能用，沒有定義什麼叫『體驗要好』，驗收標準不清楚。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n本次標註的 AC 問題：\n- AC 3：conflict（和 AC 2「一人只能用一次」衝突）\n- AC 4：mismatch（偏向結帳效能/流程優化，較像其他 ticket）\n- AC 6：mismatch（description 沒有明確提到到期規則與已套用訂單）\n- AC 7：mismatch（「體驗要好」不夠可驗收）\n\n",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2327,
+    "completionTokens": 526
+  },
+  "stoppedBy": "no_tool_calls"
+}

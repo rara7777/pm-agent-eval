@@ -9,4 +9,13 @@ input:
     - 訂單出貨後會發送通知
     - 通知內容包含物流單號
     - 通知要跟上次一樣
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [3:unverifiable]   # 作者 2026-09-16：「跟上次一樣」的上次沒寫在卡上，驗收對不出來
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

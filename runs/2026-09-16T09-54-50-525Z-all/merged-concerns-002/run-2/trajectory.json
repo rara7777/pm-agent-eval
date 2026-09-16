@@ -1,0 +1,95 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC；這張卡看起來不需要額外外查背景。",
+      "toolCalls": [
+        {
+          "id": "call_1wwXNnnccNTjwu4fZAkn5NB1",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員能收藏課程並在個人頁查看收藏清單，同時課程列表預設改為依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可在課程頁加入收藏",
+              "收藏清單可在個人頁面查看",
+              "課程列表預設依上架時間由新到舊排序",
+              "學員可取消收藏"
+            ],
+            "scope_out": [
+              "課程列表其他排序規則調整",
+              "收藏功能以外的個人頁改版",
+              "課程內容或上架流程變更"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義個人頁中的收藏清單具體呈現位置與狀態判定方式。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義上架時間欄位名稱、排序邊界條件與是否包含未上架課程。"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "description 只提到收藏與排序，未明確提到取消收藏。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員能收藏課程並在個人頁查看收藏清單，同時課程列表預設改為依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可在課程頁加入收藏",
+          "收藏清單可在個人頁面查看",
+          "課程列表預設依上架時間由新到舊排序",
+          "學員可取消收藏"
+        ],
+        "scope_out": [
+          "課程列表其他排序規則調整",
+          "收藏功能以外的個人頁改版",
+          "課程內容或上架流程變更"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義個人頁中的收藏清單具體呈現位置與狀態判定方式。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義上架時間欄位名稱、排序邊界條件與是否包含未上架課程。"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "description 只提到收藏與排序，未明確提到取消收藏。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2116,
+    "completionTokens": 294
+  },
+  "stoppedBy": "no_tool_calls"
+}

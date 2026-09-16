@@ -1,0 +1,97 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description 並整理範圍，再檢查 AC。此票不需要外查背景，因為需求本身已足夠判讀。",
+      "toolCalls": [
+        {
+          "id": "call_fLT7aTUertyu3YBPGPP3zaPC",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "讓搜尋結果依相關性呈現，提升使用者找到目標內容的效率。",
+            "scope_in": [
+              "搜尋結果排序改為依相關性",
+              "相關性計分考量標題命中",
+              "相關性計分考量描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "使用近期點擊數作為排序訊號",
+              "調整每頁筆數"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 提到相關性排序，但也明確提到排序會考量標題命中、描述命中、近期點擊；AC 只寫排序結果，未定義相關性判定內容。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 有提到標題、描述、近期點擊等相關性訊號，但沒有明確說標題權重必須高於描述；這是新增規則。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只提到現在一頁二十筆太多、希望優化分頁體驗，沒有明確要求要做分頁功能本身。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "讓搜尋結果依相關性呈現，提升使用者找到目標內容的效率。",
+        "scope_in": [
+          "搜尋結果排序改為依相關性",
+          "相關性計分考量標題命中",
+          "相關性計分考量描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "使用近期點擊數作為排序訊號",
+          "調整每頁筆數"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 提到相關性排序，但也明確提到排序會考量標題命中、描述命中、近期點擊；AC 只寫排序結果，未定義相關性判定內容。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 有提到標題、描述、近期點擊等相關性訊號，但沒有明確說標題權重必須高於描述；這是新增規則。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只提到現在一頁二十筆太多、希望優化分頁體驗，沒有明確要求要做分頁功能本身。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n本票的 AC 目前都被標成 mismatch，因為它們和 description 的表述不完全一致。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2422,
+    "completionTokens": 359
+  },
+  "stoppedBy": "no_tool_calls"
+}

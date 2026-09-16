@@ -1,0 +1,105 @@
+{
+  "ticketId": "conflicting-truth-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_91rJgG4XyDJ22ObWDhrsVZrX",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "conflicting-truth-001",
+            "goal": "開放活動問卷填寫，完成送出後可領獎品，並限制填寫次數與關閉後不可填寫。",
+            "scope_in": [
+              "活動問卷填寫",
+              "問卷送出後領取獎品",
+              "同一帳號填寫次數限制",
+              "問卷關閉後禁止填寫"
+            ],
+            "scope_out": [
+              "獎品發放流程細節",
+              "問卷內容設計",
+              "答案更新機制"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3 互相衝突：一次填寫 vs 可重複填寫更新答案。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2 互相衝突：可重複填寫更新答案 vs 同帳號只能填寫一次。"
+              },
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未說明「可以領取獎品」的判定方式與完成條件。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未說明「問卷關閉」的狀態來源、切換時機與具體不可填寫的判定。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "conflicting-truth-001",
+        "goal": "開放活動問卷填寫，完成送出後可領獎品，並限制填寫次數與關閉後不可填寫。",
+        "scope_in": [
+          "活動問卷填寫",
+          "問卷送出後領取獎品",
+          "同一帳號填寫次數限制",
+          "問卷關閉後禁止填寫"
+        ],
+        "scope_out": [
+          "獎品發放流程細節",
+          "問卷內容設計",
+          "答案更新機制"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3 互相衝突：一次填寫 vs 可重複填寫更新答案。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2 互相衝突：可重複填寫更新答案 vs 同帳號只能填寫一次。"
+          },
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未說明「可以領取獎品」的判定方式與完成條件。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未說明「問卷關閉」的狀態來源、切換時機與具體不可填寫的判定。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2033,
+    "completionTokens": 288
+  },
+  "stoppedBy": "no_tool_calls"
+}

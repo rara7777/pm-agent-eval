@@ -1,0 +1,105 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description 與 AC，這張卡看起來有兩個需求：收藏功能與課程列表排序。我先直接整理可寫回的結構，不需要外部查資料。",
+      "toolCalls": [
+        {
+          "id": "call_0cKbDFOlxSDNXGZVRH78y9w0",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程並在個人頁查看收藏清單，同時課程列表預設依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可以在課程頁將課程加入收藏",
+              "學員可以在個人頁看到收藏清單",
+              "課程列表預設依上架時間由新到舊排序",
+              "學員可以取消收藏課程"
+            ],
+            "scope_out": [
+              "收藏功能以外的課程互動功能",
+              "課程列表的其他排序方式",
+              "收藏清單以外的個人頁內容"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義收藏按鈕狀態、重複收藏、登入狀態等完成標準"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義收藏清單的呈現欄位、空清單狀態與分頁/筆數等完成標準"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義上架時間欄位來源、同時間課程的排序規則與是否影響其他列表"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未定義取消收藏的操作入口與取消後的即時更新規則"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程並在個人頁查看收藏清單，同時課程列表預設依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可以在課程頁將課程加入收藏",
+          "學員可以在個人頁看到收藏清單",
+          "課程列表預設依上架時間由新到舊排序",
+          "學員可以取消收藏課程"
+        ],
+        "scope_out": [
+          "收藏功能以外的課程互動功能",
+          "課程列表的其他排序方式",
+          "收藏清單以外的個人頁內容"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義收藏按鈕狀態、重複收藏、登入狀態等完成標準"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義收藏清單的呈現欄位、空清單狀態與分頁/筆數等完成標準"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義上架時間欄位來源、同時間課程的排序規則與是否影響其他列表"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未定義取消收藏的操作入口與取消後的即時更新規則"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2181,
+    "completionTokens": 358
+  },
+  "stoppedBy": "no_tool_calls"
+}

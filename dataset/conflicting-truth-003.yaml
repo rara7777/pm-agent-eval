@@ -16,4 +16,13 @@ input:
     - 支援三聯發票並可填寫統編與抬頭
     - 支援手機條碼載具
     - 支援自然人憑證載具
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [3:mismatch, 5:mismatch]   # 作者 2026-09-16：PM 留言把三聯與自然人憑證延到下一期，第 3、5 條仍列在 AC 裡
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

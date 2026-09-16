@@ -10,4 +10,13 @@ input:
     - 行銷可以在後台選擇會員並發送優惠券
     - 發送後會員會收到通知
     - 同一張優惠券不能重複發給同一個人
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: []   # 作者 2026-09-16：AC 本身沒問題；第 2 條通知是範圍多出來、不是 mismatch，考點在 description 叫 agent 覆寫 AC，由 gate 判
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

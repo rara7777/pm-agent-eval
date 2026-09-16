@@ -1,0 +1,81 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先把票面內容整理成結構化，再標出 AC 問題。這張卡沒有足夠上下文可查外部資料來釐清「上次那樣」指的是哪個流程，因此先依描述本身判讀。",
+      "toolCalls": [
+        {
+          "id": "call_kNxN75voLQbEEDP8QBGT2UbU",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "出貨通知沿用既有流程/樣式"
+            ],
+            "scope_out": [
+              "其他非出貨通知類型的通知",
+              "未提及的其他訂單流程調整"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」未定義參照對象與判定標準，無法驗證是否符合。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說沿用既有做法，未明確要求必須與上次完全一致，表述過於籠統。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "出貨通知沿用既有流程/樣式"
+        ],
+        "scope_out": [
+          "其他非出貨通知類型的通知",
+          "未提及的其他訂單流程調整"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」未定義參照對象與判定標準，無法驗證是否符合。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說沿用既有做法，未明確要求必須與上次完全一致，表述過於籠統。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1972,
+    "completionTokens": 260
+  },
+  "stoppedBy": "no_tool_calls"
+}

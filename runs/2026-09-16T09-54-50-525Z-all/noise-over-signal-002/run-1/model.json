@@ -1,0 +1,8 @@
+{
+  "model": "gpt-5.4-mini",
+  "promptVersion": "cd590b9ba593",
+  "fixture": "fixtures/noise-over-signal-002.yaml",
+  "fixtureMode": "record",
+  "startedAt": "2026-09-16T09:57:39.939Z",
+  "finishedAt": "2026-09-16T09:57:44.339Z"
+}

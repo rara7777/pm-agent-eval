@@ -19,4 +19,13 @@ input:
     - 要符合品牌形象
     - 結帳按鈕要明顯
     - 轉換率要提升
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [1:unverifiable, 2:unverifiable, 4:unverifiable, 5:unverifiable, 7:unverifiable, 8:unverifiable, 10:unverifiable, 11:unverifiable, 12:unverifiable]   # 作者 2026-09-16：只有 3、6、9 具體可驗，其餘全是形容詞；第 12 條轉換率沒有基準與目標值
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

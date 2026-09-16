@@ -11,4 +11,13 @@ input:
     - 收藏清單可以在個人頁面看到
     - 課程列表預設依上架時間由新到舊排序
     - 取消收藏後該課程不再出現在收藏清單
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: []   # 作者 2026-09-16：四條都具體可驗；排序那件事是混進來的第二個需求，歸 Scope 拆分，不是 AC 問題
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

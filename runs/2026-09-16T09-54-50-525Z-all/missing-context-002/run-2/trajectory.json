@@ -1,0 +1,129 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求與檢查 AC；這張卡沒有足夠背景資訊需要外查，我直接整理後寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_KZpcRT5duBlNMIcfLrzduOBf",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+            "scope_in": [
+              "教練登入後台查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動名額與一般名額分開計算",
+              "後台手動取消學員預約"
+            ],
+            "scope_out": [
+              "前台預約流程",
+              "活動報名頁面",
+              "課程建立與排程管理",
+              "名額規則以外的會員管理功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『自己的課表』包含哪些欄位、時間範圍與顯示條件，難以驗收是否完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義『已預約人數』與『剩餘名額』的計算來源、是否含取消/候補/活動名額，驗收標準不完整。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說活動期間的名額要另外算，AC 改寫成『不計入一般名額』，語意不完全一致且未說明適用範圍。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義活動名額與一般名額的關係、計算邏輯與顯示方式。"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "description 沒有提到後台手動取消預約，這屬於額外功能，可能是其他 ticket 的事。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未定義取消後的狀態、通知、是否可復原與權限驗證。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+        "scope_in": [
+          "教練登入後台查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動名額與一般名額分開計算",
+          "後台手動取消學員預約"
+        ],
+        "scope_out": [
+          "前台預約流程",
+          "活動報名頁面",
+          "課程建立與排程管理",
+          "名額規則以外的會員管理功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『自己的課表』包含哪些欄位、時間範圍與顯示條件，難以驗收是否完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義『已預約人數』與『剩餘名額』的計算來源、是否含取消/候補/活動名額，驗收標準不完整。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說活動期間的名額要另外算，AC 改寫成『不計入一般名額』，語意不完全一致且未說明適用範圍。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義活動名額與一般名額的關係、計算邏輯與顯示方式。"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "description 沒有提到後台手動取消預約，這屬於額外功能，可能是其他 ticket 的事。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未定義取消後的狀態、通知、是否可復原與權限驗證。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2252,
+    "completionTokens": 471
+  },
+  "stoppedBy": "no_tool_calls"
+}

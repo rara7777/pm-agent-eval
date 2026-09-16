@@ -15,4 +15,13 @@ input:
     - 搜尋結果依相關性排序
     - 標題命中的權重高於描述命中
     - 搜尋結果支援分頁
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [1:unverifiable, 3:mismatch]   # 作者 2026-09-16：相關性 description 自己說還沒定義；分頁現在就有，description 抱怨的是一頁二十筆太少，這條寫成「支援分頁」等於沒改
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC。由于這張卡沒有提供足夠背景，我直接依 description 做結構化整理，並檢查每條 AC 的衝突/可驗證性/描述一致性。",
+      "toolCalls": [
+        {
+          "id": "call_Zqdg9gqm5hgqnM4UHxPtduui",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+            "scope_in": [
+              "教練登入後台查看自己的課表",
+              "查看每堂課已預約人數",
+              "查看每堂課剩餘名額",
+              "活動名額與一般名額分開計算",
+              "後台手動取消學員預約"
+            ],
+            "scope_out": [
+              "修改教練登入流程",
+              "修改課程建立或排課流程",
+              "活動報名流程",
+              "學員端預約功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義已預約人數與剩餘名額的計算來源、是否包含取消/候補/活動名額。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義活動名額與一般名額的計算規則與顯示方式，無法驗收是否正確分開計算。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+        "scope_in": [
+          "教練登入後台查看自己的課表",
+          "查看每堂課已預約人數",
+          "查看每堂課剩餘名額",
+          "活動名額與一般名額分開計算",
+          "後台手動取消學員預約"
+        ],
+        "scope_out": [
+          "修改教練登入流程",
+          "修改課程建立或排課流程",
+          "活動報名流程",
+          "學員端預約功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義已預約人數與剩餘名額的計算來源、是否包含取消/候補/活動名額。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義活動名額與一般名額的計算規則與顯示方式，無法驗收是否正確分開計算。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n我標記的 AC 問題：\n- AC 2：unverifiable\n- AC 3：unverifiable\n\n其餘 AC 未標記。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2085,
+    "completionTokens": 339
+  },
+  "stoppedBy": "no_tool_calls"
+}

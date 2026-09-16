@@ -12,4 +12,13 @@ input:
     - 同一個帳號短時間內重複下單取消不應該累積點數
     - 會員中心要順
     - 點數有效期限到期後自動歸零
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [3:unverifiable, 4:unverifiable]   # 作者 2026-09-16：第 3 條「短時間內」沒有數字；第 4 條「要順」沒說是 UX 還是效能，驗不了；效能那件事該進 Scope out
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }

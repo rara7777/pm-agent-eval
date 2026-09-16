@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC。\n\n1) description 拆解\n- 目標：做「寵物訂閱盒出貨通知」。\n- 範圍：訂單出貨後要發通知；通知內容要包含物流單號。\n- 參照/背景：照上次那樣做、跟上次一樣。\n- 其他 ticket 的事：這裡沒有明確指出，但「上次那個流程」屬於外部參考，需查背景才能確認；目前不能直接當成可驗證規格。\n\n2) 背景查詢\n- 目前 ticket 沒提供「上次」是哪張卡或流程細節，缺少足夠上下文。\n- 需要更多內部背景才能判定「通知要跟上次一樣」的具體定義；但依現有文字，先按可直接釐清的部分整理與標註。\n\n3) AC 檢查\n- AC 1「訂單出貨後會發送通知」\n  - conflict：未見\n  - unverifiable：是，沒有定義「出貨後」的判定時點或通知渠道/成功標準。\n  - mismatch：否，符合描述主旨。\n- AC 2「通知內容包含物流單號」\n  - conflict：未見\n  - unverifiable：是，沒有定義物流單號的格式、來源或是否必須可點擊/可複製。\n  - mismatch：否，符合描述。\n- AC 3「通知要跟上次一樣」\n  - conflict：未見\n  - unverifiable：是，缺少「上次」的具體參照，無法驗收。\n  - mismatch：是，這是參照既有流程的要求，沒有明確寫出範圍與規格，且不可單獨驗收。\n\n4) 寫回卡片（Goal / Scope / AC flags）\n",
+      "toolCalls": [
+        {
+          "id": "call_vHYxx0DUzCohhHwymkxKoL0o",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "為寵物訂閱盒建立訂單出貨後的通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "未定義的上次流程細節需另行確認",
+              "通知內容與流程以既有參考為準但本卡不展開規格"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義出貨後的判定時點、通知渠道與成功標準"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號格式、來源或呈現方式"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "缺少可參照的上次流程細節，無法驗收"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "此條依賴外部參照，未在 description 中明確定義規格"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "為寵物訂閱盒建立訂單出貨後的通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "未定義的上次流程細節需另行確認",
+          "通知內容與流程以既有參考為準但本卡不展開規格"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義出貨後的判定時點、通知渠道與成功標準"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號格式、來源或呈現方式"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "缺少可參照的上次流程細節，無法驗收"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "此條依賴外部參照，未在 description 中明確定義規格"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2378,
+    "completionTokens": 665
+  },
+  "stoppedBy": "no_tool_calls"
+}

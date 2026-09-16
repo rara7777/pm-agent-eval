@@ -13,4 +13,13 @@ input:
     - 使用者可以匯出報表
     - 匯出前可以選擇要包含哪些欄位
     - 支援 CSV 格式
-# goal_state 待作者手標
+goal_state:
+  goal:      { mode: must_include, keywords: [] }
+  scope_in:  { mode: must_include, keywords: [] }
+  scope_out: { mode: must_include, keywords: [] }
+  ac_flags:
+    mode: exact_set
+    values: [2:unverifiable, 3:mismatch]   # 作者 2026-09-16：可選欄位的結論沒人寫下來；description 說業務用 Excel，第 3 條只寫 CSV
+  comment_wording: { mode: ignore, note: 措辭不比 }
+  tool_calls:      { mode: ignore, note: 查了幾次、查了誰不比 }
+  goal_wording:    { mode: ignore, note: 判不到 }
