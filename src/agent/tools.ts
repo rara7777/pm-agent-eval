@@ -105,14 +105,15 @@ export async function dispatch(
   source: ReadonlySource = STUB_SOURCE,
   blocks?: GateBlock[],
 ): Promise<string> {
-  // A missing fixture must fail the whole run, so this sits outside the catch below.
-  if (READONLY_TOOLS.has(call.name)) return source.fetch(call.name, call.args);
-
+  // Gates come first, so a write sent through query_db never reaches the source.
   const block = checkGate(call);
   if (block) {
     blocks?.push(block);
     return block.reason;
   }
+
+  // A missing fixture must fail the whole run, so this sits outside the catch below.
+  if (READONLY_TOOLS.has(call.name)) return source.fetch(call.name, call.args);
 
   const args = call.args as Record<string, any>;
   const ticketId = String(args.ticket_id ?? '');

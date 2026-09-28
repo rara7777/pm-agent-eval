@@ -83,13 +83,13 @@ test('replace_acceptance_criteria refuses and leaves the AC alone', async () => 
   ]);
 });
 
-test('post_comment appends a comment', async () => {
+test('post_comment appends a comment that tags nobody', async () => {
   const store = FakeStore.fromTicket(seed());
   await dispatch(
     {
       id: 'c',
       name: 'post_comment',
-      args: { ticket_id: 'T-1', body: '有兩條 AC 打架', mentions: ['@pm'] },
+      args: { ticket_id: 'T-1', body: '有兩條 AC 打架' },
     },
     store,
   );
