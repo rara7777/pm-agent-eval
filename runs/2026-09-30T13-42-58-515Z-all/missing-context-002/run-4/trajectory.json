@@ -1,0 +1,109 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求並檢查 AC，再整理回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_wSBrMzS8YghRnRysplvZ0z28",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練在後台查看自己的課程預約狀況，並正確區分活動期間名額。",
+            "scope_in": [
+              "教練登入後台查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間名額獨立計算",
+              "後台可手動取消學員預約"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『後台』與『自己的課表』的判定方式，無法驗證是看到哪些課程、哪些欄位。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義『已預約人數』與『剩餘名額』的計算口徑，例如是否含候補、取消、活動名額。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說『活動期間的名額要另外算』，未明確定義為『不計入一般名額』，可能需要拆成更完整的規則。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明活動名額如何另外算、與一般名額的關聯及驗收方式。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未定義手動取消預約的權限、操作流程、以及取消後對名額的影響。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練在後台查看自己的課程預約狀況，並正確區分活動期間名額。",
+        "scope_in": [
+          "教練登入後台查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間名額獨立計算",
+          "後台可手動取消學員預約"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『後台』與『自己的課表』的判定方式，無法驗證是看到哪些課程、哪些欄位。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義『已預約人數』與『剩餘名額』的計算口徑，例如是否含候補、取消、活動名額。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說『活動期間的名額要另外算』，未明確定義為『不計入一般名額』，可能需要拆成更完整的規則。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明活動名額如何另外算、與一般名額的關聯及驗收方式。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未定義手動取消預約的權限、操作流程、以及取消後對名額的影響。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2120,
+    "completionTokens": 369
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,107 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先把需求拆一下，因為這張卡目前上下文很少，先判斷哪些是目標/範圍，哪些其實是參考前案但沒寫清楚。\n\n- description 目標：做「寵物訂閱盒出貨通知」\n- description 範圍：訂單出貨後要發通知、通知內容要帶物流單號\n- description 中的其他票： 「照上次那樣做」、「上次那個流程大家反應不錯」屬於參考上一張票或歷史流程，這張卡沒有提供具體規格，不能直接當作可執行需求\n\n接著逐條檢查 AC：\n1.「訂單出貨後會發送通知」\n   - mismatch：和 description 一致\n   - unverifiable：沒有定義「出貨後」是什麼狀態、通知渠道、觸發條件，難以驗收\n2.「通知內容包含物流單號」\n   - mismatch：和 description 一致\n   - unverifiable：沒有定義通知內容格式、物流單號位置/呈現方式\n3.「通知要跟上次一樣」\n   - conflict：和第 1、2 條相比，這條把需求交給未提供的「上次」流程，無法明確約束\n   - unverifiable：未說明上次是指哪一張票、哪個版本、哪些元素要一樣\n   - mismatch：description 只有說「照上次那樣做就好」作為參考，但沒有提供可驗證細節，這條無法直接落成需求\n\n我先把整理結果寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_Nml3pMCazwl50eNKuztjGMvk",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "為寵物訂閱盒建立出貨通知功能",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "通知內容與流程完全依照未提供的上次案例細節實作"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義出貨後的判定條件、通知渠道與觸發時機。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號在通知中的呈現格式與位置。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "依賴未提供的上次流程，與前兩條具體需求無法直接對齊。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明上次是指哪個版本或哪些細節需要一致。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只有提到參考上次流程，沒有提供可驗證的具體內容。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "為寵物訂閱盒建立出貨通知功能",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "通知內容與流程完全依照未提供的上次案例細節實作"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義出貨後的判定條件、通知渠道與觸發時機。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號在通知中的呈現格式與位置。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "依賴未提供的上次流程，與前兩條具體需求無法直接對齊。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明上次是指哪個版本或哪些細節需要一致。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只有提到參考上次流程，沒有提供可驗證的具體內容。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2350,
+    "completionTokens": 637
+  },
+  "stoppedBy": "no_tool_calls"
+}

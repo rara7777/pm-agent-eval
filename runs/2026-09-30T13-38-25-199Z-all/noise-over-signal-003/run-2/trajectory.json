@@ -1,0 +1,83 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求內容並檢查 AC 是否有問題，必要時查一下背景。",
+      "toolCalls": [
+        {
+          "id": "call_PdpJjWhFJ8hb7UXv9oJI1Tai",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位並匯出報表。",
+            "scope_in": [
+              "提供報表匯出功能",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 格式",
+              "提供 Excel 格式匯出"
+            ],
+            "scope_out": [
+              "串接 BI",
+              "欄位固定不讓使用者選擇"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義可選欄位的清單、預設值、或完成條件，無法判定是否已做完。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述提到業務偏好 Excel，且明確說現階段讓大家可自行匯出；僅寫 CSV 可能與需求不完整。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位並匯出報表。",
+        "scope_in": [
+          "提供報表匯出功能",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 格式",
+          "提供 Excel 格式匯出"
+        ],
+        "scope_out": [
+          "串接 BI",
+          "欄位固定不讓使用者選擇"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義可選欄位的清單、預設值、或完成條件，無法判定是否已做完。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述提到業務偏好 Excel，且明確說現階段讓大家可自行匯出；僅寫 CSV 可能與需求不完整。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2169,
+    "completionTokens": 236
+  },
+  "stoppedBy": "no_tool_calls"
+}

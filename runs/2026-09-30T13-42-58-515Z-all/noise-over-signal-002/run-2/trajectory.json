@@ -1,0 +1,85 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_oKXtvX8Kw2z2HsrWkOLAIlDz",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "優化搜尋結果的排序體驗，讓使用者更容易找到相關項目。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯，改為依相關性排序",
+              "定義標題命中與描述命中的排序權重",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍支援",
+              "使用點擊數作為排序因子",
+              "調整每頁顯示筆數"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式，無法判定何謂完成。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明分頁規格，如頁碼參數、每頁筆數、排序與分頁互動。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "優化搜尋結果的排序體驗，讓使用者更容易找到相關項目。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯，改為依相關性排序",
+          "定義標題命中與描述命中的排序權重",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍支援",
+          "使用點擊數作為排序因子",
+          "調整每頁顯示筆數"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式，無法判定何謂完成。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明分頁規格，如頁碼參數、每頁筆數、排序與分頁互動。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2269,
+    "completionTokens": 227
+  },
+  "stoppedBy": "no_tool_calls"
+}

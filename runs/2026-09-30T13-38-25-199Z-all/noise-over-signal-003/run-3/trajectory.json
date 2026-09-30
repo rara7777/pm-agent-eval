@@ -1,0 +1,89 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，然後回寫到卡上。",
+      "toolCalls": [
+        {
+          "id": "call_sK7vH2t4DKUinM2rYRNgIxVe",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位並匯出報表。",
+            "scope_in": [
+              "匯出報表",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以匯出報表」未定義匯出條件、成功標準或格式。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「可以選擇要包含哪些欄位」未定義可選欄位清單與選擇方式。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述提到業務習慣用 Excel，範圍未明確排除 Excel；只寫 CSV 與描述不完全一致。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位並匯出報表。",
+        "scope_in": [
+          "匯出報表",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以匯出報表」未定義匯出條件、成功標準或格式。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「可以選擇要包含哪些欄位」未定義可選欄位清單與選擇方式。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述提到業務習慣用 Excel，範圍未明確排除 Excel；只寫 CSV 與描述不完全一致。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並回寫 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2176,
+    "completionTokens": 243
+  },
+  "stoppedBy": "no_tool_calls"
+}

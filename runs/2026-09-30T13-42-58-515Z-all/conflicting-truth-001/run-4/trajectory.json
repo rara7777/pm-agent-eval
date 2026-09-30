@@ -1,0 +1,81 @@
+{
+  "ticketId": "conflicting-truth-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與檢查 AC：這張卡的目標是問卷填寫與送出後發放獎品；範圍包含一次填答/送出、以及問卷關閉後不可填寫。AC 2 與 AC 3 互相衝突：同一帳號只能填一次 vs 可重複填寫更新答案。其餘 AC 與描述大致一致，先寫回整理結果。",
+      "toolCalls": [
+        {
+          "id": "call_SJLj6zoEN7PUQvbu9166gUsM",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "conflicting-truth-001",
+            "goal": "讓使用者填寫活動問卷並在送出後領取獎品。",
+            "scope_in": [
+              "活動問卷開放填寫",
+              "問卷送出後可領取獎品",
+              "問卷關閉後不可再填寫"
+            ],
+            "scope_out": [
+              "其他非問卷相關活動流程",
+              "獎品發放以外的後續營運流程"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3 互相衝突：一個要求同帳號只能填一次，另一個允許重複填寫更新答案。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2 互相衝突：一個要求同帳號只能填一次，另一個允許重複填寫更新答案。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "conflicting-truth-001",
+        "goal": "讓使用者填寫活動問卷並在送出後領取獎品。",
+        "scope_in": [
+          "活動問卷開放填寫",
+          "問卷送出後可領取獎品",
+          "問卷關閉後不可再填寫"
+        ],
+        "scope_out": [
+          "其他非問卷相關活動流程",
+          "獎品發放以外的後續營運流程"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3 互相衝突：一個要求同帳號只能填一次，另一個允許重複填寫更新答案。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2 互相衝突：一個要求同帳號只能填一次，另一個允許重複填寫更新答案。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n衝突 AC：2、3。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2033,
+    "completionTokens": 328
+  },
+  "stoppedBy": "no_tool_calls"
+}

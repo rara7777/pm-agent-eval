@@ -1,0 +1,75 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求內容與檢查 AC。此卡不需要改寫 AC 原文，只會把結構化結果寫回。",
+      "toolCalls": [
+        {
+          "id": "call_f0zvew3uUF0gbuxk9kqnXvpv",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序體驗，讓結果更符合相關性並支援分頁。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "定義標題命中與描述命中的排序權重",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式的調整",
+              "錯字容忍",
+              "使用點擊數作為排序訊號",
+              "建立時間排序作為最終排序依據"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義「權重高於」的具體比較方式或判定標準，無法直接驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序體驗，讓結果更符合相關性並支援分頁。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "定義標題命中與描述命中的排序權重",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式的調整",
+          "錯字容忍",
+          "使用點擊數作為排序訊號",
+          "建立時間排序作為最終排序依據"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義「權重高於」的具體比較方式或判定標準，無法直接驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。  \nAC 標註：第 2 條為 unverifiable。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2297,
+    "completionTokens": 225
+  },
+  "stoppedBy": "no_tool_calls"
+}

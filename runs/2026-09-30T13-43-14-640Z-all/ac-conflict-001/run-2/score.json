@@ -1,0 +1,68 @@
+{
+  "caseId": "ac-conflict-001",
+  "pass": false,
+  "fields": [
+    {
+      "field": "goal",
+      "mode": "must_include",
+      "pass": true,
+      "missing": [],
+      "unexpected": []
+    },
+    {
+      "field": "scope_in",
+      "mode": "must_include",
+      "pass": false,
+      "missing": [
+        "優惠碼套用",
+        "後台建立",
+        "過期處理"
+      ],
+      "unexpected": []
+    },
+    {
+      "field": "scope_out",
+      "mode": "must_include",
+      "pass": false,
+      "missing": [
+        "結帳頁效能"
+      ],
+      "unexpected": []
+    },
+    {
+      "field": "ac_flags",
+      "mode": "exact_set",
+      "pass": false,
+      "missing": [
+        "3:mismatch"
+      ],
+      "unexpected": [
+        "6:mismatch"
+      ]
+    },
+    {
+      "field": "comment_wording",
+      "mode": "ignore",
+      "pass": null,
+      "missing": [],
+      "unexpected": [],
+      "note": "措辭不比"
+    },
+    {
+      "field": "tool_calls",
+      "mode": "ignore",
+      "pass": null,
+      "missing": [],
+      "unexpected": [],
+      "note": "查了幾次、查了誰不比"
+    },
+    {
+      "field": "goal_wording",
+      "mode": "ignore",
+      "pass": null,
+      "missing": [],
+      "unexpected": [],
+      "note": "判不到 —— 這句寫得夠不夠精準沒有程式判得出來"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，一併寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_o7a5HiY5sVIWpxpRSIdX29vh",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "建立寵物訂閱盒的出貨通知流程，沿用既有做法並在出貨後通知顧客",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "通知流程與既有版本一致"
+            ],
+            "scope_out": [
+              "不處理其他訂單階段通知",
+              "不變更既有出貨通知的版型與文案，除非為了包含物流單號"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 只說沿用上次流程，未明確定義必定在出貨後發送；需確認「出貨後」的判定時點。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明物流單號的格式、來源、顯示位置或缺值處理，無法判定完成標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」缺少可比對基準，無法驗證一致到什麼程度。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "建立寵物訂閱盒的出貨通知流程，沿用既有做法並在出貨後通知顧客",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "通知流程與既有版本一致"
+        ],
+        "scope_out": [
+          "不處理其他訂單階段通知",
+          "不變更既有出貨通知的版型與文案，除非為了包含物流單號"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 只說沿用上次流程，未明確定義必定在出貨後發送；需確認「出貨後」的判定時點。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明物流單號的格式、來源、顯示位置或缺值處理，無法判定完成標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」缺少可比對基準，無法驗證一致到什麼程度。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n本次標註的 AC 問題：\n\n- AC 1：mismatch\n- AC 2：unverifiable\n- AC 3：unverifiable\n\n如果你要，我也可以幫你把這張卡補成更完整、可執行的 AC 草稿。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1968,
+    "completionTokens": 367
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,95 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，再回寫卡片。",
+      "toolCalls": [
+        {
+          "id": "call_MlXOk3GbRmVrPk2ijlu1Y756",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "優化搜尋結果的排序體驗，讓使用者更容易找到想要的內容。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "相關性計算考慮標題命中",
+              "相關性計算考慮描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "搜尋關鍵字比對方式的調整",
+              "錯字容忍",
+              "使用點擊數作為排序依據"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式與驗收標準，無法判定何種排序結果算符合。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述權重的具體數值或比較方式，無法驗證是否真的高於。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁的頁大小、頁碼規則或驗收方式，無法確認分頁是否完成。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "優化搜尋結果的排序體驗，讓使用者更容易找到想要的內容。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "相關性計算考慮標題命中",
+          "相關性計算考慮描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "搜尋關鍵字比對方式的調整",
+          "錯字容忍",
+          "使用點擊數作為排序依據"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式與驗收標準，無法判定何種排序結果算符合。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述權重的具體數值或比較方式，無法驗證是否真的高於。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁的頁大小、頁碼規則或驗收方式，無法確認分頁是否完成。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡片。\n\n本次標記的 AC 問題：\n- AC 1：unverifiable\n- AC 2：unverifiable\n- AC 3：unverifiable\n\n我把「相關性排序、標題/描述命中、分頁」放進 scope_in，並把「關鍵字比對方式、錯字容忍、點擊數排序」放進 scope_out。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2359,
+    "completionTokens": 372
+  },
+  "stoppedBy": "no_tool_calls"
+}

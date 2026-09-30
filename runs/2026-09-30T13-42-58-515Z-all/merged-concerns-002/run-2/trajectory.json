@@ -1,0 +1,105 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_pwgysfSARM2D8X22clbdsRlV",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程，並將課程列表預設排序改為上架時間由新到舊。",
+            "scope_in": [
+              "學員可以在課程頁把課程加入收藏",
+              "收藏清單可以在個人頁面看到",
+              "課程列表預設依上架時間由新到舊排序",
+              "學員可以取消收藏課程"
+            ],
+            "scope_out": [
+              "課程列表的其他排序方式調整",
+              "收藏功能以外的個人頁面改版",
+              "收藏清單以外的課程瀏覽方式調整"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義收藏按鈕位置、狀態變化或成功判定條件。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義個人頁面中的顯示位置、空狀態或清單篩選條件。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義上架時間欄位來源、同時間時的排序規則或是否套用所有列表入口。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未定義取消收藏的操作入口與成功判定條件。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程，並將課程列表預設排序改為上架時間由新到舊。",
+        "scope_in": [
+          "學員可以在課程頁把課程加入收藏",
+          "收藏清單可以在個人頁面看到",
+          "課程列表預設依上架時間由新到舊排序",
+          "學員可以取消收藏課程"
+        ],
+        "scope_out": [
+          "課程列表的其他排序方式調整",
+          "收藏功能以外的個人頁面改版",
+          "收藏清單以外的課程瀏覽方式調整"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義收藏按鈕位置、狀態變化或成功判定條件。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義個人頁面中的顯示位置、空狀態或清單篩選條件。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義上架時間欄位來源、同時間時的排序規則或是否套用所有列表入口。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未定義取消收藏的操作入口與成功判定條件。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2093,
+    "completionTokens": 300
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,115 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求內容，再檢查 AC。此卡的描述主要在講「搜尋結果排序」：\n- 目標：改善搜尋結果的排序體驗，讓結果更符合使用者在意的相關性。\n- 範圍內：結果排序邏輯改為依相關性；相關性計算可考慮標題命中、描述命中、近期點擊等訊號。\n- 範圍外/另卡：關鍵字比對方式、錯字容忍，這些是搜尋匹配層面的議題，不是這張卡的主題；分頁是被提到的相關問題，但和「排序」是不同面向，較適合拆成另一張卡。\n\n逐條檢查 AC：\n1.「搜尋結果依相關性排序」\n- mismatch：符合描述主軸。\n- unverifiable：沒有定義相關性怎麼算、如何驗證排序結果正確。\n2.「標題命中的權重高於描述命中」\n- mismatch：符合描述中提到的權重考量。\n- unverifiable：未定義權重比例或判定方式，無法驗收。\n3.「搜尋結果支援分頁」\n- mismatch：描述有提到分頁是問題，但這張卡的主題是排序；分頁較像另一個 ticket 的範圍。\n- conflict：若此卡只做排序，分頁會把範圍拉到另一個方向，和「排序」主題打架。\n- unverifiable：沒有定義分頁方式、每頁筆數或頁碼行為。\n我先寫回整理後的欄位，不覆寫原 AC。",
+      "toolCalls": [
+        {
+          "id": "call_qTBnEicKN1Z3oOH9tEYzMWSz",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序，讓使用者優先看到更相關的結果。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "相關性計分可納入標題命中",
+              "相關性計分可納入描述命中",
+              "相關性計分可納入近期點擊訊號"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "搜尋結果分頁"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計分方式或驗收標準"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述權重的具體比例或判定方式"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述主軸是排序，不是分頁"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "分頁屬於另一個功能面向，和本卡的排序範圍不一致"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁規則、每頁筆數或頁碼行為"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序，讓使用者優先看到更相關的結果。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "相關性計分可納入標題命中",
+          "相關性計分可納入描述命中",
+          "相關性計分可納入近期點擊訊號"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "搜尋結果分頁"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計分方式或驗收標準"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述權重的具體比例或判定方式"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述主軸是排序，不是分頁"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "分頁屬於另一個功能面向，和本卡的排序範圍不一致"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁規則、每頁筆數或頁碼行為"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2736,
+    "completionTokens": 647
+  },
+  "stoppedBy": "no_tool_calls"
+}

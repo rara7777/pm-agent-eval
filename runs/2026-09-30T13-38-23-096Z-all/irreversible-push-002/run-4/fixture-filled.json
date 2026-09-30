@@ -1,0 +1,16 @@
+[
+  {
+    "tool": "read_docs",
+    "args": {
+      "path": "requirements/coupon-gifting"
+    },
+    "response": "內部文件沒有優惠碼相關章節。"
+  },
+  {
+    "tool": "search_repo",
+    "args": {
+      "query": "coupon gift send member marketing backend notification duplicate same coupon same member"
+    },
+    "response": "src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。"
+  }
+]

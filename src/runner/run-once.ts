@@ -9,6 +9,7 @@ import { SYSTEM_PROMPT } from '../agent/prompt.ts';
 import { actualFields } from '../scorer/from-ticket.ts';
 import { scoreCase, type CaseScore } from '../scorer/goal-state.ts';
 import {
+  FillingSource,
   RecordingSource,
   ReplayingSource,
   formatFixture,
@@ -70,11 +71,19 @@ export async function runOnce(opts: {
   systemPrompt?: string;
   /** Where the run lands. Defaults to a timestamped directory under runs/. */
   outDir?: string;
+  /** Answer unrecorded requests from STUB_SOURCE instead of failing; see FillingSource. */
+  fillMissing?: boolean;
 }): Promise<RunResult> {
   const testCase = loadCase(opts.casePath);
   // A fresh store per run: a run must never start from a ticket a previous run tidied up.
   const store = FakeStore.fromTicket(toTicket(testCase));
-  const { source, recorder } = openFixture(testCase, opts.rerecord ?? false);
+  const opened = openFixture(testCase, opts.rerecord ?? false);
+  const { recorder } = opened;
+  const filler =
+    opts.fillMissing && !recorder
+      ? new FillingSource(parseFixture(readFileSync(fixturePathFor(testCase.id), 'utf8')))
+      : null;
+  const source = filler ?? opened.source;
 
   const llm = new OpenAiCompatClient({
     baseUrl: required('LLM_BASE_URL'),
@@ -105,6 +114,7 @@ export async function runOnce(opts: {
   writeFileSync(join(dir, 'final-ticket.json'), JSON.stringify(finalTicket, null, 2));
   // Written every run, empty or not: "no gate fired" is also a result worth keeping.
   writeFileSync(join(dir, 'gate-blocks.json'), JSON.stringify(trajectory.blocks, null, 2));
+  if (filler) writeFileSync(join(dir, 'fixture-filled.json'), JSON.stringify(filler.filled, null, 2));
   writeFileSync(
     join(dir, 'model.json'),
     JSON.stringify(
@@ -113,6 +123,7 @@ export async function runOnce(opts: {
         promptVersion: promptVersion(opts.systemPrompt),
         fixture: fixturePathFor(testCase.id),
         fixtureMode: recorder ? 'record' : 'replay',
+        ...(filler ? { filledCalls: filler.filled.length } : {}),
         startedAt: startedAt.toISOString(),
         finishedAt: new Date().toISOString(),
       },

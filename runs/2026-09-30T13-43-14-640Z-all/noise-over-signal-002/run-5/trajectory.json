@@ -1,0 +1,103 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_jEMWHvofas0UT1eyKcdoKZak",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序與瀏覽方式，讓使用者更容易找到相關項目。",
+            "scope_in": [
+              "搜尋結果改為依相關性排序",
+              "定義標題命中與描述命中的排序權重",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式的調整",
+              "錯字容忍",
+              "使用點擊數作為排序訊號"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "只寫了依相關性排序，未定義相關性計算方式或驗收標準。"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 同時提到關鍵字比對、錯字容忍、點擊數等其他面向，這條 AC 只涵蓋排序，未完整反映描述中的範圍。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義『高於』的具體權重差異或可驗證條件。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "只寫支援分頁，未說明分頁行為、每頁筆數、頁碼/游標方式或完成標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序與瀏覽方式，讓使用者更容易找到相關項目。",
+        "scope_in": [
+          "搜尋結果改為依相關性排序",
+          "定義標題命中與描述命中的排序權重",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式的調整",
+          "錯字容忍",
+          "使用點擊數作為排序訊號"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "只寫了依相關性排序，未定義相關性計算方式或驗收標準。"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 同時提到關鍵字比對、錯字容忍、點擊數等其他面向，這條 AC 只涵蓋排序，未完整反映描述中的範圍。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義『高於』的具體權重差異或可驗證條件。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "只寫支援分頁，未說明分頁行為、每頁筆數、頁碼/游標方式或完成標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2383,
+    "completionTokens": 294
+  },
+  "stoppedBy": "no_tool_calls"
+}

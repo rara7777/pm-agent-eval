@@ -1,0 +1,16 @@
+[
+  {
+    "tool": "search_repo",
+    "args": {
+      "query": "\"寵物訂閱盒出貨通知\" OR \"出貨通知\" OR \"物流單號\" OR \"上次那樣\""
+    },
+    "response": "src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。"
+  },
+  {
+    "tool": "read_docs",
+    "args": {
+      "path": "."
+    },
+    "response": "內部文件沒有優惠碼相關章節。"
+  }
+]

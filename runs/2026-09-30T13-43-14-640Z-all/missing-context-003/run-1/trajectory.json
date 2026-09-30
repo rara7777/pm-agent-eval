@@ -1,0 +1,101 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求並檢查 AC 是否和描述一致；這張卡缺少取消政策的關鍵細節，無需查外部資料。先整理成結構化內容並標註有問題的 AC。",
+      "toolCalls": [
+        {
+          "id": "call_fLNeWaY1Qt892NZczTWodc2C",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "建立訂位取消政策，讓客人可取消訂位並依取消時間收取費用。",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "取消訂位可能產生費用",
+              "取消後寄送確認信"
+            ],
+            "scope_out": [
+              "定義每個取消時間點對應的收費規則",
+              "處理惡意訂位防堵策略本身"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未說明是哪些訂位頁面、取消入口長什麼樣、以及取消成功的判定方式。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義何謂太晚取消、收多少費用、以及費用計算/扣款規則。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 只說太晚取消要收比較多，沒有明確說所有取消都一定收費。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明確認信內容、發送時機與送達條件。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "建立訂位取消政策，讓客人可取消訂位並依取消時間收取費用。",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "取消訂位可能產生費用",
+          "取消後寄送確認信"
+        ],
+        "scope_out": [
+          "定義每個取消時間點對應的收費規則",
+          "處理惡意訂位防堵策略本身"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未說明是哪些訂位頁面、取消入口長什麼樣、以及取消成功的判定方式。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義何謂太晚取消、收多少費用、以及費用計算/扣款規則。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 只說太晚取消要收比較多，沒有明確說所有取消都一定收費。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明確認信內容、發送時機與送達條件。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2060,
+    "completionTokens": 322
+  },
+  "stoppedBy": "no_tool_calls"
+}

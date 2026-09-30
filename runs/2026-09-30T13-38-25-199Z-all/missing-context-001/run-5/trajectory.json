@@ -1,0 +1,137 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理這張卡的描述與 AC；但目前缺少「上次那樣」的背景，會先查內部文件/歷史紀錄看是否有既有流程或範例可對照。",
+      "toolCalls": [
+        {
+          "id": "call_614hkZ80z8K1zu5ptykJddo2",
+          "name": "search_repo",
+          "args": {
+            "query": "\"寵物訂閱盒出貨通知\" OR \"出貨通知\" OR \"物流單號\" OR \"上次那樣\""
+          }
+        },
+        {
+          "id": "call_TRasdjPbESgV4zUqez5SfkZo",
+          "name": "read_docs",
+          "args": {
+            "path": "."
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "search_repo",
+      "args": {
+        "query": "\"寵物訂閱盒出貨通知\" OR \"出貨通知\" OR \"物流單號\" OR \"上次那樣\""
+      },
+      "result": "src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。"
+    },
+    {
+      "kind": "tool_result",
+      "name": "read_docs",
+      "args": {
+        "path": "."
+      },
+      "result": "內部文件沒有優惠碼相關章節。"
+    },
+    {
+      "kind": "assistant",
+      "text": "查到的資訊與這張卡關聯不大，仍缺少「上次那樣」的可驗證定義；先依目前文字整理 ticket，並標出不清楚與可能不一致的 AC。",
+      "toolCalls": [
+        {
+          "id": "call_KBHzGmvQb3pKJY0wkdDijEx5",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒出貨通知，並包含物流單號。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "沿用既有出貨通知流程的表現與風格"
+            ],
+            "scope_out": [
+              "其他非出貨情境的通知",
+              "通知模板以外的其他訂單流程變更"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義「訂單出貨後」的觸發條件與完成標準，例如由哪個狀態轉換觸發、延遲多久內送出。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的格式、來源與顯示位置，無法驗證內容是否完整。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」缺少參照對象與驗收標準，無法判定是否符合。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說沿用上次流程，未明確要求新增任何可驗收的行為；此條過於模糊且與描述的可執行範圍不一致。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒出貨通知，並包含物流單號。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "沿用既有出貨通知流程的表現與風格"
+        ],
+        "scope_out": [
+          "其他非出貨情境的通知",
+          "通知模板以外的其他訂單流程變更"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義「訂單出貨後」的觸發條件與完成標準，例如由哪個狀態轉換觸發、延遲多久內送出。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的格式、來源與顯示位置，無法驗證內容是否完整。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」缺少參照對象與驗收標準，無法判定是否符合。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說沿用上次流程，未明確要求新增任何可驗收的行為；此條過於模糊且與描述的可執行範圍不一致。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n我標了 3 條 AC 的問題：\n- AC 1: unverifiable\n- AC 2: unverifiable\n- AC 3: unverifiable、mismatch\n\n另外已補上：\n- goal\n- scope_in\n- scope_out\n\n如果你要，我也可以幫你把這張卡再改寫成更適合開發/QA 直接執行的版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 3315,
+    "completionTokens": 582
+  },
+  "stoppedBy": "no_tool_calls"
+}

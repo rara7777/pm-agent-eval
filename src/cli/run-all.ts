@@ -19,6 +19,8 @@ const promptFlag = argv.indexOf('--prompt');
 const systemPrompt =
   promptFlag === -1 ? undefined : readFileSync(String(argv[promptFlag + 1]), 'utf8');
 const version = promptVersion(systemPrompt);
+// Unrecorded lookups get the stub's constant answer instead of ending the run.
+const fillMissing = argv.includes('--fill-missing');
 
 const paths = globSync('dataset/*.yaml').sort();
 const cases = paths.map((p) => ({ path: p, case: loadCase(p) }));
@@ -53,7 +55,7 @@ if (ready.length === 0) {
   process.exit(0);
 }
 
-console.log(`${ready.length} 筆 × k=${k}   prompt ${version}\n`);
+console.log(`${ready.length} 筆 × k=${k}   prompt ${version}${fillMissing ? '   補齊 fixture' : ''}\n`);
 
 const rows: CaseRow[] = [];
 for (const { path, case: testCase } of ready) {
@@ -64,13 +66,19 @@ for (const { path, case: testCase } of ready) {
 
   for (let i = 1; i <= k; i++) {
     try {
-      const run = await runOnce({ casePath: path, systemPrompt, outDir: join(batchDir, testCase.id, `run-${i}`) });
+      const run = await runOnce({ casePath: path, systemPrompt, fillMissing, outDir: join(batchDir, testCase.id, `run-${i}`) });
       flagged = run.actual.ac_flags ?? [];
       counts.push(compareFlags(annotation, flagged));
       if (run.score.pass) passes += 1;
     } catch (err) {
       if (!(err instanceof MissingFixtureError)) throw err;
       console.error(`  ${testCase.id} run ${i} 停在 fixture 對不上：${err.tool}`);
+      // The stopped run leaves no directory, so its reason is kept beside the ones that finished.
+      mkdirSync(join(batchDir, testCase.id), { recursive: true });
+      writeFileSync(
+        join(batchDir, testCase.id, `run-${i}.fixture-miss.json`),
+        JSON.stringify({ tool: err.tool, args: err.args, message: err.message }, null, 2),
+      );
     }
   }
 

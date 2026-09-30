@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，再寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_rTiCDAGlTnI509nCJNyUOYY3",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練在後台查看自己的課程預約狀況，並正確計算一般課程與活動期間名額。",
+            "scope_in": [
+              "教練登入後台後查看自己的課表",
+              "每堂課顯示已預約人數與剩餘名額",
+              "活動期間的名額獨立計算，不併入一般名額"
+            ],
+            "scope_out": [
+              "後台手動幫學員取消預約"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義後台畫面/欄位/時間範圍，無法判定看到自己的課表的完成標準。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義剩餘名額的計算方式、來源名額與活動課程是否同欄顯示。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "Description 只提到活動期間名額另外算，未描述要排除哪些名額或如何呈現，不足以直接驗證此條的具體實作。"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "Description 未提到後台可手動取消預約，屬於超出目前描述的範圍。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練在後台查看自己的課程預約狀況，並正確計算一般課程與活動期間名額。",
+        "scope_in": [
+          "教練登入後台後查看自己的課表",
+          "每堂課顯示已預約人數與剩餘名額",
+          "活動期間的名額獨立計算，不併入一般名額"
+        ],
+        "scope_out": [
+          "後台手動幫學員取消預約"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義後台畫面/欄位/時間範圍，無法判定看到自己的課表的完成標準。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義剩餘名額的計算方式、來源名額與活動課程是否同欄顯示。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "Description 只提到活動期間名額另外算，未描述要排除哪些名額或如何呈現，不足以直接驗證此條的具體實作。"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "Description 未提到後台可手動取消預約，屬於超出目前描述的範圍。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2112,
+    "completionTokens": 331
+  },
+  "stoppedBy": "no_tool_calls"
+}

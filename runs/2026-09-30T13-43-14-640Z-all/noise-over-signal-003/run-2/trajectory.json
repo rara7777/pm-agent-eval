@@ -1,0 +1,89 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_1JlwAnlL4FpGia5Mh9yS4w0w",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選欄位並匯出報表。",
+            "scope_in": [
+              "提供報表匯出功能",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 匯出格式"
+            ],
+            "scope_out": [
+              "串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義匯出的對象、入口、成功條件與完成標準，無法判定是否已達成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義可選欄位清單、選擇方式與最終輸出結果，無法判定是否完成。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述提到業務慣用 Excel、財務慣用 CSV，但未明確要求僅支援 CSV；只寫 CSV 與『可自己匯出』不完全一致。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選欄位並匯出報表。",
+        "scope_in": [
+          "提供報表匯出功能",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 匯出格式"
+        ],
+        "scope_out": [
+          "串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義匯出的對象、入口、成功條件與完成標準，無法判定是否已達成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義可選欄位清單、選擇方式與最終輸出結果，無法判定是否完成。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述提到業務慣用 Excel、財務慣用 CSV，但未明確要求僅支援 CSV；只寫 CSV 與『可自己匯出』不完全一致。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2201,
+    "completionTokens": 238
+  },
+  "stoppedBy": "no_tool_calls"
+}

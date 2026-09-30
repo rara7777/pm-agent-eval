@@ -1,0 +1,103 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，這張卡我不需要額外查資料，直接判讀並寫回。",
+      "toolCalls": [
+        {
+          "id": "call_TSNoxZ4qTLg4hWoKGhkWE3xF",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程，並調整課程列表預設排序為依上架時間由新到舊。",
+            "scope_in": [
+              "學員在課程頁加入收藏",
+              "在個人頁面查看收藏清單",
+              "課程列表預設依上架時間由新到舊排序",
+              "取消收藏後從收藏清單移除"
+            ],
+            "scope_out": [
+              "其他與課程收藏無關的個人頁功能",
+              "非預設的課程列表排序方式"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 有提到課程收藏，但未明確限定只能在課程頁操作；此條與描述大致一致。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 只說「之後回來再看」，未明確指定收藏清單要放在個人頁面。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 明確要求調整課程列表排序，與此條一致。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未說明取消收藏後是否要即時更新、是否需同步其他頁面或快取，僅能確認移除收藏清單。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程，並調整課程列表預設排序為依上架時間由新到舊。",
+        "scope_in": [
+          "學員在課程頁加入收藏",
+          "在個人頁面查看收藏清單",
+          "課程列表預設依上架時間由新到舊排序",
+          "取消收藏後從收藏清單移除"
+        ],
+        "scope_out": [
+          "其他與課程收藏無關的個人頁功能",
+          "非預設的課程列表排序方式"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 有提到課程收藏，但未明確限定只能在課程頁操作；此條與描述大致一致。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 只說「之後回來再看」，未明確指定收藏清單要放在個人頁面。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 明確要求調整課程列表排序，與此條一致。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未說明取消收藏後是否要即時更新、是否需同步其他頁面或快取，僅能確認移除收藏清單。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2123,
+    "completionTokens": 330
+  },
+  "stoppedBy": "no_tool_calls"
+}

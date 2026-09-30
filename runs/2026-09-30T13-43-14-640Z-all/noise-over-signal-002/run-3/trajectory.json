@@ -1,0 +1,103 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求文字、判斷哪些是本卡範圍，哪些其實是其他 ticket 的事；再檢查 AC 是否 conflict / unverifiable / mismatch，最後寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_l61HoMs3K6DDs7AIpWmGZtDV",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序體驗，讓使用者更容易找到相關內容。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "定義標題命中與描述命中的相對權重",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式的調整",
+              "錯字容忍",
+              "使用點擊數作為排序訊號"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「依相關性排序」未定義相關性的計算方式與驗收標準，無法判定何時算完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義「權重高於」的具體比較方式、分數模型或可驗證門檻。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 只說相關性可考慮標題、描述與最近點擊，未明確要求一定要實作標題命中高於描述命中的權重。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「支援分頁」未定義頁大小、頁碼/游標方式、總筆數或驗收情境。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序體驗，讓使用者更容易找到相關內容。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "定義標題命中與描述命中的相對權重",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式的調整",
+          "錯字容忍",
+          "使用點擊數作為排序訊號"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「依相關性排序」未定義相關性的計算方式與驗收標準，無法判定何時算完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義「權重高於」的具體比較方式、分數模型或可驗證門檻。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 只說相關性可考慮標題、描述與最近點擊，未明確要求一定要實作標題命中高於描述命中的權重。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「支援分頁」未定義頁大小、頁碼/游標方式、總筆數或驗收情境。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2434,
+    "completionTokens": 345
+  },
+  "stoppedBy": "no_tool_calls"
+}

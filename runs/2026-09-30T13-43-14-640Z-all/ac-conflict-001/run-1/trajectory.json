@@ -1,0 +1,115 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求、標註範圍，再檢查 AC。這張卡的目標是做優惠碼功能；描述裡明確提到後台新增、避免濫用、結帳頁效能問題、手機可用。效能優化很像另一張卡，先列到 scope_out。接著檢查 AC：第 2 與第 3 互相打架；第 4 太模糊；第 6 需要確認「已套用的訂單不受影響」可驗證性；第 7 也偏模糊但與 mobile 可用對得上。  \n我先寫回整理結果。",
+      "toolCalls": [
+        {
+          "id": "call_EsUlnvjmx4s4RArEwLCtcRaf",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "新增優惠碼功能，讓使用者可輸入優惠碼取得折扣，後台可設定與管理優惠碼規則。",
+            "scope_in": [
+              "使用者輸入優惠碼後套用折扣金額",
+              "後台可新增與設定優惠碼",
+              "後台可設定折扣百分比或固定金額",
+              "優惠碼需要避免被濫用",
+              "手機版可使用優惠碼功能"
+            ],
+            "scope_out": [
+              "結帳頁效能優化",
+              "其他非優惠碼相關的結帳流程改版"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與第 3 條「優惠碼可以無限次使用」互相衝突。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與第 2 條「優惠碼一人只能用一次」互相衝突。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "「結帳流程要順」沒有定義可量測的完成標準。"
+              },
+              {
+                "ac": 6,
+                "type": "unverifiable",
+                "note": "「已套用的訂單不受影響」需要明確定義已套用的狀態與驗證方式。"
+              },
+              {
+                "ac": 7,
+                "type": "unverifiable",
+                "note": "「手機版體驗要好」沒有明確的驗收標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "新增優惠碼功能，讓使用者可輸入優惠碼取得折扣，後台可設定與管理優惠碼規則。",
+        "scope_in": [
+          "使用者輸入優惠碼後套用折扣金額",
+          "後台可新增與設定優惠碼",
+          "後台可設定折扣百分比或固定金額",
+          "優惠碼需要避免被濫用",
+          "手機版可使用優惠碼功能"
+        ],
+        "scope_out": [
+          "結帳頁效能優化",
+          "其他非優惠碼相關的結帳流程改版"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與第 3 條「優惠碼可以無限次使用」互相衝突。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與第 2 條「優惠碼一人只能用一次」互相衝突。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "「結帳流程要順」沒有定義可量測的完成標準。"
+          },
+          {
+            "ac": 6,
+            "type": "unverifiable",
+            "note": "「已套用的訂單不受影響」需要明確定義已套用的狀態與驗證方式。"
+          },
+          {
+            "ac": 7,
+            "type": "unverifiable",
+            "note": "「手機版體驗要好」沒有明確的驗收標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2382,
+    "completionTokens": 476
+  },
+  "stoppedBy": "no_tool_calls"
+}

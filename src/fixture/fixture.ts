@@ -122,3 +122,32 @@ export class RecordingSource implements ReadonlySource {
     return { caseId: this.#caseId, recordedAt: now.toISOString(), calls: [...this.calls] };
   }
 }
+
+/**
+ * Replay, but a request that was never recorded is answered from a source whose
+ * answer cannot depend on the request, and written down. Only sound while that
+ * upstream is STUB_SOURCE, which ignores the arguments: the outside world is
+ * constant by construction, so filling a gap changes no answer the agent sees.
+ * Every filled call lands in the run directory, so nothing is filled silently.
+ */
+export class FillingSource implements ReadonlySource {
+  readonly filled: FixtureCall[] = [];
+  #replay: ReplayingSource;
+  #upstream: ReadonlySource;
+
+  constructor(fixture: Fixture, upstream: ReadonlySource = STUB_SOURCE) {
+    this.#replay = new ReplayingSource(fixture);
+    this.#upstream = upstream;
+  }
+
+  async fetch(tool: string, args: Record<string, unknown>): Promise<string> {
+    try {
+      return await this.#replay.fetch(tool, args);
+    } catch (err) {
+      if (!(err instanceof MissingFixtureError)) throw err;
+      const response = await this.#upstream.fetch(tool, args);
+      this.filled.push({ tool, args, response });
+      return response;
+    }
+  }
+}

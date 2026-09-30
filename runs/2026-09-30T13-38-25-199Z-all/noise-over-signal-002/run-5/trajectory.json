@@ -1,0 +1,95 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求描述與 AC，並檢查是否有需要查背景的地方。",
+      "toolCalls": [
+        {
+          "id": "call_1RcOJVniSZ8NIUSXpnG7yTJc",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果排序，讓搜尋結果更符合使用者關聯性期待。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯為依相關性排序",
+              "定義標題命中與描述命中的權重差異",
+              "維持或提供搜尋結果分頁能力"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "使用點擊數作為排序訊號",
+              "調整每頁顯示筆數"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式與判定標準，無法驗證是否已達成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述權重的具體比值或比較條件，無法驗證。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只提到目前一頁二十筆與翻很多頁是問題，未明確要求新增或調整分頁功能。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果排序，讓搜尋結果更符合使用者關聯性期待。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯為依相關性排序",
+          "定義標題命中與描述命中的權重差異",
+          "維持或提供搜尋結果分頁能力"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "使用點擊數作為排序訊號",
+          "調整每頁顯示筆數"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式與判定標準，無法驗證是否已達成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述權重的具體比值或比較條件，無法驗證。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只提到目前一頁二十筆與翻很多頁是問題，未明確要求新增或調整分頁功能。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已完成整理與標註。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2338,
+    "completionTokens": 297
+  },
+  "stoppedBy": "no_tool_calls"
+}

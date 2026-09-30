@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC。這張卡描述的重點是：教練在後台查看自己課程的預約狀況，且活動期間的名額計算要跟一般名額分開。  \n我會直接把結構化結果寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_5st0wcW5PXCCMCxNLnqYukj3",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動期間與一般課程名額",
+            "scope_in": [
+              "教練登入後台後查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額計算與一般名額分開",
+              "後台手動取消學員預約"
+            ],
+            "scope_out": [
+              "修改學員端預約流程",
+              "新增或調整活動報名流程",
+              "修改課程建立或排課流程",
+              "名額規則以外的會員管理功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明活動名額如何計算、何時視為不計入一般名額，以及在介面上如何驗證"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "描述只提到後台查看預約狀況與名額計算，未提到可手動取消學員預約"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動期間與一般課程名額",
+        "scope_in": [
+          "教練登入後台後查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額計算與一般名額分開",
+          "後台手動取消學員預約"
+        ],
+        "scope_out": [
+          "修改學員端預約流程",
+          "新增或調整活動報名流程",
+          "修改課程建立或排課流程",
+          "名額規則以外的會員管理功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明活動名額如何計算、何時視為不計入一般名額，以及在介面上如何驗證"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "描述只提到後台查看預約狀況與名額計算，未提到可手動取消學員預約"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。  \n我標了 2 條 AC 問題：\n\n- AC 3：unverifiable\n- AC 4：mismatch",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2109,
+    "completionTokens": 358
+  },
+  "stoppedBy": "no_tool_calls"
+}

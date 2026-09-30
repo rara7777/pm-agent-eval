@@ -1,0 +1,129 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC。這張卡的 description 已經能拆出目標與範圍，不需要額外查外部資料；接著直接標註 AC 問題並寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_ciGZwSYRfzr45gj394m56t1n",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "優化搜尋結果的排序與呈現，讓使用者更容易找到相關內容。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯，使其以相關性為主",
+              "定義相關性計算時可參考標題命中",
+              "定義相關性計算時可參考描述命中",
+              "定義相關性計算時可參考近期點擊情況",
+              "支援搜尋結果分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式的調整",
+              "錯字容忍功能",
+              "搜尋結果每頁顯示筆數的調整",
+              "搜尋結果排序以外的搜尋體驗優化"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "『依相關性排序』未定義相關性如何計算，無法判定完成條件。"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 提到相關性可能還會看標題、描述與近期點擊，AC 未明確涵蓋相關性定義。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "『標題命中的權重高於描述命中』未定義權重數值、比較方式或驗證標準。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 只說相關性可能看標題與描述，沒有明確要求做權重設計。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『支援分頁』未定義分頁規格，例如頁碼、每頁筆數、切頁行為或邊界條件。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只提到目前一頁二十筆與翻頁多，沒有明確要求調整或定義分頁規格。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "優化搜尋結果的排序與呈現，讓使用者更容易找到相關內容。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯，使其以相關性為主",
+          "定義相關性計算時可參考標題命中",
+          "定義相關性計算時可參考描述命中",
+          "定義相關性計算時可參考近期點擊情況",
+          "支援搜尋結果分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式的調整",
+          "錯字容忍功能",
+          "搜尋結果每頁顯示筆數的調整",
+          "搜尋結果排序以外的搜尋體驗優化"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "『依相關性排序』未定義相關性如何計算，無法判定完成條件。"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 提到相關性可能還會看標題、描述與近期點擊，AC 未明確涵蓋相關性定義。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "『標題命中的權重高於描述命中』未定義權重數值、比較方式或驗證標準。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 只說相關性可能看標題與描述，沒有明確要求做權重設計。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『支援分頁』未定義分頁規格，例如頁碼、每頁筆數、切頁行為或邊界條件。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只提到目前一頁二十筆與翻頁多，沒有明確要求調整或定義分頁規格。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n標註重點：\n- AC 1：unverifiable、mismatch\n- AC 2：unverifiable、mismatch\n- AC 3：unverifiable、mismatch\n\n如果你要，我也可以再幫你把這張卡改寫成更清楚、可驗收的 AC 草稿。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2567,
+    "completionTokens": 549
+  },
+  "stoppedBy": "no_tool_calls"
+}

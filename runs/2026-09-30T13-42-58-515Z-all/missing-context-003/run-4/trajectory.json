@@ -1,0 +1,73 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_Lura9Td8eY7pVE36CAYxGDW5",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人在訂位頁面取消訂位，並依取消時間收取不同費用與寄送確認信。",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "取消訂位時顯示並收取取消費用",
+              "取消後寄送確認信"
+            ],
+            "scope_out": [
+              "惡意訂位防堵策略本身",
+              "取消費率規則的詳細定義",
+              "其他訂位管理流程"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義「太晚」的時間門檻與費用計算方式，無法判定完成標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人在訂位頁面取消訂位，並依取消時間收取不同費用與寄送確認信。",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "取消訂位時顯示並收取取消費用",
+          "取消後寄送確認信"
+        ],
+        "scope_out": [
+          "惡意訂位防堵策略本身",
+          "取消費率規則的詳細定義",
+          "其他訂位管理流程"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義「太晚」的時間門檻與費用計算方式，無法判定完成標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1880,
+    "completionTokens": 172
+  },
+  "stoppedBy": "no_tool_calls"
+}

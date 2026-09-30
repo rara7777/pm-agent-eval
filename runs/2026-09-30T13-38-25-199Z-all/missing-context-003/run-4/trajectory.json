@@ -1,0 +1,73 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_uvLGTZAFMQxiCpZSc0eDu6tt",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人可在訂位頁面取消訂位，並依取消時間收取取消費用與發送取消確認信。",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "取消訂位時依規則收取費用",
+              "取消訂位後寄送確認信"
+            ],
+            "scope_out": [
+              "惡意訂位防堵機制本身",
+              "餐廳端後台操作流程",
+              "取消費用的費率與時間門檻設定細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義何謂太晚取消，缺少時間門檻與費用計算規則。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人可在訂位頁面取消訂位，並依取消時間收取取消費用與發送取消確認信。",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "取消訂位時依規則收取費用",
+          "取消訂位後寄送確認信"
+        ],
+        "scope_out": [
+          "惡意訂位防堵機制本身",
+          "餐廳端後台操作流程",
+          "取消費用的費率與時間門檻設定細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義何謂太晚取消，缺少時間門檻與費用計算規則。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1889,
+    "completionTokens": 180
+  },
+  "stoppedBy": "no_tool_calls"
+}

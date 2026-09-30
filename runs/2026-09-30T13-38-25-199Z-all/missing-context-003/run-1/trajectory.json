@@ -1,0 +1,73 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_fNToY7JPiYcLERqyespoxiks",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人在訂位頁面取消訂位，並依取消時間套用取消費用與通知。",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "依取消時間判斷是否收取取消費用",
+              "取消完成後寄送確認信"
+            ],
+            "scope_out": [
+              "定義完整的取消費用規則與金額",
+              "餐廳端的防惡意訂位機制",
+              "其他訂位相關流程"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義何謂太晚取消，無法判定何時收費、收多少。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人在訂位頁面取消訂位，並依取消時間套用取消費用與通知。",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "依取消時間判斷是否收取取消費用",
+          "取消完成後寄送確認信"
+        ],
+        "scope_out": [
+          "定義完整的取消費用規則與金額",
+          "餐廳端的防惡意訂位機制",
+          "其他訂位相關流程"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義何謂太晚取消，無法判定何時收費、收多少。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1878,
+    "completionTokens": 175
+  },
+  "stoppedBy": "no_tool_calls"
+}

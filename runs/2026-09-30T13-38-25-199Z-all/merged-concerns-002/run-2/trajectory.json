@@ -1,0 +1,67 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_V64gCYa2EXsno5zZ3NV6yrfS",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程並在個人頁查看收藏清單，同時調整課程列表預設排序為上架時間新到舊。",
+            "scope_in": [
+              "在課程頁提供加入收藏功能",
+              "在個人頁面顯示收藏清單",
+              "課程列表預設依上架時間由新到舊排序",
+              "提供取消收藏後從收藏清單移除的行為"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義『上架時間』欄位來源與排序依據是否含時區/精度，需補充可驗證標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程並在個人頁查看收藏清單，同時調整課程列表預設排序為上架時間新到舊。",
+        "scope_in": [
+          "在課程頁提供加入收藏功能",
+          "在個人頁面顯示收藏清單",
+          "課程列表預設依上架時間由新到舊排序",
+          "提供取消收藏後從收藏清單移除的行為"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義『上架時間』欄位來源與排序依據是否含時區/精度，需補充可驗證標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1974,
+    "completionTokens": 181
+  },
+  "stoppedBy": "no_tool_calls"
+}

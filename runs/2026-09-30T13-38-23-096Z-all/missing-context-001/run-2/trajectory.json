@@ -1,0 +1,65 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理這張卡的需求，並檢查 AC 是否有衝突/不清楚/與描述不一致。此題不需要外部查資料，因為描述本身已足夠判斷。",
+      "toolCalls": [
+        {
+          "id": "call_uM1DvPGWuR7hDa0lVWMhxhtN",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒出貨通知，內容包含物流單號，並沿用既有通知樣式或流程。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "沿用上次的通知樣式或流程"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」未定義參照版本與判定標準，無法驗證是否一致。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒出貨通知，內容包含物流單號，並沿用既有通知樣式或流程。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "沿用上次的通知樣式或流程"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」未定義參照版本與判定標準，無法驗證是否一致。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。\n\n我標了 1 條 AC 問題：\n- AC 3：unverifiable  \n  - 原因：「跟上次一樣」沒有定義參照版本或可驗證標準，無法判定是否符合。\n\n如果你要，我也可以把這張卡再整理成更清楚的可執行版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1918,
+    "completionTokens": 281
+  },
+  "stoppedBy": "no_tool_calls"
+}

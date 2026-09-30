@@ -1,0 +1,73 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求與檢查 AC。這張卡的目標是把搜尋結果改成更符合使用者期待的排序；描述中提到的關鍵字比對、錯字容忍、點擊數等，明顯是相關議題但不一定都屬於這張卡的核心範圍。先不改原 AC 原文，只整理卡片欄位並標示有問題的 AC。",
+      "toolCalls": [
+        {
+          "id": "call_l0RQWtvNM97enA2lxePx0m8F",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果排序，讓結果更符合使用者關注的相關性。",
+            "scope_in": [
+              "依相關性排序搜尋結果",
+              "標題命中的權重高於描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍支援",
+              "使用點擊數作為排序因子"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述命中權重的具體數值、比較方式或驗收標準，無法判定何時完成。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果排序，讓結果更符合使用者關注的相關性。",
+        "scope_in": [
+          "依相關性排序搜尋結果",
+          "標題命中的權重高於描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍支援",
+          "使用點擊數作為排序因子"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述命中權重的具體數值、比較方式或驗收標準，無法判定何時完成。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我把目標、範圍內/外與 AC 標註更新完成，並標出第 2 條 AC 為 unverifiable。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2326,
+    "completionTokens": 320
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,101 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC。這張卡沒有需要外部查證的背景資訊，我直接判讀描述與 AC 是否一致，然後寫回 ticket。",
+      "toolCalls": [
+        {
+          "id": "call_aRJ1A9MMG0P31Yn1s1lByzZ1",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程，並將課程列表預設改為依上架時間新到舊排序。",
+            "scope_in": [
+              "學員可在課程頁將課程加入收藏",
+              "學員可在個人頁面查看收藏清單",
+              "課程列表預設排序改為依上架時間由新到舊"
+            ],
+            "scope_out": [
+              "其他排序方式的調整",
+              "收藏以外的課程互動功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未說明收藏入口、成功狀態或重複收藏時的行為，無法判定完成標準。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明個人頁面的哪個區塊、空狀態與列表欄位，完成標準不夠明確。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說要改課程列表排序，未提到『預設依上架時間由新到舊』以外的細節；若上架時間定義不同需再補充。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未說明取消收藏的操作位置與是否需同步更新其他頁面或狀態。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程，並將課程列表預設改為依上架時間新到舊排序。",
+        "scope_in": [
+          "學員可在課程頁將課程加入收藏",
+          "學員可在個人頁面查看收藏清單",
+          "課程列表預設排序改為依上架時間由新到舊"
+        ],
+        "scope_out": [
+          "其他排序方式的調整",
+          "收藏以外的課程互動功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未說明收藏入口、成功狀態或重複收藏時的行為，無法判定完成標準。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明個人頁面的哪個區塊、空狀態與列表欄位，完成標準不夠明確。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說要改課程列表排序，未提到『預設依上架時間由新到舊』以外的細節；若上架時間定義不同需再補充。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未說明取消收藏的操作位置與是否需同步更新其他頁面或狀態。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2150,
+    "completionTokens": 357
+  },
+  "stoppedBy": "no_tool_calls"
+}

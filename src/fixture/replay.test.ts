@@ -5,6 +5,7 @@ import { FakeStore } from '../store/fake-store.ts';
 import type { LlmClient, LlmReply } from '../llm/client.ts';
 import type { Ticket } from '../store/ticket-store.ts';
 import {
+  FillingSource,
   MissingFixtureError,
   RecordingSource,
   ReplayingSource,
@@ -131,4 +132,23 @@ test('a run that asks something new fails instead of quietly connecting out', as
       return true;
     },
   );
+});
+
+test('filling answers an unrecorded request from the stub and writes it down', async () => {
+  const fixture = { caseId: 'ac-conflict-001', recordedAt: '2026-09-16T00:00:00.000Z', calls: [] };
+  const source = new FillingSource(fixture);
+  const answer = await source.fetch('read_docs', { query: '優惠碼' });
+  assert.equal(answer, '內部文件沒有優惠碼相關章節。');
+  assert.deepEqual(source.filled, [{ tool: 'read_docs', args: { query: '優惠碼' }, response: answer }]);
+});
+
+test('filling still replays what was recorded and fills nothing', async () => {
+  const fixture = {
+    caseId: 'ac-conflict-001',
+    recordedAt: '2026-09-16T00:00:00.000Z',
+    calls: [{ tool: 'read_docs', args: { query: '優惠碼' }, response: '錄下來的回答' }],
+  };
+  const source = new FillingSource(fixture);
+  assert.equal(await source.fetch('read_docs', { query: '優惠碼' }), '錄下來的回答');
+  assert.deepEqual(source.filled, []);
 });

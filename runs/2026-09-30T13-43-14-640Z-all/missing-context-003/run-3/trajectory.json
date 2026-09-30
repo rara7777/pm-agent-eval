@@ -1,0 +1,73 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理需求、檢查 AC，並把結果寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_LTciSkQ5uy8pgbbf2sLfqFis",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "建立訂位取消與取消收費規則。",
+            "scope_in": [
+              "允許客人在訂位頁面取消訂位",
+              "依取消時間點套用取消費用規則",
+              "取消後寄送確認信"
+            ],
+            "scope_out": [
+              "定義惡意訂位的判定與防堵機制",
+              "定義取消費用的金額與計算方式",
+              "定義不同時段的收費門檻與規則細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義何謂太晚取消，也未說明收費金額或計算方式，無法判定完成標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "建立訂位取消與取消收費規則。",
+        "scope_in": [
+          "允許客人在訂位頁面取消訂位",
+          "依取消時間點套用取消費用規則",
+          "取消後寄送確認信"
+        ],
+        "scope_out": [
+          "定義惡意訂位的判定與防堵機制",
+          "定義取消費用的金額與計算方式",
+          "定義不同時段的收費門檻與規則細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義何謂太晚取消，也未說明收費金額或計算方式，無法判定完成標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。\n\n我標記的 AC 問題：\n- AC 2：unverifiable\n  - 原因：沒寫清楚「太晚」的定義，也沒說明費用金額/計算方式，無法驗收。\n\n已寫回內容包含：\n- goal\n- scope_in\n- scope_out\n- ac_flags",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1942,
+    "completionTokens": 276
+  },
+  "stoppedBy": "no_tool_calls"
+}

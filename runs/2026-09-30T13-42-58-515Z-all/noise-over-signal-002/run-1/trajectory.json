@@ -1,0 +1,95 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_kS0YCVhHRHe0U94s8lGH4cmx",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者查找需求。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯",
+              "依相關性排序搜尋結果",
+              "讓標題命中的權重高於描述命中",
+              "支援搜尋結果分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "將點擊數納入排序"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 提到目前依建立時間排序，並希望改成相關性排序；AC 1 符合目標，無需標註。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義『權重高於』的具體計算方式或驗收標準，無法判定完成條件。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明分頁的具體行為（每頁筆數、頁碼參數、是否支援總頁數/游標等），無法驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者查找需求。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯",
+          "依相關性排序搜尋結果",
+          "讓標題命中的權重高於描述命中",
+          "支援搜尋結果分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "將點擊數納入排序"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 提到目前依建立時間排序，並希望改成相關性排序；AC 1 符合目標，無需標註。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義『權重高於』的具體計算方式或驗收標準，無法判定完成條件。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明分頁的具體行為（每頁筆數、頁碼參數、是否支援總頁數/游標等），無法驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2321,
+    "completionTokens": 262
+  },
+  "stoppedBy": "no_tool_calls"
+}

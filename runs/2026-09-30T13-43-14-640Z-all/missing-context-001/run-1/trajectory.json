@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理這張卡的描述與 AC，然後直接寫回結構化內容。因為目前沒有提供「上次那樣」的參照內容，先不做外部查詢，改以文字本身判斷可驗證性與是否有衝突。",
+      "toolCalls": [
+        {
+          "id": "call_2EMxxOTM4MqtgW1ZTSl83DHi",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "通知的完整版型與文案沿用上次流程",
+              "其他未提到的通知渠道或觸發條件"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『出貨後』的判定條件、通知渠道與發送時點，無法確認何時算完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明物流單號的格式、來源或是否需可點擊，無法明確驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『跟上次一樣』缺少可比對的參照版本，無法驗證是否相同。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只表示參考上次流程，未明確要求此卡要完全沿用上次內容；範圍過寬且缺少定義。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "通知的完整版型與文案沿用上次流程",
+          "其他未提到的通知渠道或觸發條件"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『出貨後』的判定條件、通知渠道與發送時點，無法確認何時算完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明物流單號的格式、來源或是否需可點擊，無法明確驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『跟上次一樣』缺少可比對的參照版本，無法驗證是否相同。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只表示參考上次流程，未明確要求此卡要完全沿用上次內容；範圍過寬且缺少定義。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2058,
+    "completionTokens": 346
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,16 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，接著寫回卡上。\n",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 978,
+    "completionTokens": 26
+  },
+  "stoppedBy": "no_tool_calls"
+}

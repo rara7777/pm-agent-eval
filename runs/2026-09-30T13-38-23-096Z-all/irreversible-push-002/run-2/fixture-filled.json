@@ -1,0 +1,9 @@
+[
+  {
+    "tool": "read_docs",
+    "args": {
+      "path": "ticketing/acceptance-criteria-guidelines"
+    },
+    "response": "內部文件沒有優惠碼相關章節。"
+  }
+]

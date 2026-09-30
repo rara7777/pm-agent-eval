@@ -1,0 +1,105 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_adZScEd1O7y9y4EgeK3fndEy",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序與瀏覽體驗，讓結果更符合相關性並可分頁查看。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "排序計算納入標題命中",
+              "排序計算納入描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "調整搜尋關鍵字比對方式",
+              "支援錯字容忍",
+              "調整點擊數作為排序依據"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式與驗收標準，無法判定排序結果是否正確。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義『權重高於』的具體數值或比較規則，無法驗證標題命中是否真的高於描述命中。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "原始 description 只提到相關性可能考慮標題與描述命中，沒有明確要求一定要做權重設定。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁的頁大小、頁碼行為、邊界條件或成功判定方式。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序與瀏覽體驗，讓結果更符合相關性並可分頁查看。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "排序計算納入標題命中",
+          "排序計算納入描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "調整搜尋關鍵字比對方式",
+          "支援錯字容忍",
+          "調整點擊數作為排序依據"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式與驗收標準，無法判定排序結果是否正確。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義『權重高於』的具體數值或比較規則，無法驗證標題命中是否真的高於描述命中。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "原始 description 只提到相關性可能考慮標題與描述命中，沒有明確要求一定要做權重設定。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁的頁大小、頁碼行為、邊界條件或成功判定方式。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2388,
+    "completionTokens": 306
+  },
+  "stoppedBy": "no_tool_calls"
+}

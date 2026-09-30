@@ -1,0 +1,16 @@
+[
+  {
+    "tool": "search_repo",
+    "args": {
+      "query": "點數 回饋 會員中心 效能 會員點數 到期 規則"
+    },
+    "response": "src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。"
+  },
+  {
+    "tool": "read_docs",
+    "args": {
+      "path": "README.md"
+    },
+    "response": "內部文件沒有優惠碼相關章節。"
+  }
+]
