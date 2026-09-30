@@ -1,0 +1,79 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，這個票目前描述太口語，我先把可落地的範圍抽出來，並標出哪些 AC 有問題。",
+      "toolCalls": [
+        {
+          "id": "call_sqdkhs1GiDMCcGJlyI33qwQe",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "其他未提及的通知類型",
+              "非出貨事件觸發的通知"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」缺少可驗證的參照版本、內容或規格，無法判定完成標準。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只提到出貨通知與物流單號，未定義需與哪個上次流程一致。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "其他未提及的通知類型",
+          "非出貨事件觸發的通知"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」缺少可驗證的參照版本、內容或規格，無法判定完成標準。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只提到出貨通知與物流單號，未定義需與哪個上次流程一致。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。\n\n我標出的 AC 問題：\n- AC 3：unverifiable\n- AC 3：mismatch\n\n如果你要，我也可以再幫你把這張票補成更完整、可開發的需求文字。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1938,
+    "completionTokens": 294
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,65 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理這張票的需求並檢查 AC 是否可驗證、是否和描述一致；目前沒有足夠背景可外查，先依票面內容判定後回寫。",
+      "toolCalls": [
+        {
+          "id": "call_D73P0KKOLX7x2WOhXcDf1rqX",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "通知格式/流程沿用上次相同做法"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」未指定上次是哪些內容、版型、發送渠道或流程，無法判定完成標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "通知格式/流程沿用上次相同做法"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」未指定上次是哪些內容、版型、發送渠道或流程，無法判定完成標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並回寫：\n\n- goal: 訂單出貨後發送寵物訂閱盒的出貨通知\n- scope_in:\n  - 訂單出貨後發送通知\n  - 通知內容包含物流單號\n  - 通知格式/流程沿用上次相同做法\n- scope_out: 無\n- AC 標註:\n  - 3: unverifiable（「跟上次一樣」未定義上次的具體內容，無法驗收）\n\n",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1873,
+    "completionTokens": 296
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,71 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description 與 AC，這張卡看起來混了兩件事：收藏功能與課程列表排序。先整理成可寫回的結構，並標出需要注意的 AC。",
+      "toolCalls": [
+        {
+          "id": "call_07RMNnxOXHqqWrEUeOx5EYbt",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程並在個人頁查看收藏清單。",
+            "scope_in": [
+              "學員可在課程頁將課程加入收藏",
+              "學員可在個人頁查看收藏清單",
+              "學員可取消收藏課程",
+              "取消收藏後，該課程不再出現在收藏清單"
+            ],
+            "scope_out": [
+              "課程列表預設依上架時間由新到舊排序"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "這條是課程列表排序需求，和收藏功能的主要目標不同，較像另一個 ticket 的內容。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程並在個人頁查看收藏清單。",
+        "scope_in": [
+          "學員可在課程頁將課程加入收藏",
+          "學員可在個人頁查看收藏清單",
+          "學員可取消收藏課程",
+          "取消收藏後，該課程不再出現在收藏清單"
+        ],
+        "scope_out": [
+          "課程列表預設依上架時間由新到舊排序"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "這條是課程列表排序需求，和收藏功能的主要目標不同，較像另一個 ticket 的內容。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2014,
+    "completionTokens": 222
+  },
+  "stoppedBy": "no_tool_calls"
+}

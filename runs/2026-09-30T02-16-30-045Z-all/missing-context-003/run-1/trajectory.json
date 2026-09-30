@@ -1,0 +1,85 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與 AC，這張卡缺少關鍵規則（例如何時算太晚、收多少、哪些情境不收），我先把可確定的範圍與需要標註的 AC 寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_CKV935dDHziR6B5QqG05l47V",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人可在訂位頁面取消訂位，並依取消時點收取對應費用。",
+            "scope_in": [
+              "客人可以在訂位頁面取消訂位",
+              "太晚取消時會收取較高費用",
+              "取消後發送確認信"
+            ],
+            "scope_out": [
+              "取消費率與計費門檻的具體規則",
+              "是否有免費取消期間",
+              "哪些訂位類型或情境不適用取消費",
+              "取消費用的金額與計算方式"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "太晚的判定標準與收費規則未定義，無法驗收。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 只提到晚取消收更多，但未定義費率/門檻，AC 過於籠統。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人可在訂位頁面取消訂位，並依取消時點收取對應費用。",
+        "scope_in": [
+          "客人可以在訂位頁面取消訂位",
+          "太晚取消時會收取較高費用",
+          "取消後發送確認信"
+        ],
+        "scope_out": [
+          "取消費率與計費門檻的具體規則",
+          "是否有免費取消期間",
+          "哪些訂位類型或情境不適用取消費",
+          "取消費用的金額與計算方式"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "太晚的判定標準與收費規則未定義，無法驗收。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 只提到晚取消收更多，但未定義費率/門檻，AC 過於籠統。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我另外標註了 AC 2 有問題：\n\n- unverifiable：沒有定義「太晚」的標準與收費規則\n- mismatch：描述只有提到晚取消收更多，但 AC 沒有具體到可驗收的程度\n\n如果你要，我也可以幫你把這張卡補成更完整的需求版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2025,
+    "completionTokens": 365
+  },
+  "stoppedBy": "no_tool_calls"
+}

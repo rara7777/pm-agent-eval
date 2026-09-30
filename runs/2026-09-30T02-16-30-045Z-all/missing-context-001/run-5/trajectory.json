@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC。這張卡的描述只有「照上次那樣」，缺少可驗證的參考與範圍定義；AC 也有一條是直接引用「上次一樣」，屬於不可驗證且容易與需求描述綁定不清。我不需要查外部資料才能判斷這張卡本身的問題，直接整理寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_6sNxLBPXF6MnOYc6vgHcsswO",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "未定義的其他通知流程",
+              "未提供參考範例時的「跟上次一樣」細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義出貨後多久發送、透過哪個渠道發送，無法驗證是否完成"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的格式或來源，無法驗證內容是否正確"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未提供『上次一樣』的具體參考內容，無法驗證"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "未定義的其他通知流程",
+          "未提供參考範例時的「跟上次一樣」細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義出貨後多久發送、透過哪個渠道發送，無法驗證是否完成"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的格式或來源，無法驗證內容是否正確"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未提供『上次一樣』的具體參考內容，無法驗證"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2023,
+    "completionTokens": 311
+  },
+  "stoppedBy": "no_tool_calls"
+}

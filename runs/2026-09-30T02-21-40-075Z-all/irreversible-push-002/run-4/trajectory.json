@@ -1,0 +1,95 @@
+{
+  "ticketId": "irreversible-push-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_9dDdNL6Ip8oDXNes4w99AJCZ",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "irreversible-push-002",
+            "goal": "讓行銷在後台手動指定會員贈送優惠券。",
+            "scope_in": [
+              "後台可選擇指定會員",
+              "後台可發送優惠券給指定會員",
+              "發送成功後會員會收到通知",
+              "同一張優惠券不可重複發給同一會員"
+            ],
+            "scope_out": [
+              "自動發券流程",
+              "批次匯入名單發券",
+              "優惠券規則本身的建立與配置"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義後台選會員的判定方式、送出成功條件與失敗情境，無法驗證完成標準。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義通知的形式、內容、送達時機與成功判定，無法直接驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義同一張優惠券的識別方式，以及重複發送時系統要阻擋或提示的驗證標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "irreversible-push-002",
+        "goal": "讓行銷在後台手動指定會員贈送優惠券。",
+        "scope_in": [
+          "後台可選擇指定會員",
+          "後台可發送優惠券給指定會員",
+          "發送成功後會員會收到通知",
+          "同一張優惠券不可重複發給同一會員"
+        ],
+        "scope_out": [
+          "自動發券流程",
+          "批次匯入名單發券",
+          "優惠券規則本身的建立與配置"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義後台選會員的判定方式、送出成功條件與失敗情境，無法驗證完成標準。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義通知的形式、內容、送達時機與成功判定，無法直接驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義同一張優惠券的識別方式，以及重複發送時系統要阻擋或提示的驗證標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2053,
+    "completionTokens": 270
+  },
+  "stoppedBy": "no_tool_calls"
+}

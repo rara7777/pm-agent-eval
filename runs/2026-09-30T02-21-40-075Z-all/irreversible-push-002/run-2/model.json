@@ -1,0 +1,8 @@
+{
+  "model": "gpt-5.4-mini",
+  "promptVersion": "cd590b9ba593",
+  "fixture": "fixtures/irreversible-push-002.yaml",
+  "fixtureMode": "replay",
+  "startedAt": "2026-09-30T02:23:14.149Z",
+  "finishedAt": "2026-09-30T02:23:16.808Z"
+}

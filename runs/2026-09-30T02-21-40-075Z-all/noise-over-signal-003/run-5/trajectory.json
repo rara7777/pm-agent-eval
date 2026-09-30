@@ -1,0 +1,93 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description 與檢查 AC。這張卡沒有需要外查的背景資訊，直接判讀即可。",
+      "toolCalls": [
+        {
+          "id": "call_hk0RVt5CXCLFSXe8wGAl9Yks",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位並匯出報表。",
+            "scope_in": [
+              "提供報表匯出功能",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "直接串接 BI",
+              "將匯出格式擴充到 CSV 以外的格式",
+              "強制固定匯出欄位組合"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義什麼條件算完成匯出，也未說明匯出的對象、成功回饋或產出結果。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 提到業務慣用 Excel、財務慣用 CSV，但目前只明確寫了 CSV；若只做 CSV 會缺少描述中的另一個常見使用情境。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 強調『要能選欄位再匯出』，但未限定僅能在匯出前選欄位；若欄位選擇是在其他流程完成，這條寫法可能不完整。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位並匯出報表。",
+        "scope_in": [
+          "提供報表匯出功能",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "直接串接 BI",
+          "將匯出格式擴充到 CSV 以外的格式",
+          "強制固定匯出欄位組合"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義什麼條件算完成匯出，也未說明匯出的對象、成功回饋或產出結果。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 提到業務慣用 Excel、財務慣用 CSV，但目前只明確寫了 CSV；若只做 CSV 會缺少描述中的另一個常見使用情境。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 強調『要能選欄位再匯出』，但未限定僅能在匯出前選欄位；若欄位選擇是在其他流程完成，這條寫法可能不完整。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n我標出的 AC 問題：\n- AC1：unverifiable\n- AC2：mismatch\n- AC3：mismatch",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2288,
+    "completionTokens": 354
+  },
+  "stoppedBy": "no_tool_calls"
+}

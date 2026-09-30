@@ -1,0 +1,77 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，這張卡描述不完整，我需要先把目標/範圍釐清後再回寫。",
+      "toolCalls": [
+        {
+          "id": "call_tO7f4zVhrozkn4bn2n5AeENK",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約狀況，並能管理預約名額與取消預約。",
+            "scope_in": [
+              "教練登入後台後查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額獨立計算",
+              "後台可手動替學員取消預約"
+            ],
+            "scope_out": [
+              "一般學員的前台預約流程",
+              "課程建立或編輯功能",
+              "活動名額的計算規則細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "只說活動名額不計入一般名額，但沒有定義活動名額如何計算、何時套用、或如何驗證。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約狀況，並能管理預約名額與取消預約。",
+        "scope_in": [
+          "教練登入後台後查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額獨立計算",
+          "後台可手動替學員取消預約"
+        ],
+        "scope_out": [
+          "一般學員的前台預約流程",
+          "課程建立或編輯功能",
+          "活動名額的計算規則細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "只說活動名額不計入一般名額，但沒有定義活動名額如何計算、何時套用、或如何驗證。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2001,
+    "completionTokens": 250
+  },
+  "stoppedBy": "no_tool_calls"
+}

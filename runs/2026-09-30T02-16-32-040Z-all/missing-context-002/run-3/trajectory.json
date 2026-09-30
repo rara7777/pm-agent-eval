@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，這張卡描述有點缺背景，但可先依文字判斷範圍與問題點。",
+      "toolCalls": [
+        {
+          "id": "call_KVrIFH9QM0syWpPgp5lACRCh",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+            "scope_in": [
+              "教練登入後台後查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額獨立計算",
+              "後台手動取消學員預約"
+            ],
+            "scope_out": [
+              "學生端預約流程",
+              "課程建立與排課管理",
+              "活動報名流程",
+              "名額計算規則以外的會員管理功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "只說活動名額不計入一般名額，未說明活動名額如何計算、如何呈現，無法判定完成標準。"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "描述只提到教練查看預約狀況與活動名額，未明確提到後台手動取消預約。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+        "scope_in": [
+          "教練登入後台後查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額獨立計算",
+          "後台手動取消學員預約"
+        ],
+        "scope_out": [
+          "學生端預約流程",
+          "課程建立與排課管理",
+          "活動報名流程",
+          "名額計算規則以外的會員管理功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "只說活動名額不計入一般名額，未說明活動名額如何計算、如何呈現，無法判定完成標準。"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "描述只提到教練查看預約狀況與活動名額，未明確提到後台手動取消預約。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2047,
+    "completionTokens": 296
+  },
+  "stoppedBy": "no_tool_calls"
+}

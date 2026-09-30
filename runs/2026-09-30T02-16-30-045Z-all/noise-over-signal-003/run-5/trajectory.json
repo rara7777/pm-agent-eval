@@ -1,0 +1,101 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與 AC，這張卡沒有需要外查的背景資訊，直接檢查即可。",
+      "toolCalls": [
+        {
+          "id": "call_MhwJcNjOaSWW553XrtCJ5Nkt",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選欄位匯出報表。",
+            "scope_in": [
+              "提供報表匯出功能",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 匯出格式"
+            ],
+            "scope_out": [
+              "串接 BI",
+              "規劃或收斂財務與業務欄位偏好以外的方案"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義報表匯出的完成條件，例如匯出內容、觸發方式、成功回饋或失敗處理。"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "描述重點是可自行選欄位再匯出，AC 只寫可匯出報表，範圍過寬且少了可選欄位。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義可選欄位的清單、預設值、是否可多選，以及選完後如何產生匯出結果。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述提到業務偏好 Excel、財務偏好 CSV，但目前 AC 只涵蓋 CSV，未涵蓋 Excel 或說明只做 CSV 的決策。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選欄位匯出報表。",
+        "scope_in": [
+          "提供報表匯出功能",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 匯出格式"
+        ],
+        "scope_out": [
+          "串接 BI",
+          "規劃或收斂財務與業務欄位偏好以外的方案"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義報表匯出的完成條件，例如匯出內容、觸發方式、成功回饋或失敗處理。"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "描述重點是可自行選欄位再匯出，AC 只寫可匯出報表，範圍過寬且少了可選欄位。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義可選欄位的清單、預設值、是否可多選，以及選完後如何產生匯出結果。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述提到業務偏好 Excel、財務偏好 CSV，但目前 AC 只涵蓋 CSV，未涵蓋 Excel 或說明只做 CSV 的決策。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2309,
+    "completionTokens": 346
+  },
+  "stoppedBy": "no_tool_calls"
+}

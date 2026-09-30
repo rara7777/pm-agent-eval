@@ -1,0 +1,95 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_rA71XBEhQcr7y5FdN9iTWm0t",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的呈現與排序，讓使用者更容易找到相關內容。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "排序邏輯需考慮標題命中與描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式的調整",
+              "錯字容忍",
+              "使用點擊數作為排序依據",
+              "修改目前每頁筆數"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式與驗收標準，無法判定何謂排序正確。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義「權重高於」的實際權重或排序規則，無法驗證。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁的行為、參數或頁面顯示規格，無法驗證。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的呈現與排序，讓使用者更容易找到相關內容。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "排序邏輯需考慮標題命中與描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式的調整",
+          "錯字容忍",
+          "使用點擊數作為排序依據",
+          "修改目前每頁筆數"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式與驗收標準，無法判定何謂排序正確。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義「權重高於」的實際權重或排序規則，無法驗證。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁的行為、參數或頁面顯示規格，無法驗證。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \nAC 目前三條都標為 unverifiable。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2332,
+    "completionTokens": 255
+  },
+  "stoppedBy": "no_tool_calls"
+}

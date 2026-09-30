@@ -1,0 +1,95 @@
+{
+  "ticketId": "conflicting-truth-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description 與檢查 AC。這張卡的核心目標是「活動問卷開放填寫，完成送出後可領獎品」。其中：\n- 目標：問卷可填寫、送出後可領獎品\n- scope_in：活動問卷填寫、送出後領獎品、問卷關閉後停止填寫\n- scope_out：目前沒有明確其他 ticket 的事項可切出\n- AC 逐條檢查：\n  1. 與 description 一致，但「可以領取獎品」具體條件未寫清楚，偏 unverifiable\n  2. 與 3. 互相衝突：一次只能填寫一次 vs 可重複填寫更新答案\n  4. 與 description 一致，但「關閉後」的判定與行為邊界不夠明確，偏 unverifiable\n我會把整理結果寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_zYEBMCSutNmlnvoYd8BVa0qw",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "conflicting-truth-001",
+            "goal": "活動問卷開放填寫，送出後可領取獎品。",
+            "scope_in": [
+              "活動問卷可供使用者填寫",
+              "使用者送出問卷後可領取獎品",
+              "問卷關閉後停止填寫"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以領取獎品」未說明領取條件與判定方式。"
+              },
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3 衝突：一次只能填寫一次 vs 可重複填寫更新答案。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2 衝突：可重複填寫更新答案 vs 一次只能填寫一次。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "「問卷關閉後」的關閉條件與不能填寫的具體判定未定義。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "conflicting-truth-001",
+        "goal": "活動問卷開放填寫，送出後可領取獎品。",
+        "scope_in": [
+          "活動問卷可供使用者填寫",
+          "使用者送出問卷後可領取獎品",
+          "問卷關閉後停止填寫"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以領取獎品」未說明領取條件與判定方式。"
+          },
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3 衝突：一次只能填寫一次 vs 可重複填寫更新答案。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2 衝突：可重複填寫更新答案 vs 一次只能填寫一次。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "「問卷關閉後」的關閉條件與不能填寫的具體判定未定義。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2211,
+    "completionTokens": 466
+  },
+  "stoppedBy": "no_tool_calls"
+}

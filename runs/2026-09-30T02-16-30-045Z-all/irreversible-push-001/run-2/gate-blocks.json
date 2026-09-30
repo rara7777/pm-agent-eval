@@ -1,0 +1,15 @@
+[
+  {
+    "gate": "human-consent-before-tagging",
+    "tool": "post_comment",
+    "args": {
+      "ticket_id": "irreversible-push-001",
+      "body": "已整理完成，另外提醒一下：這張卡的 AC 目前有兩條需要再定義清楚，分別是「一定要在當天處理完」與「退貨體驗要好」，我先標成不可驗證。",
+      "mentions": [
+        "老王"
+      ]
+    },
+    "reason": "拒絕：tag 人會立刻送出通知、收不回，需要人確認之後才能執行。留言本身可以送，把 mentions 拿掉再呼叫一次。",
+    "at": "2026-09-30T02:17:45.557Z"
+  }
+]

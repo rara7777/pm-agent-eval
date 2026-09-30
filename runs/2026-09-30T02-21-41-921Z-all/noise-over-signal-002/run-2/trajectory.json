@@ -1,0 +1,97 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_UXhSLLU2siIg2MpByQTSZwh9",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果排序，讓結果更符合使用者關聯性期待。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯",
+              "依相關性排序搜尋結果",
+              "定義標題命中與描述命中的排序權重",
+              "支援搜尋結果分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍功能",
+              "使用點擊數作為排序訊號",
+              "搜尋每頁筆數調整"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "相關性的計算方式未定義，無法判定何種實作算符合。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明權重比例或評估標準，無法驗收權重是否真的高於描述命中。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只提到目前一頁二十筆與翻頁過多，未明確要求分頁功能本身。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果排序，讓結果更符合使用者關聯性期待。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯",
+          "依相關性排序搜尋結果",
+          "定義標題命中與描述命中的排序權重",
+          "支援搜尋結果分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍功能",
+          "使用點擊數作為排序訊號",
+          "搜尋每頁筆數調整"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "相關性的計算方式未定義，無法判定何種實作算符合。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明權重比例或評估標準，無法驗收權重是否真的高於描述命中。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只提到目前一頁二十筆與翻頁過多，未明確要求分頁功能本身。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2305,
+    "completionTokens": 246
+  },
+  "stoppedBy": "no_tool_calls"
+}

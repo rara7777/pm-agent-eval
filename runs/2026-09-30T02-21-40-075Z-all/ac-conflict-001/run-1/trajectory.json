@@ -1,0 +1,119 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_SzyOqIzU6JaSYWtloITOMswj",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "新增優惠碼功能，讓使用者可套用折扣並由後台設定與管理。",
+            "scope_in": [
+              "使用者可輸入優惠碼並看到折扣後金額",
+              "後台可新增優惠碼",
+              "後台可設定折扣百分比或固定金額",
+              "優惠碼活動結束後不可再使用",
+              "已套用優惠碼的既有訂單不受影響",
+              "手機版可正常使用優惠碼功能"
+            ],
+            "scope_out": [
+              "結帳頁效能優化",
+              "結帳流程重構",
+              "其他未提及的反濫用機制"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC3「優惠碼可以無限次使用」互相衝突"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC2「優惠碼一人只能用一次」互相衝突"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "「要順」未定義可驗收標準，無法判定完成條件"
+              },
+              {
+                "ac": 7,
+                "type": "unverifiable",
+                "note": "「體驗要好」未定義可驗收標準，無法直接驗收"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "描述只提到輸入代碼價格會變，未明確要求一定顯示折扣後金額；此項可保留但與描述不完全一致"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "新增優惠碼功能，讓使用者可套用折扣並由後台設定與管理。",
+        "scope_in": [
+          "使用者可輸入優惠碼並看到折扣後金額",
+          "後台可新增優惠碼",
+          "後台可設定折扣百分比或固定金額",
+          "優惠碼活動結束後不可再使用",
+          "已套用優惠碼的既有訂單不受影響",
+          "手機版可正常使用優惠碼功能"
+        ],
+        "scope_out": [
+          "結帳頁效能優化",
+          "結帳流程重構",
+          "其他未提及的反濫用機制"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC3「優惠碼可以無限次使用」互相衝突"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC2「優惠碼一人只能用一次」互相衝突"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "「要順」未定義可驗收標準，無法判定完成條件"
+          },
+          {
+            "ac": 7,
+            "type": "unverifiable",
+            "note": "「體驗要好」未定義可驗收標準，無法直接驗收"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "描述只提到輸入代碼價格會變，未明確要求一定顯示折扣後金額；此項可保留但與描述不完全一致"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2244,
+    "completionTokens": 337
+  },
+  "stoppedBy": "no_tool_calls"
+}

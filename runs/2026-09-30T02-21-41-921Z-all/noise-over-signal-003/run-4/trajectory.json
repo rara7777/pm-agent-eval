@@ -1,0 +1,89 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求內容並檢查 AC。這張卡的目標很明確是「讓使用者自行匯出報表，且可選欄位後輸出」，BI 串接屬於範圍外。接著寫回 ticket。",
+      "toolCalls": [
+        {
+          "id": "call_g9h5lRdXwWW4L360CDltds1t",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位後匯出報表",
+            "scope_in": [
+              "匯出報表",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "缺少匯出對象、匯出時機、成功/失敗判定條件，難以判定何時算完成"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義可選欄位清單、欄位來源與選擇介面或操作方式"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明 CSV 的範圍、格式細節或是否還需要其他格式"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位後匯出報表",
+        "scope_in": [
+          "匯出報表",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "缺少匯出對象、匯出時機、成功/失敗判定條件，難以判定何時算完成"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義可選欄位清單、欄位來源與選擇介面或操作方式"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明 CSV 的範圍、格式細節或是否還需要其他格式"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2210,
+    "completionTokens": 277
+  },
+  "stoppedBy": "no_tool_calls"
+}

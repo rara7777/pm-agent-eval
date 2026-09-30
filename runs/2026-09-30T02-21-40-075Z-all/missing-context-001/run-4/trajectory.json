@@ -1,0 +1,91 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理需求並檢查 AC，這張卡描述太口語，我會先把能確定的範圍拆出來，並標出需要釐清的 AC。",
+      "toolCalls": [
+        {
+          "id": "call_Ld1NWuzVAFrnwcTqMbyVrMrc",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "通知沿用既有出貨通知流程/樣式"
+            ],
+            "scope_out": [
+              "未說明的新通知流程改版",
+              "未說明需變更的其他訂單通知"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未說明『發送通知』是指哪一種通知管道、觸發條件與完成標準。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明物流單號的格式、來源與顯示位置，無法判定驗收方式。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說沿用上次流程，未定義具體內容；AC 用『跟上次一樣』過於模糊，且無法直接驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "通知沿用既有出貨通知流程/樣式"
+        ],
+        "scope_out": [
+          "未說明的新通知流程改版",
+          "未說明需變更的其他訂單通知"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未說明『發送通知』是指哪一種通知管道、觸發條件與完成標準。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明物流單號的格式、來源與顯示位置，無法判定驗收方式。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說沿用上次流程，未定義具體內容；AC 用『跟上次一樣』過於模糊，且無法直接驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。\n\n這張卡目前的重點是：\n- 訂單出貨後發送寵物訂閱盒出貨通知\n- 通知內容包含物流單號\n- 沿用既有出貨通知流程/樣式\n\n我也標了 AC 問題：\n- AC 1：unverifiable\n- AC 2：unverifiable\n- AC 3：mismatch\n\n如果你要，我也可以幫你把這張卡再進一步改寫成更像可直接開發的版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2004,
+    "completionTokens": 406
+  },
+  "stoppedBy": "no_tool_calls"
+}

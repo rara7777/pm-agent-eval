@@ -1,0 +1,8 @@
+{
+  "model": "gpt-5.4-mini",
+  "promptVersion": "cd590b9ba593",
+  "fixture": "fixtures/ac-conflict-001.yaml",
+  "fixtureMode": "replay",
+  "startedAt": "2026-09-30T02:16:30.050Z",
+  "finishedAt": "2026-09-30T02:16:34.590Z"
+}

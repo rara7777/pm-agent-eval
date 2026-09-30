@@ -1,0 +1,123 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與確認是否需要背景資訊。這張卡的目標是搜尋結果排序，但描述裡同時提到比對方式、錯字容忍、點擊數、分頁等，可能有些是範圍外或應拆票的內容。先把 ticket 結構化，不改 AC 原文。",
+      "toolCalls": [
+        {
+          "id": "call_cwj0PYArMk8dMwEe6kCQYI8v",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "讓搜尋結果依相關性排序",
+            "scope_in": [
+              "搜尋結果排序改為以相關性為準",
+              "相關性計算需考慮標題命中與描述命中"
+            ],
+            "scope_out": [
+              "搜尋關鍵字的比對方式調整",
+              "錯字容忍支援",
+              "將點擊數納入排序",
+              "搜尋結果分頁調整"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式與可驗證條件"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 同時提到比對方式、錯字容忍、點擊數與分頁，AC 只涵蓋排序"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述命中的權重比重或判定方式"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 有提到點擊數與最近被點擊可能影響相關性，但 AC 未包含"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁規格，例如每頁筆數、頁碼行為與邊界條件"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 將分頁視為額外問題，非本卡核心目標"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "讓搜尋結果依相關性排序",
+        "scope_in": [
+          "搜尋結果排序改為以相關性為準",
+          "相關性計算需考慮標題命中與描述命中"
+        ],
+        "scope_out": [
+          "搜尋關鍵字的比對方式調整",
+          "錯字容忍支援",
+          "將點擊數納入排序",
+          "搜尋結果分頁調整"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式與可驗證條件"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 同時提到比對方式、錯字容忍、點擊數與分頁，AC 只涵蓋排序"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述命中的權重比重或判定方式"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 有提到點擊數與最近被點擊可能影響相關性，但 AC 未包含"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁規格，例如每頁筆數、頁碼行為與邊界條件"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 將分頁視為額外問題，非本卡核心目標"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2482,
+    "completionTokens": 393
+  },
+  "stoppedBy": "no_tool_calls"
+}

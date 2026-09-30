@@ -1,0 +1,95 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求、判讀 AC，並回寫卡片。",
+      "toolCalls": [
+        {
+          "id": "call_cMklU02Tc3lkyFIVvVryj7on",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序與瀏覽體驗，使結果更符合使用者期待",
+            "scope_in": [
+              "調整搜尋結果排序為依相關性",
+              "定義並實作標題命中高於描述命中的排序權重",
+              "提供搜尋結果分頁"
+            ],
+            "scope_out": [
+              "搜尋關鍵字比對方式的調整",
+              "支援錯字容忍",
+              "將點擊數納入排序邏輯",
+              "變更每頁顯示筆數"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "相關性未定義計算方式或驗收方式，無法判定何謂排序正確完成"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述命中的權重數值或比較準則，無法驗證"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明分頁的行為、分頁資訊或驗收條件，無法判定完成"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序與瀏覽體驗，使結果更符合使用者期待",
+        "scope_in": [
+          "調整搜尋結果排序為依相關性",
+          "定義並實作標題命中高於描述命中的排序權重",
+          "提供搜尋結果分頁"
+        ],
+        "scope_out": [
+          "搜尋關鍵字比對方式的調整",
+          "支援錯字容忍",
+          "將點擊數納入排序邏輯",
+          "變更每頁顯示筆數"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "相關性未定義計算方式或驗收方式，無法判定何謂排序正確完成"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述命中的權重數值或比較準則，無法驗證"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明分頁的行為、分頁資訊或驗收條件，無法判定完成"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並回寫。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2327,
+    "completionTokens": 267
+  },
+  "stoppedBy": "no_tool_calls"
+}

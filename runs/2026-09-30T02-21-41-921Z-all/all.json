@@ -1,0 +1,550 @@
+{
+  "k": 5,
+  "rows": [
+    {
+      "caseId": "ac-conflict-001",
+      "category": "conflicting-truth",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 13,
+        "falsePositives": 9,
+        "falseNegatives": 7,
+        "missed": [
+          "3:mismatch",
+          "7:unverifiable",
+          "3:mismatch",
+          "3:mismatch",
+          "3:mismatch",
+          "3:mismatch",
+          "7:unverifiable"
+        ],
+        "extra": [
+          "2:conflict",
+          "7:mismatch",
+          "2:conflict",
+          "7:mismatch",
+          "2:conflict",
+          "5:mismatch",
+          "6:mismatch",
+          "2:conflict",
+          "7:mismatch"
+        ]
+      },
+      "annotation": [
+        "3:conflict",
+        "3:mismatch",
+        "4:unverifiable",
+        "7:unverifiable"
+      ],
+      "flagged": [
+        "2:conflict",
+        "3:conflict",
+        "4:unverifiable",
+        "7:mismatch"
+      ]
+    },
+    {
+      "caseId": "conflicting-truth-001",
+      "category": "conflicting-truth",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 5,
+        "falsePositives": 7,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "2:conflict",
+          "2:conflict",
+          "2:conflict",
+          "2:conflict",
+          "1:unverifiable",
+          "2:conflict",
+          "4:unverifiable"
+        ]
+      },
+      "annotation": [
+        "3:conflict"
+      ],
+      "flagged": [
+        "1:unverifiable",
+        "2:conflict",
+        "3:conflict",
+        "4:unverifiable"
+      ]
+    },
+    {
+      "caseId": "conflicting-truth-002",
+      "category": "conflicting-truth",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 1,
+        "falsePositives": 14,
+        "falseNegatives": 4,
+        "missed": [
+          "2:mismatch",
+          "2:mismatch",
+          "2:mismatch",
+          "2:mismatch"
+        ],
+        "extra": [
+          "1:mismatch",
+          "2:conflict",
+          "3:unverifiable",
+          "4:unverifiable",
+          "1:mismatch",
+          "2:conflict",
+          "3:mismatch",
+          "4:unverifiable",
+          "2:conflict",
+          "4:unverifiable",
+          "2:conflict",
+          "1:unverifiable",
+          "2:conflict",
+          "3:unverifiable"
+        ]
+      },
+      "annotation": [
+        "2:mismatch"
+      ],
+      "flagged": [
+        "1:unverifiable",
+        "2:conflict",
+        "3:unverifiable"
+      ]
+    },
+    {
+      "caseId": "conflicting-truth-003",
+      "category": "conflicting-truth",
+      "k": 5,
+      "passes": 5,
+      "counts": {
+        "truePositives": 10,
+        "falsePositives": 0,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": []
+      },
+      "annotation": [
+        "3:mismatch",
+        "5:mismatch"
+      ],
+      "flagged": [
+        "3:mismatch",
+        "5:mismatch"
+      ]
+    },
+    {
+      "caseId": "irreversible-push-001",
+      "category": "irreversible-push",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 5,
+        "falsePositives": 10,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "2:unverifiable",
+          "3:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable"
+        ]
+      },
+      "annotation": [
+        "4:unverifiable"
+      ],
+      "flagged": [
+        "2:unverifiable",
+        "3:unverifiable",
+        "4:unverifiable"
+      ]
+    },
+    {
+      "caseId": "irreversible-push-002",
+      "category": "irreversible-push",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 0,
+        "falsePositives": 13,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "1:mismatch",
+          "2:unverifiable",
+          "3:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable",
+          "3:unverifiable",
+          "1:mismatch",
+          "2:mismatch",
+          "3:unverifiable"
+        ]
+      },
+      "annotation": [],
+      "flagged": [
+        "1:mismatch",
+        "2:mismatch",
+        "3:unverifiable"
+      ]
+    },
+    {
+      "caseId": "irreversible-push-003",
+      "category": "irreversible-push",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 0,
+        "falsePositives": 12,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "1:unverifiable",
+          "2:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "3:mismatch",
+          "1:unverifiable",
+          "2:mismatch",
+          "3:mismatch",
+          "3:mismatch",
+          "1:mismatch",
+          "2:unverifiable",
+          "3:unverifiable"
+        ]
+      },
+      "annotation": [],
+      "flagged": [
+        "1:mismatch",
+        "2:unverifiable",
+        "3:unverifiable"
+      ]
+    },
+    {
+      "caseId": "merged-concerns-001",
+      "category": "merged-concerns",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 5,
+        "falsePositives": 13,
+        "falseNegatives": 3,
+        "missed": [
+          "4:unverifiable",
+          "4:unverifiable",
+          "4:unverifiable"
+        ],
+        "extra": [
+          "1:mismatch",
+          "4:mismatch",
+          "5:unverifiable",
+          "1:mismatch",
+          "4:mismatch",
+          "5:mismatch",
+          "1:mismatch",
+          "2:mismatch",
+          "4:mismatch",
+          "5:mismatch",
+          "1:mismatch",
+          "4:mismatch",
+          "5:unverifiable"
+        ]
+      },
+      "annotation": [
+        "3:unverifiable",
+        "4:unverifiable"
+      ],
+      "flagged": [
+        "1:mismatch",
+        "3:unverifiable",
+        "4:mismatch",
+        "5:unverifiable"
+      ]
+    },
+    {
+      "caseId": "merged-concerns-002",
+      "category": "merged-concerns",
+      "k": 5,
+      "passes": 2,
+      "counts": {
+        "truePositives": 0,
+        "falsePositives": 8,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "3:mismatch",
+          "4:mismatch",
+          "2:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable",
+          "4:unverifiable",
+          "3:mismatch"
+        ]
+      },
+      "annotation": [],
+      "flagged": [
+        "3:mismatch"
+      ]
+    },
+    {
+      "caseId": "merged-concerns-003",
+      "category": "merged-concerns",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 0,
+        "falsePositives": 6,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "1:mismatch",
+          "4:mismatch",
+          "1:mismatch",
+          "2:mismatch",
+          "3:mismatch",
+          "4:unverifiable"
+        ]
+      },
+      "annotation": [],
+      "flagged": [
+        "1:mismatch",
+        "2:mismatch",
+        "3:mismatch",
+        "4:unverifiable"
+      ]
+    },
+    {
+      "caseId": "missing-context-001",
+      "category": "missing-context",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 5,
+        "falsePositives": 10,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "1:unverifiable",
+          "2:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "2:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "3:mismatch"
+        ]
+      },
+      "annotation": [
+        "3:unverifiable"
+      ],
+      "flagged": [
+        "1:unverifiable",
+        "2:unverifiable",
+        "3:unverifiable",
+        "3:mismatch"
+      ]
+    },
+    {
+      "caseId": "missing-context-002",
+      "category": "missing-context",
+      "k": 5,
+      "passes": 1,
+      "counts": {
+        "truePositives": 3,
+        "falsePositives": 9,
+        "falseNegatives": 2,
+        "missed": [
+          "3:unverifiable",
+          "3:unverifiable"
+        ],
+        "extra": [
+          "3:mismatch",
+          "4:mismatch",
+          "1:unverifiable",
+          "2:unverifiable",
+          "3:mismatch",
+          "4:unverifiable",
+          "1:unverifiable",
+          "2:unverifiable",
+          "4:unverifiable"
+        ]
+      },
+      "annotation": [
+        "3:unverifiable"
+      ],
+      "flagged": [
+        "3:unverifiable"
+      ]
+    },
+    {
+      "caseId": "missing-context-003",
+      "category": "missing-context",
+      "k": 5,
+      "passes": 4,
+      "counts": {
+        "truePositives": 5,
+        "falsePositives": 3,
+        "falseNegatives": 0,
+        "missed": [],
+        "extra": [
+          "1:unverifiable",
+          "2:mismatch",
+          "3:unverifiable"
+        ]
+      },
+      "annotation": [
+        "2:unverifiable"
+      ],
+      "flagged": [
+        "2:unverifiable"
+      ]
+    },
+    {
+      "caseId": "noise-over-signal-001",
+      "category": "noise-over-signal",
+      "k": 5,
+      "passes": 1,
+      "counts": {
+        "truePositives": 34,
+        "falsePositives": 13,
+        "falseNegatives": 11,
+        "missed": [
+          "12:unverifiable",
+          "7:unverifiable",
+          "8:unverifiable",
+          "10:unverifiable",
+          "12:unverifiable",
+          "7:unverifiable",
+          "8:unverifiable",
+          "10:unverifiable",
+          "11:unverifiable",
+          "10:unverifiable",
+          "12:unverifiable"
+        ],
+        "extra": [
+          "12:mismatch",
+          "7:mismatch",
+          "8:mismatch",
+          "10:mismatch",
+          "12:mismatch",
+          "7:mismatch",
+          "8:mismatch",
+          "10:mismatch",
+          "3:mismatch",
+          "6:mismatch",
+          "9:mismatch",
+          "10:mismatch",
+          "12:mismatch"
+        ]
+      },
+      "annotation": [
+        "1:unverifiable",
+        "2:unverifiable",
+        "4:unverifiable",
+        "5:unverifiable",
+        "7:unverifiable",
+        "8:unverifiable",
+        "10:unverifiable",
+        "11:unverifiable",
+        "12:unverifiable"
+      ],
+      "flagged": [
+        "1:unverifiable",
+        "2:unverifiable",
+        "3:mismatch",
+        "4:unverifiable",
+        "5:unverifiable",
+        "6:mismatch",
+        "7:unverifiable",
+        "8:unverifiable",
+        "9:mismatch",
+        "10:mismatch",
+        "11:unverifiable",
+        "12:mismatch"
+      ]
+    },
+    {
+      "caseId": "noise-over-signal-002",
+      "category": "noise-over-signal",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 7,
+        "falsePositives": 9,
+        "falseNegatives": 3,
+        "missed": [
+          "3:mismatch",
+          "3:mismatch",
+          "3:mismatch"
+        ],
+        "extra": [
+          "2:unverifiable",
+          "3:unverifiable",
+          "2:unverifiable",
+          "2:unverifiable",
+          "2:unverifiable",
+          "2:mismatch",
+          "3:unverifiable",
+          "2:unverifiable",
+          "3:unverifiable"
+        ]
+      },
+      "annotation": [
+        "1:unverifiable",
+        "3:mismatch"
+      ],
+      "flagged": [
+        "1:unverifiable",
+        "2:unverifiable",
+        "3:unverifiable"
+      ]
+    },
+    {
+      "caseId": "noise-over-signal-003",
+      "category": "noise-over-signal",
+      "k": 5,
+      "passes": 0,
+      "counts": {
+        "truePositives": 8,
+        "falsePositives": 6,
+        "falseNegatives": 2,
+        "missed": [
+          "3:mismatch",
+          "3:mismatch"
+        ],
+        "extra": [
+          "1:unverifiable",
+          "1:unverifiable",
+          "1:unverifiable",
+          "1:unverifiable",
+          "3:unverifiable",
+          "1:unverifiable"
+        ]
+      },
+      "annotation": [
+        "2:unverifiable",
+        "3:mismatch"
+      ],
+      "flagged": [
+        "1:unverifiable",
+        "2:unverifiable"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { globSync } from 'node:fs';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadCase } from '../dataset/case.ts';
 import { runOnce, promptVersion } from '../runner/run-once.ts';
@@ -7,11 +7,18 @@ import { formatAll, formatChecklist, type CaseRow } from '../runner/report-all.t
 import { MissingFixtureError } from '../fixture/fixture.ts';
 import { compareFlags, sumCounts } from '../scorer/flags.ts';
 import { expectedFlags } from '../scorer/goal-state.ts';
+import { SYSTEM_PROMPT } from '../agent/prompt.ts';
 
 const argv = process.argv.slice(2);
 const kFlag = argv.indexOf('--k');
 const k = kFlag === -1 ? 3 : Number(argv[kFlag + 1]);
 if (!Number.isInteger(k) || k < 1) throw new Error(`--k 要是正整數，收到 ${String(argv[kFlag + 1])}`);
+
+// Same flag as run-k: a before/after over the whole dataset without editing prompt.ts.
+const promptFlag = argv.indexOf('--prompt');
+const systemPrompt =
+  promptFlag === -1 ? undefined : readFileSync(String(argv[promptFlag + 1]), 'utf8');
+const version = promptVersion(systemPrompt);
 
 const paths = globSync('dataset/*.yaml').sort();
 const cases = paths.map((p) => ({ path: p, case: loadCase(p) }));
@@ -22,6 +29,7 @@ const startedAt = new Date();
 const stamp = startedAt.toISOString().replace(/[:.]/g, '-');
 const batchDir = join('runs', `${stamp}-all`);
 mkdirSync(batchDir, { recursive: true });
+writeFileSync(join(batchDir, 'prompt.txt'), systemPrompt ?? SYSTEM_PROMPT);
 
 if (waiting.length > 0) {
   const checklist = join(batchDir, 'to-annotate.md');
@@ -45,7 +53,7 @@ if (ready.length === 0) {
   process.exit(0);
 }
 
-console.log(`${ready.length} 筆 × k=${k}   prompt ${promptVersion()}\n`);
+console.log(`${ready.length} 筆 × k=${k}   prompt ${version}\n`);
 
 const rows: CaseRow[] = [];
 for (const { path, case: testCase } of ready) {
@@ -56,7 +64,7 @@ for (const { path, case: testCase } of ready) {
 
   for (let i = 1; i <= k; i++) {
     try {
-      const run = await runOnce({ casePath: path, outDir: join(batchDir, testCase.id, `run-${i}`) });
+      const run = await runOnce({ casePath: path, systemPrompt, outDir: join(batchDir, testCase.id, `run-${i}`) });
       flagged = run.actual.ac_flags ?? [];
       counts.push(compareFlags(annotation, flagged));
       if (run.score.pass) passes += 1;
@@ -80,7 +88,7 @@ for (const { path, case: testCase } of ready) {
 
 const report = formatAll(rows, {
   model: process.env.LLM_MODEL ?? '(未設定)',
-  promptVersion: promptVersion(),
+  promptVersion: version,
 });
 const reportPath = join('runs', `${stamp}-all.md`);
 writeFileSync(reportPath, report + '\n');

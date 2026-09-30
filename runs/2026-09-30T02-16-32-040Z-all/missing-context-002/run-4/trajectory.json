@@ -1,0 +1,73 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求並判斷 AC，再整理回卡。這張卡描述有點缺背景，但先就現有內容做結構化。",
+      "toolCalls": [
+        {
+          "id": "call_LY9mvHnzxPZCu5Cy6ztlu9rw",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約與名額狀況，並能手動取消學員預約",
+            "scope_in": [
+              "教練登入後台後可查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額需獨立計算",
+              "後台可手動取消學員預約"
+            ],
+            "scope_out": [
+              "一般名額與活動名額的合併計算"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 明確提到活動期間的名額要另外算，表示活動名額不應與一般名額合併計算；此條方向相反。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約與名額狀況，並能手動取消學員預約",
+        "scope_in": [
+          "教練登入後台後可查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額需獨立計算",
+          "後台可手動取消學員預約"
+        ],
+        "scope_out": [
+          "一般名額與活動名額的合併計算"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 明確提到活動期間的名額要另外算，表示活動名額不應與一般名額合併計算；此條方向相反。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。  \n我也標了第 3 條 AC 有 mismatch：description 說活動名額要另外算，但 AC 寫成「不計入一般名額」，方向相反。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1988,
+    "completionTokens": 278
+  },
+  "stoppedBy": "no_tool_calls"
+}

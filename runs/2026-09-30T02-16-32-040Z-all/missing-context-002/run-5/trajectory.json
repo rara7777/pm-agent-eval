@@ -1,0 +1,79 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC 是否和描述一致。這張卡沒有足夠背景需要額外查外部資料；直接釐清後寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_bq2Xc05oc2PsS80UATv2VHGb",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+            "scope_in": [
+              "教練登入後台後可查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額獨立計算，不併入一般名額",
+              "後台可手動替學員取消預約"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "沒有定義後台課表要顯示哪些欄位、範圍或判斷條件，難以確認完成標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明活動名額如何定義、如何獨立計算，以及與一般名額的邊界規則。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額。",
+        "scope_in": [
+          "教練登入後台後可查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額獨立計算，不併入一般名額",
+          "後台可手動替學員取消預約"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "沒有定義後台課表要顯示哪些欄位、範圍或判斷條件，難以確認完成標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明活動名額如何定義、如何獨立計算，以及與一般名額的邊界規則。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2029,
+    "completionTokens": 279
+  },
+  "stoppedBy": "no_tool_calls"
+}

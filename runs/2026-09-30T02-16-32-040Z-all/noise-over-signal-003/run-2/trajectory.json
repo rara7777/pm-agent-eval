@@ -1,0 +1,89 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與檢查 AC，再回寫卡片。",
+      "toolCalls": [
+        {
+          "id": "call_hu8sZryoIp9iO0k2lfmhZ90F",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位並匯出報表。",
+            "scope_in": [
+              "使用者可以匯出報表",
+              "匯出前可以選擇要包含哪些欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "直接串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "沒有定義匯出報表的完成標準，例如匯出成功的判定、輸出內容或觸發方式。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "沒有定義可選欄位的範圍與選擇方式，無法判定是否完成。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述提到業務偏好 Excel、財務偏好 CSV，但未明確只做 CSV；描述也提到『大家可以自己匯出』，未限定單一格式。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位並匯出報表。",
+        "scope_in": [
+          "使用者可以匯出報表",
+          "匯出前可以選擇要包含哪些欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "直接串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "沒有定義匯出報表的完成標準，例如匯出成功的判定、輸出內容或觸發方式。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "沒有定義可選欄位的範圍與選擇方式，無法判定是否完成。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述提到業務偏好 Excel、財務偏好 CSV，但未明確只做 CSV；描述也提到『大家可以自己匯出』，未限定單一格式。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並回寫卡片。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2191,
+    "completionTokens": 259
+  },
+  "stoppedBy": "no_tool_calls"
+}

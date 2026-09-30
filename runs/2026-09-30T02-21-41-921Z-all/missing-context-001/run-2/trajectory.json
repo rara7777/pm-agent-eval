@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC 一致性；因為 ticket 沒有提供「上次」的上下文，會先判斷哪些內容可直接落地、哪些需要外部背景。",
+      "toolCalls": [
+        {
+          "id": "call_PdzRSew8hXY8Oj3stjHFbcLS",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在訂單出貨後發送寵物訂閱盒出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "未定義的上次通知流程細節",
+              "其他非出貨通知類型"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『出貨後』的判定條件與通知送達條件，無法驗證完成標準"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的格式、來源與是否需遮罩，無法驗證"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『跟上次一樣』缺少參照對象與可比對規格，無法驗證"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在訂單出貨後發送寵物訂閱盒出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "未定義的上次通知流程細節",
+          "其他非出貨通知類型"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『出貨後』的判定條件與通知送達條件，無法驗證完成標準"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的格式、來源與是否需遮罩，無法驗證"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『跟上次一樣』缺少參照對象與可比對規格，無法驗證"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。  \n這張票的主要問題是引用了「上次那樣」但沒有上下文，所以 AC 目前都偏不可驗證。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1944,
+    "completionTokens": 292
+  },
+  "stoppedBy": "no_tool_calls"
+}

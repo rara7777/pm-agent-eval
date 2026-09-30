@@ -1,0 +1,69 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求與檢查 AC，一次整理後寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_rjeKSYQ9Q0PsmubyUmB9nzqi",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練在後台查看自己的課程預約狀況，並正確呈現一般與活動名額。",
+            "scope_in": [
+              "教練登入後台後查看自己的課表",
+              "查看每堂課的已預約人數",
+              "查看每堂課的剩餘名額",
+              "活動期間名額需獨立計算，不併入一般名額",
+              "後台可手動取消學員的預約"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「活動的名額不計入一般名額」缺少具體計算規則，無法判定實作完成條件與顯示方式。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練在後台查看自己的課程預約狀況，並正確呈現一般與活動名額。",
+        "scope_in": [
+          "教練登入後台後查看自己的課表",
+          "查看每堂課的已預約人數",
+          "查看每堂課的剩餘名額",
+          "活動期間名額需獨立計算，不併入一般名額",
+          "後台可手動取消學員的預約"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「活動的名額不計入一般名額」缺少具體計算規則，無法判定實作完成條件與顯示方式。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \nAC 第 3 條已標註為 **unverifiable**。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1962,
+    "completionTokens": 229
+  },
+  "stoppedBy": "no_tool_calls"
+}

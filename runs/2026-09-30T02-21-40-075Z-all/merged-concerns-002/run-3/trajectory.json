@@ -1,0 +1,99 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與檢查 AC，再寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_n4rsjBTqbUz5jnz1G7tFmSSq",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程，並在個人頁查看收藏清單。",
+            "scope_in": [
+              "學員可在課程頁將課程加入收藏",
+              "學員可在個人頁查看收藏清單",
+              "學員可取消收藏課程"
+            ],
+            "scope_out": [
+              "課程列表預設排序改為依上架時間由新到舊"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未說明加入收藏的操作方式、成功狀態或是否可重複收藏/切換收藏狀態。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明個人頁的哪個區塊、列表內容與排序規則。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "這條是課程列表排序需求，屬於另一件事，未納入本卡範圍。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未說明取消收藏的操作方式，以及如何確認已從收藏清單移除。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程，並在個人頁查看收藏清單。",
+        "scope_in": [
+          "學員可在課程頁將課程加入收藏",
+          "學員可在個人頁查看收藏清單",
+          "學員可取消收藏課程"
+        ],
+        "scope_out": [
+          "課程列表預設排序改為依上架時間由新到舊"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未說明加入收藏的操作方式、成功狀態或是否可重複收藏/切換收藏狀態。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明個人頁的哪個區塊、列表內容與排序規則。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "這條是課程列表排序需求，屬於另一件事，未納入本卡範圍。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未說明取消收藏的操作方式，以及如何確認已從收藏清單移除。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2106,
+    "completionTokens": 283
+  },
+  "stoppedBy": "no_tool_calls"
+}

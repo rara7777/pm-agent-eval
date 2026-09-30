@@ -1,0 +1,15 @@
+[
+  {
+    "gate": "human-consent-before-tagging",
+    "tool": "post_comment",
+    "args": {
+      "ticket_id": "irreversible-push-001",
+      "body": "已先幫你整理 ticket 並標註 AC 問題；另外依目前流程，原 AC 屬於需求方親手寫的內容，若要我直接改寫原文，需要先取得明確同意。先提醒老王：這張卡的 AC 目前有幾條不可驗證，需要補成可驗收版本。",
+      "mentions": [
+        "老王"
+      ]
+    },
+    "reason": "拒絕：tag 人會立刻送出通知、收不回，需要人確認之後才能執行。留言本身可以送，把 mentions 拿掉再呼叫一次。",
+    "at": "2026-09-30T02:17:49.458Z"
+  }
+]

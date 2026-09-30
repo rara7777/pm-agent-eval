@@ -1,0 +1,65 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求與檢查 AC，這張卡我先整理成：\n- goal：學員可收藏課程，並調整課程列表預設排序\n- scope_in：課程頁可加入收藏、個人頁可看收藏清單、可取消收藏、課程列表預設以上架時間新到舊排序\n- scope_out：未提及的其他排序規則、收藏相關通知或分享功能、收藏與課程列表以外頁面的變更\n\nAC 檢查：\n1. 學員可以在課程頁把課程加入收藏 —— 與描述一致\n2. 收藏清單可以在個人頁面看到 —— 與描述一致\n3. 課程列表預設依上架時間由新到舊排序 —— 與描述一致\n4. 取消收藏後該課程不再出現在收藏清單 —— 與描述一致\n\n看起來沒有 conflict / unverifiable / mismatch，需要把整理後結果寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_gl1TsS0rpBLqqsrnHHKEgv2X",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "學員可收藏課程，並將課程列表預設排序改為依上架時間新到舊。",
+            "scope_in": [
+              "學員可以在課程頁將課程加入收藏",
+              "學員可以在個人頁面查看收藏清單",
+              "學員可以取消收藏",
+              "課程列表預設依上架時間由新到舊排序"
+            ],
+            "scope_out": [
+              "其他未提及的課程排序規則",
+              "收藏相關通知功能",
+              "收藏分享功能",
+              "收藏與課程列表以外頁面的變更"
+            ],
+            "ac_flags": []
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "學員可收藏課程，並將課程列表預設排序改為依上架時間新到舊。",
+        "scope_in": [
+          "學員可以在課程頁將課程加入收藏",
+          "學員可以在個人頁面查看收藏清單",
+          "學員可以取消收藏",
+          "課程列表預設依上架時間由新到舊排序"
+        ],
+        "scope_out": [
+          "其他未提及的課程排序規則",
+          "收藏相關通知功能",
+          "收藏分享功能",
+          "收藏與課程列表以外頁面的變更"
+        ],
+        "ac_flags": []
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2173,
+    "completionTokens": 381
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先根據現有 ticket 內容整理，不需要外部查資料。先拆 description，然後檢查 AC。最後會把結果寫回 ticket。",
+      "toolCalls": [
+        {
+          "id": "call_mLVTEaZSjLpltTJq5Xfi8YBR",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在寵物訂閱盒訂單出貨後發送出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "其他非出貨情境的通知",
+              "未定義為本卡範圍的上次流程細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的格式、來源或顯示位置，無法判定完成標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『跟上次一樣』缺少可比對的具體規格，無法驗證是否一致。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說照上次流程做，沒有明確定義要複製哪些內容，需釐清範圍。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在寵物訂閱盒訂單出貨後發送出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "其他非出貨情境的通知",
+          "未定義為本卡範圍的上次流程細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的格式、來源或顯示位置，無法判定完成標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『跟上次一樣』缺少可比對的具體規格，無法驗證是否一致。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說照上次流程做，沒有明確定義要複製哪些內容，需釐清範圍。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我把目標、範圍和 AC 問題標註好了，這張卡目前主要問題在於第 2、3 條 AC 缺少可驗證細節。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1981,
+    "completionTokens": 313
+  },
+  "stoppedBy": "no_tool_calls"
+}

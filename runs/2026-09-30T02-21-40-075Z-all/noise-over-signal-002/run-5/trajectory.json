@@ -1,0 +1,85 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_3WdtBgIJDU2O4v3Xfs2tU8Yt",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "將搜尋結果改為依相關性排序，並支援分頁。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "標題命中的權重高於描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍支援",
+              "以最近點擊數調整排序",
+              "依建立時間排序"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式，難以判定何時算完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義權重的實際數值或判定標準，無法驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "將搜尋結果改為依相關性排序，並支援分頁。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "標題命中的權重高於描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍支援",
+          "以最近點擊數調整排序",
+          "依建立時間排序"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式，難以判定何時算完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義權重的實際數值或判定標準，無法驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2275,
+    "completionTokens": 187
+  },
+  "stoppedBy": "no_tool_calls"
+}

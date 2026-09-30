@@ -1,0 +1,105 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求描述與 AC，並檢查是否需要補充背景資料。",
+      "toolCalls": [
+        {
+          "id": "call_BGUO9RNJVQUWDWhDdiotlitc",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+            "scope_in": [
+              "課程頁可將課程加入收藏",
+              "個人頁面可查看收藏清單",
+              "課程列表預設排序改為上架時間由新到舊",
+              "可取消收藏且取消後不再顯示於收藏清單"
+            ],
+            "scope_out": [
+              "課程列表的其他排序規則",
+              "收藏功能以外的個人頁面內容",
+              "課程上架流程本身"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未說明加入收藏後的成功狀態或已收藏時的行為，無法判定完成條件。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明收藏清單的呈現範圍、欄位或空狀態，驗收標準不夠明確。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義上架時間的資料來源與同時間時的排序規則，難以驗證。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未說明取消收藏的操作位置與成功回饋，驗收條件不完整。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+        "scope_in": [
+          "課程頁可將課程加入收藏",
+          "個人頁面可查看收藏清單",
+          "課程列表預設排序改為上架時間由新到舊",
+          "可取消收藏且取消後不再顯示於收藏清單"
+        ],
+        "scope_out": [
+          "課程列表的其他排序規則",
+          "收藏功能以外的個人頁面內容",
+          "課程上架流程本身"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未說明加入收藏後的成功狀態或已收藏時的行為，無法判定完成條件。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明收藏清單的呈現範圍、欄位或空狀態，驗收標準不夠明確。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義上架時間的資料來源與同時間時的排序規則，難以驗證。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未說明取消收藏的操作位置與成功回饋，驗收條件不完整。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2162,
+    "completionTokens": 339
+  },
+  "stoppedBy": "no_tool_calls"
+}

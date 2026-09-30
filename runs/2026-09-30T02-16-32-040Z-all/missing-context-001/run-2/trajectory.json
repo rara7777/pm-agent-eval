@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先釐清 ticket 內容並整理成結構化欄位。此票描述裡有「照上次那樣」與「上次那個流程」這類引用前案的說法，但目前沒有明確前案內容；先依現有文字整理，AC 檢查主要看是否可驗證與是否和描述一致。",
+      "toolCalls": [
+        {
+          "id": "call_k29zaadFceybPvcy06EeAp2u",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "定義或變更上次既有通知流程",
+              "處理非出貨情境的通知"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "通知內容包含物流單號，但未說明物流單號格式、來源或顯示位置，無法判定完成標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "通知要跟上次一樣，但缺少可比對的參考版本或具體規格，無法驗證。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述僅提到照上次流程做，未定義成明確需求；此條把參考說法變成驗收標準，與描述不完全一致。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "定義或變更上次既有通知流程",
+          "處理非出貨情境的通知"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "通知內容包含物流單號，但未說明物流單號格式、來源或顯示位置，無法判定完成標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "通知要跟上次一樣，但缺少可比對的參考版本或具體規格，無法驗證。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述僅提到照上次流程做，未定義成明確需求；此條把參考說法變成驗收標準，與描述不完全一致。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我標了 3 條 AC 問題：\n\n- AC 2：unverifiable\n- AC 3：unverifiable\n- AC 3：mismatch\n\n如需，我也可以幫你把這張卡再改寫成更標準的需求描述版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2005,
+    "completionTokens": 385
+  },
+  "stoppedBy": "no_tool_calls"
+}

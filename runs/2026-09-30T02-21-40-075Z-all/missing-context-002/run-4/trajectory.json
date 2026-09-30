@@ -1,0 +1,91 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與逐條檢查 AC，並把結果寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_D9rY7rVzq4D7OtYYASTmJYH6",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動期間與一般課程名額。",
+            "scope_in": [
+              "教練登入後台查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間名額需獨立計算，不併入一般名額"
+            ],
+            "scope_out": [
+              "後台手動取消學員預約"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『後台』是哪些頁面/角色權限，也未說明『自己的課表』如何判定與呈現，完成標準不夠明確。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說活動期間名額要另外算，未明確要求『不計入一般名額』的呈現規則。"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "description 沒有提到後台手動取消學員預約，較像另一張票的範圍。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動期間與一般課程名額。",
+        "scope_in": [
+          "教練登入後台查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間名額需獨立計算，不併入一般名額"
+        ],
+        "scope_out": [
+          "後台手動取消學員預約"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『後台』是哪些頁面/角色權限，也未說明『自己的課表』如何判定與呈現，完成標準不夠明確。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說活動期間名額要另外算，未明確要求『不計入一般名額』的呈現規則。"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "description 沒有提到後台手動取消學員預約，較像另一張票的範圍。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我標了 3 條 AC 問題：\n\n- AC 1：unverifiable\n- AC 3：mismatch\n- AC 4：mismatch\n\n此外已補上：\n- goal\n- scope_in\n- scope_out",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2082,
+    "completionTokens": 354
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,97 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求與檢查 AC，再回寫卡片。",
+      "toolCalls": [
+        {
+          "id": "call_YtocjO86XZWH9Uj4kccRzQwO",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序與瀏覽體驗，讓結果更符合使用者想找的內容。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯",
+              "排序以相關性為主",
+              "標題命中權重高於描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "使用點擊數作為排序訊號",
+              "建立時間排序"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式與驗收標準，無法判定何謂完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述各自權重的具體數值或比較標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁規格，例如每頁筆數、頁碼/游標、以及成功判定方式。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序與瀏覽體驗，讓結果更符合使用者想找的內容。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯",
+          "排序以相關性為主",
+          "標題命中權重高於描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "使用點擊數作為排序訊號",
+          "建立時間排序"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式與驗收標準，無法判定何謂完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述各自權重的具體數值或比較標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁規格，例如每頁筆數、頁碼/游標、以及成功判定方式。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n這張卡的 goal / scope / AC 標註已更新，且我將 3 條 AC 都標成 `unverifiable`。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2322,
+    "completionTokens": 297
+  },
+  "stoppedBy": "no_tool_calls"
+}

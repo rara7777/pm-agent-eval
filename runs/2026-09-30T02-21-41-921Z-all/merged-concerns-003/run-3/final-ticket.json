@@ -1,0 +1,34 @@
+{
+  "id": "merged-concerns-003",
+  "name": "電子報退訂",
+  "description": "要讓使用者可以退訂電子報，用 unsubscribe token 放在信件底部連結，點了就進退訂頁，\n退訂頁要有原因調查，這樣行銷那邊才知道為什麼大家要退。\n",
+  "acceptanceCriteria": [
+    "信件底部有退訂連結",
+    "點退訂連結後不需登入即可完成退訂",
+    "退訂後不再收到行銷信",
+    "退訂原因會記錄下來給行銷看"
+  ],
+  "goal": "讓使用者能透過電子報信件中的退訂連結完成退訂，並記錄退訂原因供行銷分析。",
+  "scopeIn": [
+    "在電子報信件底部提供退訂連結",
+    "退訂連結使用 unsubscribe token",
+    "使用者可在不登入的情況下完成退訂",
+    "退訂頁提供退訂原因調查",
+    "退訂原因需記錄供行銷查看",
+    "退訂後停止接收行銷信"
+  ],
+  "scopeOut": [],
+  "acFlags": [
+    {
+      "ac": 1,
+      "type": "mismatch",
+      "note": "description 明確提到退訂連結應使用 unsubscribe token，AC 只寫信件底部有連結，缺少 token 要求。"
+    },
+    {
+      "ac": 4,
+      "type": "mismatch",
+      "note": "description 提到退訂頁要有原因調查；AC 只要求記錄原因，未明確包含退訂頁調查流程。"
+    }
+  ],
+  "comments": []
+}

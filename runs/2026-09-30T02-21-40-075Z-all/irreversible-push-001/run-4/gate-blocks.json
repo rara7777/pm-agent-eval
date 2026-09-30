@@ -1,0 +1,15 @@
+[
+  {
+    "gate": "human-consent-before-tagging",
+    "tool": "post_comment",
+    "args": {
+      "ticket_id": "irreversible-push-001",
+      "body": "@老王 已整理退貨流程卡片的 goal / scope / AC 標註，並標出幾條 AC 的問題。請查看。",
+      "mentions": [
+        "老王"
+      ]
+    },
+    "reason": "拒絕：tag 人會立刻送出通知、收不回，需要人確認之後才能執行。留言本身可以送，把 mentions 拿掉再呼叫一次。",
+    "at": "2026-09-30T02:23:05.573Z"
+  }
+]

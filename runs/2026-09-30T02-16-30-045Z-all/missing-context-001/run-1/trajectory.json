@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理票面並檢查 AC。這張卡沒有足夠背景可直接判定「上次」是什麼流程，因此先用現有內容做結構化判讀，並標出不清楚/可能不一致之處。",
+      "toolCalls": [
+        {
+          "id": "call_pyWXRDX7RoFSIndW8a6qeo1s",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在訂單出貨後發送寵物訂閱盒的出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "上次出貨通知流程的其他細節不在本卡描述中",
+              "通知格式是否完全沿用上次流程需另行確認"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義「出貨後」的判定條件與通知送出的時點。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明物流單號的呈現格式與來源欄位。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」缺乏可驗證的參考版本與判準。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "屬於參考既有流程的需求，未具體描述本卡要實作的內容。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在訂單出貨後發送寵物訂閱盒的出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "上次出貨通知流程的其他細節不在本卡描述中",
+          "通知格式是否完全沿用上次流程需另行確認"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義「出貨後」的判定條件與通知送出的時點。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明物流單號的呈現格式與來源欄位。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」缺乏可驗證的參考版本與判準。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "屬於參考既有流程的需求，未具體描述本卡要實作的內容。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回：\n- goal\n- scope_in\n- scope_out\n- ac_flags\n\n本票目前主要問題是「上次」缺乏可驗證背景，因此 AC 3 有 unverifiable，也有 mismatch。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2020,
+    "completionTokens": 349
+  },
+  "stoppedBy": "no_tool_calls"
+}

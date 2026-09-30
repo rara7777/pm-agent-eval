@@ -1,0 +1,107 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_iSgI3lUKCFxOOYnr2PbPAUTk",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約與名額狀況，並支援手動取消學員預約。",
+            "scope_in": [
+              "教練登入後台後查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額需獨立計算",
+              "後台可手動取消學員預約"
+            ],
+            "scope_out": [
+              "不處理一般學員的前台預約流程",
+              "不處理課程建立或排課規則",
+              "不處理活動名額與一般名額的合併計算"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義「自己的課表」包含哪些欄位或時間範圍，無法判定完成標準。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義已預約人數與剩餘名額的計算基準與格式。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說活動期間的名額要另外算，AC 寫成不計入一般名額，語意不完全一致且缺少計算方式。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未定義可取消的對象、操作限制與取消後狀態。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約與名額狀況，並支援手動取消學員預約。",
+        "scope_in": [
+          "教練登入後台後查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額需獨立計算",
+          "後台可手動取消學員預約"
+        ],
+        "scope_out": [
+          "不處理一般學員的前台預約流程",
+          "不處理課程建立或排課規則",
+          "不處理活動名額與一般名額的合併計算"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義「自己的課表」包含哪些欄位或時間範圍，無法判定完成標準。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義已預約人數與剩餘名額的計算基準與格式。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說活動期間的名額要另外算，AC 寫成不計入一般名額，語意不完全一致且缺少計算方式。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未定義可取消的對象、操作限制與取消後狀態。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \nAC 標註如下：\n\n- 1：unverifiable\n- 2：unverifiable\n- 3：mismatch\n- 4：unverifiable",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2114,
+    "completionTokens": 371
+  },
+  "stoppedBy": "no_tool_calls"
+}

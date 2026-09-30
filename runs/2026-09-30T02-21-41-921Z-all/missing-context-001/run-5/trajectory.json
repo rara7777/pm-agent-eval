@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先直接整理這張卡，這類需求沒有提供足夠上下文可查外部資料就能判定的內容，所以先依 description 和 AC 做結構化與標註。",
+      "toolCalls": [
+        {
+          "id": "call_doKsktd4wUmHdKi0GHKf8kTR",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "其他非出貨通知的訂單通知",
+              "其他流程或版型的變更"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義出貨後多久送出、由什麼事件判定出貨完成，難以驗收"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號格式、來源與是否需脫敏，難以驗收"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "僅寫『跟上次一樣』，缺少可比對的具體基準"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說沿用上次流程，但沒有明確列出要完全相同的項目"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "其他非出貨通知的訂單通知",
+          "其他流程或版型的變更"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義出貨後多久送出、由什麼事件判定出貨完成，難以驗收"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號格式、來源與是否需脫敏，難以驗收"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "僅寫『跟上次一樣』，缺少可比對的具體基準"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說沿用上次流程，但沒有明確列出要完全相同的項目"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1970,
+    "completionTokens": 288
+  },
+  "stoppedBy": "no_tool_calls"
+}

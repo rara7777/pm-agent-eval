@@ -1,0 +1,93 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求並檢查 AC 可驗證性與是否有衝突。這張卡缺少「上次那樣」的上下文，因此我先把可直接判定的部分整理出來，並將需要上次流程細節的部分標成不夠具體。",
+      "toolCalls": [
+        {
+          "id": "call_AwyEvmjep0Sw9PF77Qeo5DUJ",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+            "scope_in": [
+              "訂單出貨後觸發通知",
+              "通知內容包含物流單號",
+              "通知形式與上次流程一致"
+            ],
+            "scope_out": [
+              "未定義的上次流程細節",
+              "其他非出貨通知類型的通知",
+              "未與出貨事件綁定的通知"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『出貨後』的判定條件與通知發送時點，無法驗收"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明物流單號格式、來源與是否允許空值，無法驗收"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『跟上次一樣』缺少可對照的參考版本與具體差異範圍，無法驗收"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+        "scope_in": [
+          "訂單出貨後觸發通知",
+          "通知內容包含物流單號",
+          "通知形式與上次流程一致"
+        ],
+        "scope_out": [
+          "未定義的上次流程細節",
+          "其他非出貨通知類型的通知",
+          "未與出貨事件綁定的通知"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『出貨後』的判定條件與通知發送時點，無法驗收"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明物流單號格式、來源與是否允許空值，無法驗收"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『跟上次一樣』缺少可對照的參考版本與具體差異範圍，無法驗收"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n主要判定：\n- 這張卡的核心目標是：訂單出貨後發送寵物訂閱盒的出貨通知\n- 目前 AC 主要問題都是缺少明確定義，屬於 unverifiable\n- 沒有明顯 conflict\n- 也沒有發現 AC 與 description 明顯不一致的部分\n\n已寫回內容包含：\n- goal\n- scope_in\n- scope_out\n- ac_flags",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2018,
+    "completionTokens": 406
+  },
+  "stoppedBy": "no_tool_calls"
+}

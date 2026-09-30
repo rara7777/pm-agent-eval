@@ -1,0 +1,91 @@
+{
+  "ticketId": "conflicting-truth-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與 AC，這張卡不需要外部查資料。接著我會把整理結果寫回 ticket。",
+      "toolCalls": [
+        {
+          "id": "call_0T7rB7DqM2BONCwqTgBj1DUj",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "conflicting-truth-001",
+            "goal": "讓使用者完成活動問卷後可領取獎品",
+            "scope_in": [
+              "活動問卷開放填寫",
+              "使用者填完問卷送出後可以領取獎品",
+              "問卷關閉後不能再填寫"
+            ],
+            "scope_out": [
+              "同一個帳號只能填寫一次",
+              "使用者可以重複填寫更新答案"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3 互相衝突：一個帳號只能填一次，不能重複填寫更新答案。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2 互相衝突：若同一帳號只能填寫一次，就不能重複填寫更新答案。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說填完送出可領獎品，沒有描述可重複填寫或更新答案。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "conflicting-truth-001",
+        "goal": "讓使用者完成活動問卷後可領取獎品",
+        "scope_in": [
+          "活動問卷開放填寫",
+          "使用者填完問卷送出後可以領取獎品",
+          "問卷關閉後不能再填寫"
+        ],
+        "scope_out": [
+          "同一個帳號只能填寫一次",
+          "使用者可以重複填寫更新答案"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3 互相衝突：一個帳號只能填一次，不能重複填寫更新答案。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2 互相衝突：若同一帳號只能填寫一次，就不能重複填寫更新答案。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說填完送出可領獎品，沒有描述可重複填寫或更新答案。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2017,
+    "completionTokens": 272
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,115 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，再寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_2ldNAfqf1oqZ3pKgtzEWqJuk",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "調整搜尋結果的排序與分頁體驗，使使用者更容易找到相關內容。",
+            "scope_in": [
+              "搜尋結果改以相關性排序",
+              "相關性排序需考慮標題命中與描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "搜尋關鍵字比對方式的調整",
+              "錯字容忍搜尋",
+              "使用點擊數作為排序訊號",
+              "現有每頁二十筆的頁面大小是否調整"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "相關性未定義清楚，缺少可驗收的計算方式或判定標準。"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "描述提到相關性可能也包含最近點擊，但 AC 只要求依相關性排序，範圍未具體化。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述命中的權重數值或比較規則。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "描述提到相關性還可能納入最近點擊等因素，AC 只談標題與描述權重。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "分頁未定義頁碼、每頁筆數、或可驗收的行為。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "調整搜尋結果的排序與分頁體驗，使使用者更容易找到相關內容。",
+        "scope_in": [
+          "搜尋結果改以相關性排序",
+          "相關性排序需考慮標題命中與描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "搜尋關鍵字比對方式的調整",
+          "錯字容忍搜尋",
+          "使用點擊數作為排序訊號",
+          "現有每頁二十筆的頁面大小是否調整"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "相關性未定義清楚，缺少可驗收的計算方式或判定標準。"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "描述提到相關性可能也包含最近點擊，但 AC 只要求依相關性排序，範圍未具體化。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述命中的權重數值或比較規則。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "描述提到相關性還可能納入最近點擊等因素，AC 只談標題與描述權重。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "分頁未定義頁碼、每頁筆數、或可驗收的行為。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2433,
+    "completionTokens": 345
+  },
+  "stoppedBy": "no_tool_calls"
+}

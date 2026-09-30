@@ -1,0 +1,109 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求並檢查 AC，這張卡明顯缺少可驗證細節，需要補成結構化內容。",
+      "toolCalls": [
+        {
+          "id": "call_g0G5n6OwsBHNiMfcVTYZLccl",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約與名額狀況，並能手動取消學員預約",
+            "scope_in": [
+              "教練登入後台後可查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額需獨立計算",
+              "後台可手動取消學員預約"
+            ],
+            "scope_out": [
+              "一般會員前台預約流程",
+              "活動名額與一般名額的合併計算",
+              "課程排班或課表建立功能",
+              "學員自行取消預約"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義「後台」的範圍、課表的顯示條件與欄位，無法判定完成標準"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義已預約人數與剩餘名額的計算規則、是否含候補或取消狀態"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說活動期間的名額要另外算，未說明要如何呈現或與一般名額的關係"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未定義可取消的對象、操作權限、取消後的狀態變化與通知行為"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約與名額狀況，並能手動取消學員預約",
+        "scope_in": [
+          "教練登入後台後可查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額需獨立計算",
+          "後台可手動取消學員預約"
+        ],
+        "scope_out": [
+          "一般會員前台預約流程",
+          "活動名額與一般名額的合併計算",
+          "課程排班或課表建立功能",
+          "學員自行取消預約"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義「後台」的範圍、課表的顯示條件與欄位，無法判定完成標準"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義已預約人數與剩餘名額的計算規則、是否含候補或取消狀態"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說活動期間的名額要另外算，未說明要如何呈現或與一般名額的關係"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未定義可取消的對象、操作權限、取消後的狀態變化與通知行為"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上，AC 標註如下：\n\n- 1：unverifiable\n- 2：unverifiable\n- 3：mismatch\n- 4：unverifiable\n\n如果你要，我也可以再幫你把這張 ticket 補成更可開發的版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2158,
+    "completionTokens": 440
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,125 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description 與 AC，並標出明顯衝突/不清楚之處；這張卡不需要外查背景就能判斷。",
+      "toolCalls": [
+        {
+          "id": "call_pwpr3iF2S14BvSdkah4zpDEC",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "提供可在後台設定、可於結帳時套用的優惠碼功能，並支援手機版使用體驗。",
+            "scope_in": [
+              "使用者可在結帳時輸入優惠碼並看到折扣後金額",
+              "後台可新增與設定優惠碼折扣規則",
+              "優惠碼需有使用限制與到期控制",
+              "優惠碼功能需支援手機版操作",
+              "結帳流程需維持順暢"
+            ],
+            "scope_out": [
+              "結帳頁效能優化",
+              "其他活動機制以外的促銷功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3 互相矛盾：一個說一人只能用一次，另一個說可無限次使用。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2 互相矛盾：一個說可無限次使用，另一個說一人只能用一次。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "「結帳流程要順」未定義可驗收標準，無法判斷完成條件。"
+              },
+              {
+                "ac": 7,
+                "type": "unverifiable",
+                "note": "「手機版體驗要好」缺少具體可驗收指標，無法驗證完成與否."
+              },
+              {
+                "ac": 5,
+                "type": "mismatch",
+                "note": "描述只提到後台要能新增，未明確要求可設定折扣百分比或固定金額；屬於超出描述的細化需求。"
+              },
+              {
+                "ac": 6,
+                "type": "mismatch",
+                "note": "描述未提到到期與已套用訂單的處理規則，屬於補充性需求，與原描述不完全一致。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "提供可在後台設定、可於結帳時套用的優惠碼功能，並支援手機版使用體驗。",
+        "scope_in": [
+          "使用者可在結帳時輸入優惠碼並看到折扣後金額",
+          "後台可新增與設定優惠碼折扣規則",
+          "優惠碼需有使用限制與到期控制",
+          "優惠碼功能需支援手機版操作",
+          "結帳流程需維持順暢"
+        ],
+        "scope_out": [
+          "結帳頁效能優化",
+          "其他活動機制以外的促銷功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3 互相矛盾：一個說一人只能用一次，另一個說可無限次使用。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2 互相矛盾：一個說可無限次使用，另一個說一人只能用一次。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "「結帳流程要順」未定義可驗收標準，無法判斷完成條件。"
+          },
+          {
+            "ac": 7,
+            "type": "unverifiable",
+            "note": "「手機版體驗要好」缺少具體可驗收指標，無法驗證完成與否."
+          },
+          {
+            "ac": 5,
+            "type": "mismatch",
+            "note": "描述只提到後台要能新增，未明確要求可設定折扣百分比或固定金額；屬於超出描述的細化需求。"
+          },
+          {
+            "ac": 6,
+            "type": "mismatch",
+            "note": "描述未提到到期與已套用訂單的處理規則，屬於補充性需求，與原描述不完全一致。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2332,
+    "completionTokens": 455
+  },
+  "stoppedBy": "no_tool_calls"
+}

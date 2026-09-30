@@ -1,0 +1,73 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求並檢查 AC；此卡不需要外部查資料，直接整理與標註。",
+      "toolCalls": [
+        {
+          "id": "call_YjWQ2cpkYGsCeKadk1TOZ67u",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程並在個人頁查看收藏清單，同時課程列表預設依上架時間由新到舊排序。",
+            "scope_in": [
+              "在課程頁提供加入收藏的功能",
+              "在個人頁面顯示收藏清單",
+              "課程列表預設排序改為上架時間由新到舊",
+              "支援取消收藏後從收藏清單移除"
+            ],
+            "scope_out": [
+              "其他未提及的課程排序規則",
+              "收藏以外的個人頁功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只有提到把課程列表排序改成依上架時間，未明確要求『預設』排序；AC 比 description 多了預設條件。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程並在個人頁查看收藏清單，同時課程列表預設依上架時間由新到舊排序。",
+        "scope_in": [
+          "在課程頁提供加入收藏的功能",
+          "在個人頁面顯示收藏清單",
+          "課程列表預設排序改為上架時間由新到舊",
+          "支援取消收藏後從收藏清單移除"
+        ],
+        "scope_out": [
+          "其他未提及的課程排序規則",
+          "收藏以外的個人頁功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只有提到把課程列表排序改成依上架時間，未明確要求『預設』排序；AC 比 description 多了預設條件。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2028,
+    "completionTokens": 235
+  },
+  "stoppedBy": "no_tool_calls"
+}

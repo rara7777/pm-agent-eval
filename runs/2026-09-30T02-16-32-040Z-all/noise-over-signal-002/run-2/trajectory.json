@@ -1,0 +1,93 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_YHTD1rWfVRFxHnkw6RwYnqWm",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "讓搜尋結果改為依相關性排序，並支援分頁。",
+            "scope_in": [
+              "搜尋結果排序邏輯改為依相關性",
+              "標題命中的權重高於描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "使用點擊數作為排序訊號"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「相關性」未定義計分方式或判定標準，無法驗收。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未說明權重高多少、如何量化或比較，無法驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明分頁規格，例如頁大小、頁碼參數、總頁數或邊界行為，無法驗收."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "讓搜尋結果改為依相關性排序，並支援分頁。",
+        "scope_in": [
+          "搜尋結果排序邏輯改為依相關性",
+          "標題命中的權重高於描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "使用點擊數作為排序訊號"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「相關性」未定義計分方式或判定標準，無法驗收。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未說明權重高多少、如何量化或比較，無法驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明分頁規格，例如頁大小、頁碼參數、總頁數或邊界行為，無法驗收."
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2289,
+    "completionTokens": 230
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,95 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description，再檢查 AC 是否對得上。這張卡的目標是做「訂位取消政策」，但目前描述只提到要收費、太晚取消收更多，還沒說清楚費率規則與晚取消的定義；「擋得住惡意訂位」是原因，不是功能範圍。我先整理成可寫回的結構，AC 也會逐條標註問題。",
+      "toolCalls": [
+        {
+          "id": "call_V5574GF9fwDzfiJKBCMZBWf0",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "建立訂位取消與收費政策",
+            "scope_in": [
+              "提供客人於訂位頁面取消訂位的功能",
+              "對取消訂位依規則收取費用",
+              "晚於指定時間取消時收取較高費用",
+              "取消後發送確認信"
+            ],
+            "scope_out": [
+              "訂位防止惡意訂位的機制設計",
+              "取消費率與晚取消門檻的具體數值定義",
+              "其他訂位管理流程"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 只提到取消要收費與晚取消收更多，沒有明說一定要在訂位頁面操作取消。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義何謂「太晚取消」，也未定義費用金額或計算方式，無法驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未說明確認信的內容、發送時機與成功條件，無法驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "建立訂位取消與收費政策",
+        "scope_in": [
+          "提供客人於訂位頁面取消訂位的功能",
+          "對取消訂位依規則收取費用",
+          "晚於指定時間取消時收取較高費用",
+          "取消後發送確認信"
+        ],
+        "scope_out": [
+          "訂位防止惡意訂位的機制設計",
+          "取消費率與晚取消門檻的具體數值定義",
+          "其他訂位管理流程"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 只提到取消要收費與晚取消收更多，沒有明說一定要在訂位頁面操作取消。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義何謂「太晚取消」，也未定義費用金額或計算方式，無法驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未說明確認信的內容、發送時機與成功條件，無法驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n本次標註：\n- AC 1：mismatch\n- AC 2：unverifiable\n- AC 3：unverifiable\n\n如果你要，我也可以再幫你把這張卡補成更完整、可開發的需求版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2073,
+    "completionTokens": 422
+  },
+  "stoppedBy": "no_tool_calls"
+}

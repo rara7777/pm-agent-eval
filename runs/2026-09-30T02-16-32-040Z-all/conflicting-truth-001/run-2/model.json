@@ -1,0 +1,8 @@
+{
+  "model": "gpt-5.4-mini",
+  "promptVersion": "64ab4d919668",
+  "fixture": "fixtures/conflicting-truth-001.yaml",
+  "fixtureMode": "replay",
+  "startedAt": "2026-09-30T02:16:55.923Z",
+  "finishedAt": "2026-09-30T02:16:58.422Z"
+}
