@@ -1,0 +1,79 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與 AC，並確認是否需要補背景；這張卡描述已足夠做初步釐清，直接檢查 AC。",
+      "toolCalls": [
+        {
+          "id": "call_1G57NzSUXcRdYkQBNbh9Q6aL",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約狀況，並可手動取消學員預約。",
+            "scope_in": [
+              "教練登入後可查看自己的課表",
+              "每堂課可顯示已預約人數與剩餘名額",
+              "後台可手動幫學員取消預約"
+            ],
+            "scope_out": [
+              "活動期間名額的計算方式與一般名額分開處理"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「已預約人數」與「剩餘名額」未定義計算口徑，例如是否含候補、取消中、保留名額等，難以直接驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說「活動期間的名額要另外算」，沒有說活動名額不計入一般名額；這條把計算規則具體化成另一種限制。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約狀況，並可手動取消學員預約。",
+        "scope_in": [
+          "教練登入後可查看自己的課表",
+          "每堂課可顯示已預約人數與剩餘名額",
+          "後台可手動幫學員取消預約"
+        ],
+        "scope_out": [
+          "活動期間名額的計算方式與一般名額分開處理"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「已預約人數」與「剩餘名額」未定義計算口徑，例如是否含候補、取消中、保留名額等，難以直接驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說「活動期間的名額要另外算」，沒有說活動名額不計入一般名額；這條把計算規則具體化成另一種限制。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n標註結果：\n- AC2：unverifiable\n- AC3：mismatch\n\n其餘 AC 未標註。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2146,
+    "completionTokens": 331
+  },
+  "stoppedBy": "no_tool_calls"
+}

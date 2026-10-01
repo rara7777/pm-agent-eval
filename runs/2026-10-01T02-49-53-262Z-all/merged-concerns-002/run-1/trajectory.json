@@ -1,0 +1,154 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理 description 的範圍與 AC 檢查點，並補一點背景確認「上架時間」與收藏清單的實作語意。",
+      "toolCalls": [
+        {
+          "id": "call_Qy7DHxUWayWAvdb8Az3mxKPp",
+          "name": "search_web",
+          "args": {
+            "query": "site:docs.course platform published time sort latest oldest favorites collection course list definition"
+          }
+        },
+        {
+          "id": "call_8egizAlJTLjYCe6cQTzuO78H",
+          "name": "search_repo",
+          "args": {
+            "query": "favorite收藏 course list published_at sort order"
+          }
+        },
+        {
+          "id": "call_QMYecLYm5e4dmW7rS4ml8Uv2",
+          "name": "read_docs",
+          "args": {
+            "path": "README.md"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "search_web",
+      "args": {
+        "query": "site:docs.course platform published time sort latest oldest favorites collection course list definition"
+      },
+      "result": "找到三篇活動優惠碼的一般性介紹，沒有本專案特有的資訊。"
+    },
+    {
+      "kind": "tool_result",
+      "name": "search_repo",
+      "args": {
+        "query": "favorite收藏 course list published_at sort order"
+      },
+      "result": "src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。"
+    },
+    {
+      "kind": "tool_result",
+      "name": "read_docs",
+      "args": {
+        "path": "README.md"
+      },
+      "result": "內部文件沒有優惠碼相關章節。"
+    },
+    {
+      "kind": "assistant",
+      "text": "背景查詢沒有找到直接相關資訊，先依 ticket 文字做結構化判讀並標註 AC 問題。",
+      "toolCalls": [
+        {
+          "id": "call_GswtHqIqtAsTQciba0XFeeaG",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可在課程頁將課程加入收藏",
+              "學員可在個人頁面查看收藏清單",
+              "課程列表預設排序改為依上架時間由新到舊"
+            ],
+            "scope_out": [
+              "收藏後回來再看的其他延伸瀏覽體驗",
+              "課程列表其他排序方式",
+              "取消收藏以外的收藏管理功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "沒有定義「課程頁」是指哪一個頁面，也沒有說明加入收藏後的狀態顯示或成功判定方式。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "沒有定義「個人頁面」是哪個頁籤/區塊，也沒有說明收藏清單的呈現條件或空狀態。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「上架時間」欄位未定義，且未說明同時間資料的次序或是否所有入口都要套用此預設排序。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "沒有定義「不再出現」是否包含立即同步、重新整理後、或跨頁面一致性。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可在課程頁將課程加入收藏",
+          "學員可在個人頁面查看收藏清單",
+          "課程列表預設排序改為依上架時間由新到舊"
+        ],
+        "scope_out": [
+          "收藏後回來再看的其他延伸瀏覽體驗",
+          "課程列表其他排序方式",
+          "取消收藏以外的收藏管理功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "沒有定義「課程頁」是指哪一個頁面，也沒有說明加入收藏後的狀態顯示或成功判定方式。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "沒有定義「個人頁面」是哪個頁籤/區塊，也沒有說明收藏清單的呈現條件或空狀態。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「上架時間」欄位未定義，且未說明同時間資料的次序或是否所有入口都要套用此預設排序。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "沒有定義「不再出現」是否包含立即同步、重新整理後、或跨頁面一致性。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n重點：\n- goal 已拆成「收藏課程」+「列表依上架時間排序」\n- scope_in / scope_out 已分開\n- 4 條 AC 都標了 `unverifiable`，因為目前都缺少可驗收的判定細節\n\n如果你要，我也可以再幫你把這張票拆成兩張更乾淨的 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 3567,
+    "completionTokens": 585
+  },
+  "stoppedBy": "no_tool_calls"
+}

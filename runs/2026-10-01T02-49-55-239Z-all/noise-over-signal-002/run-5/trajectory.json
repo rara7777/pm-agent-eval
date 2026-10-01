@@ -1,0 +1,61 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description，這張卡主要在講「搜尋結果排序」而不是整個搜尋系統。\n\n- goal：把搜尋結果改成依相關性排序\n- scope_in：\n  - 搜尋結果的排序邏輯\n  - 相關性排序時，標題命中與描述命中的權重差異\n  - 搜尋結果的分頁\n- scope_out：\n  - 關鍵字比對方式\n  - 錯字容忍\n  - 點擊數是否納入相關性計算（描述提到是可能方向，但未形成明確範圍）\n  - 分頁每頁幾筆的調整（描述只說目前一頁二十筆，未要求改數量）\n\n接著檢查 AC：\n1.「搜尋結果依相關性排序」：和 description 對得上，沒明顯 conflict / unverifiable / mismatch。\n2.「標題命中的權重高於描述命中」：和「相關性怎麼算是一個問題，可能要看標題有沒有命中、描述有沒有命中」對得上，且可驗證，沒明顯問題。\n3.「搜尋結果支援分頁」：description 只說「分頁也是一個問題，現在一頁二十筆，使用者要翻很多頁」，屬於問題背景；AC 要求支援分頁本身有點像既有功能描述，未直接衝突，但目前沒有明確可驗證的完成標準，且也沒說要改每頁筆數，所以先不標。\n\n現在寫回 ticket。",
+      "toolCalls": [
+        {
+          "id": "call_kOmGbXZuUsHKQ91O1gJ9uXyb",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "把搜尋結果改成依相關性排序",
+            "scope_in": [
+              "搜尋結果的排序邏輯",
+              "相關性排序時標題命中與描述命中的權重差異",
+              "搜尋結果的分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式",
+              "錯字容忍",
+              "點擊數是否納入相關性計算",
+              "分頁每頁筆數的調整"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "把搜尋結果改成依相關性排序",
+        "scope_in": [
+          "搜尋結果的排序邏輯",
+          "相關性排序時標題命中與描述命中的權重差異",
+          "搜尋結果的分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式",
+          "錯字容忍",
+          "點擊數是否納入相關性計算",
+          "分頁每頁筆數的調整"
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2647,
+    "completionTokens": 478
+  },
+  "stoppedBy": "no_tool_calls"
+}

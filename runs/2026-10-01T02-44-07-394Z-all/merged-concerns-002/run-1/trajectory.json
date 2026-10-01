@@ -1,0 +1,67 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_FSiloWr7OYRj8syLybDXqGVA",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程，並在個人頁面查看收藏清單；課程列表預設依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可以在課程頁把課程加入收藏",
+              "收藏清單可以在個人頁面看到",
+              "課程列表預設依上架時間由新到舊排序",
+              "取消收藏後該課程不再出現在收藏清單"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "“排序很亂沒人看得懂”在 description 中只是主觀描述；AC 已具體化成依上架時間由新到舊排序，無額外衝突或對不上之處。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程，並在個人頁面查看收藏清單；課程列表預設依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可以在課程頁把課程加入收藏",
+          "收藏清單可以在個人頁面看到",
+          "課程列表預設依上架時間由新到舊排序",
+          "取消收藏後該課程不再出現在收藏清單"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "“排序很亂沒人看得懂”在 description 中只是主觀描述；AC 已具體化成依上架時間由新到舊排序，無額外衝突或對不上之處。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2102,
+    "completionTokens": 199
+  },
+  "stoppedBy": "no_tool_calls"
+}

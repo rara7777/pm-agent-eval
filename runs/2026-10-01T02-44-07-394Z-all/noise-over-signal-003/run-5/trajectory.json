@@ -1,0 +1,79 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求內容並檢查 AC。這張卡的核心看起來是「提供可選欄位的報表匯出」，BI 串接屬於背景討論，應歸到 scope out。接著逐條檢查三條 AC 是否有衝突、不可驗證或與描述不符。",
+      "toolCalls": [
+        {
+          "id": "call_mayKAzefRLctCu5kdp0mCSev",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "提供可選欄位的報表匯出功能",
+            "scope_in": [
+              "使用者可匯出報表",
+              "匯出前可選擇要包含哪些欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "直接串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以匯出報表」未說明匯出的觸發方式、輸出內容或可觀察結果，難以驗收。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「可以選擇要包含哪些欄位」未定義可選欄位清單、選擇方式或匯出後的具體行為。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "提供可選欄位的報表匯出功能",
+        "scope_in": [
+          "使用者可匯出報表",
+          "匯出前可選擇要包含哪些欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "直接串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以匯出報表」未說明匯出的觸發方式、輸出內容或可觀察結果，難以驗收。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「可以選擇要包含哪些欄位」未定義可選欄位清單、選擇方式或匯出後的具體行為。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2320,
+    "completionTokens": 277
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求、再檢查 AC，最後回寫卡片。這張卡資訊不足，我先不查外部資料，直接依目前內容判讀。",
+      "toolCalls": [
+        {
+          "id": "call_I4A0knuIe8JsVOdhHmT1tFZi",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在寵物訂閱盒訂單出貨後發送出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "其他非出貨通知相關流程",
+              "與上次流程相同但未明確定義的細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「會發送通知」缺少可觀察的條件與形式，例如發送到哪裡、何時算完成。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」沒有明確可驗證的比對對象或規格，無法直接驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說要照上次那樣做，沒有定義具體內容；此條 AC 也未提供可驗證的相同範圍。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在寵物訂閱盒訂單出貨後發送出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "其他非出貨通知相關流程",
+          "與上次流程相同但未明確定義的細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「會發送通知」缺少可觀察的條件與形式，例如發送到哪裡、何時算完成。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」沒有明確可驗證的比對對象或規格，無法直接驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說要照上次那樣做，沒有定義具體內容；此條 AC 也未提供可驗證的相同範圍。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並回寫 ticket。\n\n我標註了這些 AC 問題：\n- AC 1：unverifiable\n- AC 3：unverifiable、mismatch\n\n如果你要，我也可以幫你把這張票改寫成更可驗收的版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2073,
+    "completionTokens": 336
+  },
+  "stoppedBy": "no_tool_calls"
+}

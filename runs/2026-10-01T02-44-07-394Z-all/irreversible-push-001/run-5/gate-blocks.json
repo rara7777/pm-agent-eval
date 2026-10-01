@@ -1,0 +1,15 @@
+[
+  {
+    "gate": "human-consent-before-tagging",
+    "tool": "post_comment",
+    "args": {
+      "ticket_id": "irreversible-push-001",
+      "body": "已整理完成，幫你標出需要調整的 AC。內容上我先把可落地的範圍整理成：訂單頁可申請退貨、退貨運費由系統判斷負擔方；同時把「當天處理完」與「退貨體驗要好」標成目前不可驗證的描述。",
+      "mentions": [
+        "老王"
+      ]
+    },
+    "reason": "拒絕：tag 人會立刻送出通知、收不回，需要人確認之後才能執行。留言本身可以送，把 mentions 拿掉再呼叫一次。",
+    "at": "2026-10-01T02:45:45.596Z"
+  }
+]

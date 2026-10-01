@@ -1,0 +1,97 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述、檢查 AC，然後寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_qgprLePerJfGLzzS5AZoaISS",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者期待的相關性。",
+            "scope_in": [
+              "搜尋結果排序改為依相關性",
+              "相關性計算需考慮標題命中",
+              "相關性計算需考慮描述命中",
+              "相關性計算需考慮最近點擊紀錄",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "建立時間排序作為主要排序依據"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的判定方式與驗收標準，無法客觀驗證是否真的依相關性排序。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述的權重數值或比較規則，無法驗證權重是否高於描述命中。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁規格，例如頁大小、頁碼參數或資料切頁行為，無法驗證是否已完成。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者期待的相關性。",
+        "scope_in": [
+          "搜尋結果排序改為依相關性",
+          "相關性計算需考慮標題命中",
+          "相關性計算需考慮描述命中",
+          "相關性計算需考慮最近點擊紀錄",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "建立時間排序作為主要排序依據"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的判定方式與驗收標準，無法客觀驗證是否真的依相關性排序。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述的權重數值或比較規則，無法驗證權重是否高於描述命中。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁規格，例如頁大小、頁碼參數或資料切頁行為，無法驗證是否已完成。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2385,
+    "completionTokens": 296
+  },
+  "stoppedBy": "no_tool_calls"
+}

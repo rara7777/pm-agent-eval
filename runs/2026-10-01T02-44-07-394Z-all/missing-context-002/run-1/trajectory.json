@@ -1,0 +1,118 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC。描述裡的「後台看到自己的課程預約狀況」對應目標；「活動期間的名額要另外算」是範圍；「後台可以手動幫學員取消預約」屬於操作能力，可能也在範圍內。接著逐條看 AC 是否衝突、不可驗證、或和描述不符。",
+      "toolCalls": [
+        {
+          "id": "call_3ytnLHgPwRnBAmd0Q4sbRx4R",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約狀況",
+            "scope_in": [
+              "教練登入後台後查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間的名額另外計算",
+              "後台可手動幫學員取消預約"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「自己的課表」缺少可觀察的顯示內容或判定標準，無法驗證完成條件。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「已預約人數」與「剩餘名額」未定義顯示規則、計算方式或邊界條件，較難直接驗證。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "call_YkjqFjkPZ55ECAXUdqTqxy38",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只提到活動期間名額要另外算，未明確要求『活動的名額不計入一般名額』這個相反/等價約束。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "「手動幫學員取消預約」缺少操作入口、流程與成功判定條件，無法直接驗證。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約狀況",
+        "scope_in": [
+          "教練登入後台後查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間的名額另外計算",
+          "後台可手動幫學員取消預約"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「自己的課表」缺少可觀察的顯示內容或判定標準，無法驗證完成條件。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「已預約人數」與「剩餘名額」未定義顯示規則、計算方式或邊界條件，較難直接驗證。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只提到活動期間名額要另外算，未明確要求『活動的名額不計入一般名額』這個相反/等價約束。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "「手動幫學員取消預約」缺少操作入口、流程與成功判定條件，無法直接驗證。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2326,
+    "completionTokens": 453
+  },
+  "stoppedBy": "no_tool_calls"
+}

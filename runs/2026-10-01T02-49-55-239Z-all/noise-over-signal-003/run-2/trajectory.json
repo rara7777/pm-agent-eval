@@ -1,0 +1,69 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description 與 AC，這張卡不需要額外查外部資料；接著直接寫回整理後的 ticket。",
+      "toolCalls": [
+        {
+          "id": "call_8ih3dt1XZTSJKoLNtorkQnWc",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選欄位匯出報表",
+            "scope_in": [
+              "報表匯出",
+              "匯出前可選擇要包含的欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "直接串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以匯出報表」缺少可觀察的完成條件，例如匯出按鈕、檔案產生或成功/失敗行為。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選欄位匯出報表",
+        "scope_in": [
+          "報表匯出",
+          "匯出前可選擇要包含的欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "直接串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以匯出報表」缺少可觀察的完成條件，例如匯出按鈕、檔案產生或成功/失敗行為。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2225,
+    "completionTokens": 182
+  },
+  "stoppedBy": "no_tool_calls"
+}

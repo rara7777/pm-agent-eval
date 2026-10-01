@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC。描述中只有一句核心目標和一句範圍，沒有太多外部資訊需要查；先直接判斷四條 AC 的問題並寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_fJl0JRWXKD3Vx47yoXM3ciYN",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動期間名額與一般名額。",
+            "scope_in": [
+              "教練登入後台查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "活動期間名額另外計算",
+              "後台可手動幫學員取消預約"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 只提到教練要在後台看到自己的課程預約狀況，沒有明確提到登入後台後可看課表這個介面或資訊型態。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「已預約人數」與「剩餘名額」都有具體可觀察指標，未標註。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「活動的名額不計入一般名額」是可驗證的規則描述，未標註。"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "description 只提到教練看預約狀況與活動名額計算，沒有提到後台手動取消預約。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動期間名額與一般名額。",
+        "scope_in": [
+          "教練登入後台查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "活動期間名額另外計算",
+          "後台可手動幫學員取消預約"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 只提到教練要在後台看到自己的課程預約狀況，沒有明確提到登入後台後可看課表這個介面或資訊型態。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「已預約人數」與「剩餘名額」都有具體可觀察指標，未標註。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「活動的名額不計入一般名額」是可驗證的規則描述，未標註。"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "description 只提到教練看預約狀況與活動名額計算，沒有提到後台手動取消預約。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2231,
+    "completionTokens": 370
+  },
+  "stoppedBy": "no_tool_calls"
+}

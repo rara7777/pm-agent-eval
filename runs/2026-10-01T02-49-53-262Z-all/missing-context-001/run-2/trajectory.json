@@ -1,0 +1,81 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理這張卡的描述與 AC，這題沒有需要外查的明確背景就先依 ticket 內容判斷。",
+      "toolCalls": [
+        {
+          "id": "call_6chqY1rBshsEkMxQvG44pzke",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送出貨通知給使用者。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "沿用上次相同的通知流程/體驗"
+            ],
+            "scope_out": [
+              "不調整其他非出貨通知流程",
+              "不重做整體通知系統"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號要出現在哪個欄位、格式或語言，無法判定完成標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」缺少可比對的基準版本或具體行為，無法驗證是否符合。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送出貨通知給使用者。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "沿用上次相同的通知流程/體驗"
+        ],
+        "scope_out": [
+          "不調整其他非出貨通知流程",
+          "不重做整體通知系統"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號要出現在哪個欄位、格式或語言，無法判定完成標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」缺少可比對的基準版本或具體行為，無法驗證是否符合。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我標了兩條 AC 的問題：\n\n- AC 2：unverifiable\n- AC 3：unverifiable",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1942,
+    "completionTokens": 256
+  },
+  "stoppedBy": "no_tool_calls"
+}

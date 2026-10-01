@@ -1,0 +1,108 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description，這張卡的目標是讓教練在後台查看課程預約與名額；「活動期間的名額要另外算」屬於名額規則；「後台可以手動幫學員取消預約」看起來是可做範圍的一部分。先查一下有沒有既有定義或相依規則。",
+      "toolCalls": [
+        {
+          "id": "call_GuOTVhEEDyfxL3tf6LbbL1zW",
+          "name": "search_repo",
+          "args": {
+            "query": "\"活動期間的名額要另外算\" OR \"活動\" 名額 預約 後台 課表"
+          }
+        },
+        {
+          "id": "call_B4o78YbdWQfjax6WCyiL7RJA",
+          "name": "search_repo",
+          "args": {
+            "query": "教練 後台 課表 預約 名額 取消預約"
+          }
+        },
+        {
+          "id": "call_6s1e8QwQ0Omt0MpLYq6J4Y2i",
+          "name": "read_docs",
+          "args": {
+            "path": "README.md"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "search_repo",
+      "args": {
+        "query": "\"活動期間的名額要另外算\" OR \"活動\" 名額 預約 後台 課表"
+      },
+      "result": "src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。"
+    },
+    {
+      "kind": "tool_result",
+      "name": "search_repo",
+      "args": {
+        "query": "教練 後台 課表 預約 名額 取消預約"
+      },
+      "result": "src/checkout/promo.ts（最後修改三個月前）：有 PromoCode model 與 applyPromoCode()，只做了前台套用，沒有後台建立、沒有過期判斷。src/admin/ 底下沒有相關頁面。"
+    },
+    {
+      "kind": "tool_result",
+      "name": "read_docs",
+      "args": {
+        "path": "README.md"
+      },
+      "result": "內部文件沒有優惠碼相關章節。"
+    },
+    {
+      "kind": "assistant",
+      "text": "查到的內容跟這張卡無直接關聯，先不納入。接著逐條檢查 AC。第 1 條是看到自己的課表，跟 description 對得上；第 2 條是顯示已預約人數與剩餘名額，屬於可觀察行為；第 3 條「活動的名額不計入一般名額」和 description 的「活動期間的名額要另外算」一致，不標；第 4 條「後台可以手動幫學員取消預約」description 沒直接講，但仍像範圍內功能，先不標 mismatch。寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_GSaax9IB5kcYzVunFkZDpdm2",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約與名額狀況，並可在後台管理學員預約。",
+            "scope_in": [
+              "教練登入後台後可查看自己的課表",
+              "每堂課顯示已預約人數",
+              "每堂課顯示剩餘名額",
+              "後台可手動取消學員預約",
+              "活動期間的名額需獨立計算"
+            ],
+            "scope_out": [],
+            "ac_flags": []
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約與名額狀況，並可在後台管理學員預約。",
+        "scope_in": [
+          "教練登入後台後可查看自己的課表",
+          "每堂課顯示已預約人數",
+          "每堂課顯示剩餘名額",
+          "後台可手動取消學員預約",
+          "活動期間的名額需獨立計算"
+        ],
+        "scope_out": [],
+        "ac_flags": []
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 3761,
+    "completionTokens": 494
+  },
+  "stoppedBy": "no_tool_calls"
+}

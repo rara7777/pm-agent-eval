@@ -1,0 +1,69 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_JZOC6N5eSjUncOw2HqkFUOYB",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約與名額狀況，並支援手動取消學員預約。",
+            "scope_in": [
+              "教練登入後台後可查看自己的課表",
+              "每堂課顯示已預約人數與剩餘名額",
+              "後台可手動幫學員取消預約"
+            ],
+            "scope_out": [
+              "活動期間名額採獨立計算，不併入一般名額"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 明確提到『活動期間的名額要另外算』，與此條相反。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約與名額狀況，並支援手動取消學員預約。",
+        "scope_in": [
+          "教練登入後台後可查看自己的課表",
+          "每堂課顯示已預約人數與剩餘名額",
+          "後台可手動幫學員取消預約"
+        ],
+        "scope_out": [
+          "活動期間名額採獨立計算，不併入一般名額"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 明確提到『活動期間的名額要另外算』，與此條相反。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2035,
+    "completionTokens": 174
+  },
+  "stoppedBy": "no_tool_calls"
+}

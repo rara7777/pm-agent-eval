@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_fUth8htM85D74wSkR0ex8V6g",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "通知內容與上次完全一致的其他細節",
+              "上次流程以外的其他通知流程"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義出貨後多久發送、由哪個系統或事件觸發。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號格式、來源或是否可空值。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說照上次那樣做，未明確定義可驗收的具體規格；且可能涵蓋未列出的其他通知細節。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義『跟上次一樣』的判定標準，無法驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "通知內容與上次完全一致的其他細節",
+          "上次流程以外的其他通知流程"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義出貨後多久發送、由哪個系統或事件觸發。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號格式、來源或是否可空值。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說照上次那樣做，未明確定義可驗收的具體規格；且可能涵蓋未列出的其他通知細節。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義『跟上次一樣』的判定標準，無法驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1954,
+    "completionTokens": 241
+  },
+  "stoppedBy": "no_tool_calls"
+}

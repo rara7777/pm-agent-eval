@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_p1puYjbizyMxK2HAK7nswqfv",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在訂單出貨後發送出貨通知，並包含物流單號。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "沿用上次的流程細節",
+              "通知設計完全跟上次一樣"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『發送通知』的渠道、時點或可觀察標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『跟上次一樣』過於模糊，缺少可驗證的比較基準。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說『照上次那樣做』是參考既有流程，未明確要求本卡需完全複製上次通知。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在訂單出貨後發送出貨通知，並包含物流單號。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "沿用上次的流程細節",
+          "通知設計完全跟上次一樣"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『發送通知』的渠道、時點或可觀察標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『跟上次一樣』過於模糊，缺少可驗證的比較基準。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說『照上次那樣做』是參考既有流程，未明確要求本卡需完全複製上次通知。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2008,
+    "completionTokens": 215
+  },
+  "stoppedBy": "no_tool_calls"
+}

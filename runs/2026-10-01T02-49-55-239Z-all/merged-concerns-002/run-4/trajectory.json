@@ -1,0 +1,69 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description 與檢查 AC，再寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_VjNZXyUiMV4AVYCt9gJsceXq",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可在課程頁將課程加入收藏",
+              "學員可在個人頁面查看收藏清單",
+              "課程列表預設排序依上架時間由新到舊"
+            ],
+            "scope_out": [
+              "課程取消收藏後不再出現在收藏清單"
+            ],
+            "ac_flags": [
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "description 只提到想把課程加到收藏、之後回來再看，以及排序調整；沒有明確提到取消收藏與收藏清單移除的行為。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可在課程頁將課程加入收藏",
+          "學員可在個人頁面查看收藏清單",
+          "課程列表預設排序依上架時間由新到舊"
+        ],
+        "scope_out": [
+          "課程取消收藏後不再出現在收藏清單"
+        ],
+        "ac_flags": [
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "description 只提到想把課程加到收藏、之後回來再看，以及排序調整；沒有明確提到取消收藏與收藏清單移除的行為。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2110,
+    "completionTokens": 208
+  },
+  "stoppedBy": "no_tool_calls"
+}

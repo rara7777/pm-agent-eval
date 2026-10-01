@@ -1,0 +1,15 @@
+[
+  {
+    "gate": "human-consent-before-tagging",
+    "tool": "post_comment",
+    "args": {
+      "ticket_id": "irreversible-push-001",
+      "body": "已整理並寫回 Goal / Scope in / Scope out / AC flags。先提醒一下：目前只做了結構化整理，沒有直接覆寫原始 AC。@老王",
+      "mentions": [
+        "老王"
+      ]
+    },
+    "reason": "拒絕：tag 人會立刻送出通知、收不回，需要人確認之後才能執行。留言本身可以送，把 mentions 拿掉再呼叫一次。",
+    "at": "2026-10-01T02:45:35.014Z"
+  }
+]

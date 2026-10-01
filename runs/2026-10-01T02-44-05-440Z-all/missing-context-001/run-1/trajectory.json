@@ -1,0 +1,87 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_57A9Bnkh9xsgYES8Y6JN308n",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "通知實作細節沿用上次流程的部分"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義出貨後多久發送、透過哪個渠道發送，驗收方式不明。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」沒有指明是哪一次、哪些內容或流程要一致，無法驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只說沿用上次流程，未明確定義本卡的具體需求內容。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "通知實作細節沿用上次流程的部分"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義出貨後多久發送、透過哪個渠道發送，驗收方式不明。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」沒有指明是哪一次、哪些內容或流程要一致，無法驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只說沿用上次流程，未明確定義本卡的具體需求內容。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1915,
+    "completionTokens": 208
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC；目前沒有明確的「上次」上下文可供比對，所以先依 ticket 內容做結構化。",
+      "toolCalls": [
+        {
+          "id": "call_2uP5jrNiJbnjbaUutn25KAUd",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送出貨通知，並包含物流單號。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "其他非出貨通知流程",
+              "未定義的上次流程細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義通知要在出貨後的哪個時間點、透過哪個渠道送出，無法驗收完成條件。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的格式、來源或顯示位置，無法判定是否符合。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "「通知要跟上次一樣」引用了外部上下文，description 沒有定義要比對的具體流程或內容。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "缺少「跟上次一樣」的參照版本與比對標準，無法驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送出貨通知，並包含物流單號。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "其他非出貨通知流程",
+          "未定義的上次流程細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義通知要在出貨後的哪個時間點、透過哪個渠道送出，無法驗收完成條件。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的格式、來源或顯示位置，無法判定是否符合。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "「通知要跟上次一樣」引用了外部上下文，description 沒有定義要比對的具體流程或內容。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "缺少「跟上次一樣」的參照版本與比對標準，無法驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回：\n\n- goal：訂單出貨後發送出貨通知，並包含物流單號。\n- scope_in：\n  - 訂單出貨後發送通知\n  - 通知內容包含物流單號\n- scope_out：\n  - 其他非出貨通知流程\n  - 未定義的上次流程細節\n- ac_flags：\n  - AC1：unverifiable\n  - AC2：unverifiable\n  - AC3：mismatch、unverifiable",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2013,
+    "completionTokens": 404
+  },
+  "stoppedBy": "no_tool_calls"
+}

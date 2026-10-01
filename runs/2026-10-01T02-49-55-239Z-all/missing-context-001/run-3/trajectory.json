@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先釐清這張卡的目標與範圍，並檢查 AC 是否有可標註問題。這份描述缺少「上次那樣」的具體背景，所以只能就文字本身整理，無法補足未提供的歷史資訊。",
+      "toolCalls": [
+        {
+          "id": "call_AhBGEWuUaFx9uR5CHYMHqlkM",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "不在此卡定義通知的完整版型或文案細節",
+              "不在此卡定義上次流程的具體實作細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「會發送通知」未定義通知渠道、觸發條件與可觀察結果的驗收方式。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」沒有提供可比對的具體內容，無法驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說「照上次那樣做就好」但未明確定義上次流程內容，AC 直接要求相同，對不上可執行的需求描述。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "不在此卡定義通知的完整版型或文案細節",
+          "不在此卡定義上次流程的具體實作細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「會發送通知」未定義通知渠道、觸發條件與可觀察結果的驗收方式。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」沒有提供可比對的具體內容，無法驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說「照上次那樣做就好」但未明確定義上次流程內容，AC 直接要求相同，對不上可執行的需求描述。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回票卡。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2107,
+    "completionTokens": 316
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,97 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理目前可直接判讀的內容，這張卡的 description 太口語，缺少可驗證細節；而 AC 也有參照「上次」但未定義基準。我先直接整理並標註問題。",
+      "toolCalls": [
+        {
+          "id": "call_p1rQSTATmrizFey0sKyMb4qC",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在訂單出貨後發送出貨通知，並包含物流單號。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "沿用上次出貨通知流程的所有細節，除非另行明確定義"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義「出貨後」的判定時點與通知送達方式，無法驗證何時算完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的格式、來源與顯示位置，無法明確驗證。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」缺少可比對基準，無法驗證具體內容與範圍。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說沿用上次流程，未明確定義本次通知需要複製哪些內容。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在訂單出貨後發送出貨通知，並包含物流單號。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "沿用上次出貨通知流程的所有細節，除非另行明確定義"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義「出貨後」的判定時點與通知送達方式，無法驗證何時算完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的格式、來源與顯示位置，無法明確驗證。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」缺少可比對基準，無法驗證具體內容與範圍。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說沿用上次流程，未明確定義本次通知需要複製哪些內容。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n重點：\n- goal：訂單出貨後發送出貨通知，並包含物流單號\n- scope_in：出貨後通知、物流單號\n- scope_out：上次流程的細節不自動納入，除非另行定義\n- AC 標註：\n  - 1：unverifiable\n  - 2：unverifiable\n  - 3：unverifiable、mismatch\n\n如果你要，我也可以幫你把這張卡再改寫成更正式、可直接開發的版本。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2032,
+    "completionTokens": 442
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,9 @@
+{
+  "model": "gpt-5.4-mini",
+  "promptVersion": "21c473b64845",
+  "fixture": "fixtures/missing-context-002.yaml",
+  "fixtureMode": "replay",
+  "filledCalls": 3,
+  "startedAt": "2026-10-01T02:47:39.307Z",
+  "finishedAt": "2026-10-01T02:47:44.770Z"
+}

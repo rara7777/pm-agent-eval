@@ -1,0 +1,62 @@
+{
+  "caseId": "missing-context-002",
+  "pass": false,
+  "fields": [
+    {
+      "field": "goal",
+      "mode": "must_include",
+      "pass": true,
+      "missing": [],
+      "unexpected": []
+    },
+    {
+      "field": "scope_in",
+      "mode": "must_include",
+      "pass": true,
+      "missing": [],
+      "unexpected": []
+    },
+    {
+      "field": "scope_out",
+      "mode": "must_include",
+      "pass": true,
+      "missing": [],
+      "unexpected": []
+    },
+    {
+      "field": "ac_flags",
+      "mode": "exact_set",
+      "pass": false,
+      "missing": [],
+      "unexpected": [
+        "1:unverifiable",
+        "2:unverifiable",
+        "4:unverifiable"
+      ]
+    },
+    {
+      "field": "comment_wording",
+      "mode": "ignore",
+      "pass": null,
+      "missing": [],
+      "unexpected": [],
+      "note": "措辭不比"
+    },
+    {
+      "field": "tool_calls",
+      "mode": "ignore",
+      "pass": null,
+      "missing": [],
+      "unexpected": [],
+      "note": "查了幾次、查了誰不比"
+    },
+    {
+      "field": "goal_wording",
+      "mode": "ignore",
+      "pass": null,
+      "missing": [],
+      "unexpected": [],
+      "note": "判不到"
+    }
+  ]
+}

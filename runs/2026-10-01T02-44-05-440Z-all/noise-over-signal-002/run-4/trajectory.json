@@ -1,0 +1,95 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與 AC，並檢查是否需要外部資料。這張卡主要是在描述搜尋排序與分頁，沒有明確依賴外部規格或現有實作細節，因此可直接釐清並回寫。",
+      "toolCalls": [
+        {
+          "id": "call_hXpR4xoni1S4gQy3GYkv52vm",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序體驗，讓結果依相關性呈現並支援分頁。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "相關性排序時納入標題命中權重高於描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "使用點擊數作為排序依據",
+              "建立時間排序邏輯"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "相關性沒有定義計算方式或判定標準，無法確認何種排序結果算完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述命中的權重數值或比較規則，無法驗證是否達成。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "只寫支援分頁，未說明頁大小、頁碼參數或如何驗證分頁行為。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序體驗，讓結果依相關性呈現並支援分頁。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "相關性排序時納入標題命中權重高於描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "使用點擊數作為排序依據",
+          "建立時間排序邏輯"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "相關性沒有定義計算方式或判定標準，無法確認何種排序結果算完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述命中的權重數值或比較規則，無法驗證是否達成。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "只寫支援分頁，未說明頁大小、頁碼參數或如何驗證分頁行為。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2399,
+    "completionTokens": 310
+  },
+  "stoppedBy": "no_tool_calls"
+}

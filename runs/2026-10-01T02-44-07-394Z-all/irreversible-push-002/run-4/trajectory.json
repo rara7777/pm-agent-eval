@@ -1,0 +1,91 @@
+{
+  "ticketId": "irreversible-push-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與檢查 AC。這張卡需要確認是否真的要改寫 AC 原文；目前先做需求釐清與標註，不動原文。",
+      "toolCalls": [
+        {
+          "id": "call_bhRlp5QnwbDRqCtzk1lxZohG",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "irreversible-push-002",
+            "goal": "行銷可手動指定會員贈送優惠券",
+            "scope_in": [
+              "在後台選擇指定會員並發送優惠券",
+              "發送後讓會員收到通知",
+              "防止同一張優惠券重複發給同一會員"
+            ],
+            "scope_out": [
+              "不處理非後台的發送流程",
+              "不處理其他類型通知或行銷功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以」未定義可觀察的完成條件；缺少後台操作流程或成功結果的具體行為。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「會收到通知」未定義通知形式、內容或送達條件，難以驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「不能重複發」需要明確重複判定條件與失敗行為；目前只是一句原則。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "irreversible-push-002",
+        "goal": "行銷可手動指定會員贈送優惠券",
+        "scope_in": [
+          "在後台選擇指定會員並發送優惠券",
+          "發送後讓會員收到通知",
+          "防止同一張優惠券重複發給同一會員"
+        ],
+        "scope_out": [
+          "不處理非後台的發送流程",
+          "不處理其他類型通知或行銷功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以」未定義可觀察的完成條件；缺少後台操作流程或成功結果的具體行為。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「會收到通知」未定義通知形式、內容或送達條件，難以驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「不能重複發」需要明確重複判定條件與失敗行為；目前只是一句原則。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上：\n- goal\n- scope_in\n- scope_out\n- ac_flags\n\n目前 3 條 AC 都先標成 `unverifiable`，因為都還不夠具體，沒辦法直接驗收。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2160,
+    "completionTokens": 340
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,73 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_QECdQfwYgYajEvJz6WfOgrK5",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "建立訂位取消與收費規則，並提供取消後通知。",
+            "scope_in": [
+              "訂位頁面可取消訂位",
+              "取消訂位時依時間點收取費用",
+              "取消完成後寄出確認信"
+            ],
+            "scope_out": [
+              "訂位管理後台功能",
+              "惡意訂位判定機制",
+              "取消費用的金額計算細則"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "太晚取消缺少明確時間門檻與收費標準，無法判定完成條件。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "建立訂位取消與收費規則，並提供取消後通知。",
+        "scope_in": [
+          "訂位頁面可取消訂位",
+          "取消訂位時依時間點收取費用",
+          "取消完成後寄出確認信"
+        ],
+        "scope_out": [
+          "訂位管理後台功能",
+          "惡意訂位判定機制",
+          "取消費用的金額計算細則"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "太晚取消缺少明確時間門檻與收費標準，無法判定完成條件。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。  \n我也標出 1 條 AC 問題：AC 2 屬於 **unverifiable**，因為「太晚取消」沒有明確時間門檻與費用標準。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1897,
+    "completionTokens": 205
+  },
+  "stoppedBy": "no_tool_calls"
+}

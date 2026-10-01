@@ -1,0 +1,105 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並檢查 AC，必要時查背景。",
+      "toolCalls": [
+        {
+          "id": "call_NrJdCcTzyLrSFAqHniCdRJPc",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程並在個人頁查看收藏清單，同時將課程列表預設排序改為上架時間由新到舊",
+            "scope_in": [
+              "學員可在課程頁面將課程加入收藏",
+              "學員可在個人頁面查看收藏清單",
+              "課程列表預設排序改為依上架時間由新到舊",
+              "學員可取消收藏課程"
+            ],
+            "scope_out": [
+              "其他排序條件與排序介面調整",
+              "收藏以外的課程互動功能",
+              "個人頁面以外的位置顯示收藏清單"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『課程頁』具體位置與加入收藏的完成判定"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義個人頁面的哪個區塊顯示、空狀態與顯示條件"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義『上架時間』的資料欄位與同時間時的排序規則"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "描述只提到『把課程加到收藏』，未明確提到取消收藏；但此需求與收藏功能高度相關"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程並在個人頁查看收藏清單，同時將課程列表預設排序改為上架時間由新到舊",
+        "scope_in": [
+          "學員可在課程頁面將課程加入收藏",
+          "學員可在個人頁面查看收藏清單",
+          "課程列表預設排序改為依上架時間由新到舊",
+          "學員可取消收藏課程"
+        ],
+        "scope_out": [
+          "其他排序條件與排序介面調整",
+          "收藏以外的課程互動功能",
+          "個人頁面以外的位置顯示收藏清單"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『課程頁』具體位置與加入收藏的完成判定"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義個人頁面的哪個區塊顯示、空狀態與顯示條件"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義『上架時間』的資料欄位與同時間時的排序規則"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "描述只提到『把課程加到收藏』，未明確提到取消收藏；但此需求與收藏功能高度相關"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2161,
+    "completionTokens": 355
+  },
+  "stoppedBy": "no_tool_calls"
+}

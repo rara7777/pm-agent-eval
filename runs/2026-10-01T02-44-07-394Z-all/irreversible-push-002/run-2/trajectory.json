@@ -1,0 +1,87 @@
+{
+  "ticketId": "irreversible-push-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，接著回寫卡片。",
+      "toolCalls": [
+        {
+          "id": "call_ue1FVgMiTvIJwO1fdM82CdwO",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "irreversible-push-002",
+            "goal": "行銷可手動將優惠券發送給指定會員。",
+            "scope_in": [
+              "在後台選擇指定會員並發送優惠券",
+              "發送優惠券後通知會員"
+            ],
+            "scope_out": [
+              "優惠券重複發送給同一會員的限制"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以」未定義可觀察行為或完成標準，需改成具體可驗證的操作與結果"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「會收到通知」未定義通知形式、內容或觸發條件，無法直接驗證"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只說手動送優惠券，未提到重複發送限制；此條屬額外規則"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "irreversible-push-002",
+        "goal": "行銷可手動將優惠券發送給指定會員。",
+        "scope_in": [
+          "在後台選擇指定會員並發送優惠券",
+          "發送優惠券後通知會員"
+        ],
+        "scope_out": [
+          "優惠券重複發送給同一會員的限制"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以」未定義可觀察行為或完成標準，需改成具體可驗證的操作與結果"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「會收到通知」未定義通知形式、內容或觸發條件，無法直接驗證"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只說手動送優惠券，未提到重複發送限制；此條屬額外規則"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡片。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2110,
+    "completionTokens": 242
+  },
+  "stoppedBy": "no_tool_calls"
+}

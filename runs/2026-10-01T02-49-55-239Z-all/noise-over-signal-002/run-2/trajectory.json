@@ -1,0 +1,115 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description，抓出目標/範圍/不在本卡的事，再逐條檢查 AC。",
+      "toolCalls": [
+        {
+          "id": "call_eCx6WH8G6LyTMoGvmTom4vIu",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序與瀏覽體驗",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "排序需考慮標題命中與描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式",
+              "錯字容忍",
+              "點擊數作為排序依據",
+              "調整每頁筆數"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "只寫『依相關性排序』，未定義可觀察的排序規則或驗證方式。"
+              },
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 提到目前是依建立時間排序、希望改成相關性；AC 沒有說明與現況的差異與具體行為。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "『權重高於』缺少可驗證的排序規則或比較條件。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 只是列舉可能的相關性因素，沒有明確要求一定要實作標題權重高於描述。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "只寫『支援分頁』，沒有定義分頁行為或驗證標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序與瀏覽體驗",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "排序需考慮標題命中與描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式",
+          "錯字容忍",
+          "點擊數作為排序依據",
+          "調整每頁筆數"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "只寫『依相關性排序』，未定義可觀察的排序規則或驗證方式。"
+          },
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 提到目前是依建立時間排序、希望改成相關性；AC 沒有說明與現況的差異與具體行為。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "『權重高於』缺少可驗證的排序規則或比較條件。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 只是列舉可能的相關性因素，沒有明確要求一定要實作標題權重高於描述。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "只寫『支援分頁』，沒有定義分頁行為或驗證標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2510,
+    "completionTokens": 341
+  },
+  "stoppedBy": "no_tool_calls"
+}

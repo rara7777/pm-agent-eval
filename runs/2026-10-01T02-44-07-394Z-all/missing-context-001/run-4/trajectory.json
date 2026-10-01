@@ -1,0 +1,67 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC。此票描述裡只有一個目標：訂單出貨後發通知；「照上次那樣」與「跟上次一樣」都太依賴前案，這裡先按目前可判讀內容標註。寫回卡片如下。",
+      "toolCalls": [
+        {
+          "id": "call_Te9NXz4jnRL1SCPYP0x1GXiR",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送通知給使用者",
+            "scope_in": [
+              "出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "依照上次流程的其他細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」沒有可直接觀察的驗收標準，且缺少前案內容作為比對基準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送通知給使用者",
+        "scope_in": [
+          "出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "依照上次流程的其他細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」沒有可直接觀察的驗收標準，且缺少前案內容作為比對基準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡片。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1997,
+    "completionTokens": 205
+  },
+  "stoppedBy": "no_tool_calls"
+}

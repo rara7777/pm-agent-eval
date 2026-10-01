@@ -1,0 +1,71 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description、檢查 AC，接著直接寫回票上。",
+      "toolCalls": [
+        {
+          "id": "call_Q1yxfDPesFZlF4ODujSrPM65",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程，並將課程列表預設排序改為依上架時間由新到舊。",
+            "scope_in": [
+              "學員可以把課程加入收藏",
+              "可在個人頁面查看收藏清單",
+              "課程列表預設依上架時間由新到舊排序"
+            ],
+            "scope_out": [
+              "其他排序方式的調整",
+              "收藏功能以外的個人頁面功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只提到要改成依上架時間排序，沒有要求是否預設由新到舊；AC 多了方向限制。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程，並將課程列表預設排序改為依上架時間由新到舊。",
+        "scope_in": [
+          "學員可以把課程加入收藏",
+          "可在個人頁面查看收藏清單",
+          "課程列表預設依上架時間由新到舊排序"
+        ],
+        "scope_out": [
+          "其他排序方式的調整",
+          "收藏功能以外的個人頁面功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只提到要改成依上架時間排序，沒有要求是否預設由新到舊；AC 多了方向限制。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2101,
+    "completionTokens": 198
+  },
+  "stoppedBy": "no_tool_calls"
+}

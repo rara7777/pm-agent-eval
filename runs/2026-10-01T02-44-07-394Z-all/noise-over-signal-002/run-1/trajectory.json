@@ -1,0 +1,83 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與判斷 AC。這張卡的目標是把搜尋結果排序改成以相關性為主，並同時處理排序權重與分頁；但描述裡也提到關鍵字比對方式、錯字容忍、點擊數是否納入，這些看起來像延伸議題。先不查外部資料，直接檢查 AC 與描述的一致性與可驗證性。",
+      "toolCalls": [
+        {
+          "id": "call_abqLtuggm4aNl2HYymQECEKS",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "將搜尋結果排序改為以相關性為主，並支援搜尋結果分頁。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯，使其依相關性排序",
+              "定義標題命中與描述命中的排序權重",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍支援",
+              "將點擊數納入相關性計算"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "『相關性』未定義計算方式，僅描述結果方向，缺少可觀察的驗收標準。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "『權重高於』未說明權重值或可驗證的排序條件，無法直接驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "將搜尋結果排序改為以相關性為主，並支援搜尋結果分頁。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯，使其依相關性排序",
+          "定義標題命中與描述命中的排序權重",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍支援",
+          "將點擊數納入相關性計算"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "『相關性』未定義計算方式，僅描述結果方向，缺少可觀察的驗收標準。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "『權重高於』未說明權重值或可驗證的排序條件，無法直接驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n\n我標了 2 條 AC 有問題：\n- AC 1：unverifiable\n- AC 2：unverifiable\n\nAC 3 沒有被標註。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2490,
+    "completionTokens": 362
+  },
+  "stoppedBy": "no_tool_calls"
+}

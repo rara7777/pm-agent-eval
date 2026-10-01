@@ -1,0 +1,79 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理需求並檢查 AC 是否可驗證/有衝突/與描述不符。因為這張卡只提到「上次那樣」、「上次那個流程」，但沒有提供上次的具體規格，我會先把它視為背景不足，不另外查外部資料，直接依目前文字整理可落地的 ticket 結構。",
+      "toolCalls": [
+        {
+          "id": "call_T9JYsYDuLx9TKTgZcZ6Ww3Hk",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在訂單出貨後發送寵物訂閱盒出貨通知，內容需包含物流單號。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "其他未提及的通知類型",
+              "與「上次」流程不同的新增規格"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "只描述『出貨後會發送通知』，缺少可觀察條件如通知管道、觸發時點定義或送達結果。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『跟上次一樣』沒有提供上次流程內容，無法驗證具體要相同到哪些行為或欄位。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在訂單出貨後發送寵物訂閱盒出貨通知，內容需包含物流單號。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "其他未提及的通知類型",
+          "與「上次」流程不同的新增規格"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "只描述『出貨後會發送通知』，缺少可觀察條件如通知管道、觸發時點定義或送達結果。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『跟上次一樣』沒有提供上次流程內容，無法驗證具體要相同到哪些行為或欄位。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2087,
+    "completionTokens": 294
+  },
+  "stoppedBy": "no_tool_calls"
+}

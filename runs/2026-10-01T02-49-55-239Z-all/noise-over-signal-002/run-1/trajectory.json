@@ -1,0 +1,93 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求文字並檢查 AC。這張卡的目標是把搜尋結果排序改成以相關性為主；範圍涉及排序邏輯，並提到關鍵字比對、錯字容忍、點擊數與分頁，但其中有些像是其他 ticket 的範疇。接著逐條檢查 AC 是否有 conflict / unverifiable / mismatch。",
+      "toolCalls": [
+        {
+          "id": "call_hv6dwVGOX5GLOPdkyV5iByGK",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "將搜尋結果排序改為以相關性為主",
+            "scope_in": [
+              "搜尋結果排序改為依相關性",
+              "搜尋相關性計算納入標題命中與描述命中",
+              "搜尋相關性計算納入最近點擊"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "搜尋結果分頁"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 明確提到目前排序依建立時間、希望改成依相關性排序，AC 一致。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 提到可看標題、描述、最近點擊的相關性，但沒有說標題命中一定要高於描述命中；這條是新增權重要求。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 有提到分頁是另一個問題，但本卡主題是排序；分頁屬於範圍外事項。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "將搜尋結果排序改為以相關性為主",
+        "scope_in": [
+          "搜尋結果排序改為依相關性",
+          "搜尋相關性計算納入標題命中與描述命中",
+          "搜尋相關性計算納入最近點擊"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "搜尋結果分頁"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 明確提到目前排序依建立時間、希望改成依相關性排序，AC 一致。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 提到可看標題、描述、最近點擊的相關性，但沒有說標題命中一定要高於描述命中；這條是新增權重要求。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 有提到分頁是另一個問題，但本卡主題是排序；分頁屬於範圍外事項。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2509,
+    "completionTokens": 340
+  },
+  "stoppedBy": "no_tool_calls"
+}

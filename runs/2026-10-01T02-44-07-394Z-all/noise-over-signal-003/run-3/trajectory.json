@@ -1,0 +1,79 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_vFmffeF4ePFyDY7b91SgiuXS",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位後匯出報表",
+            "scope_in": [
+              "使用者可以匯出報表",
+              "匯出前可以選擇要包含哪些欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以匯出報表」缺少可觀察的匯出行為、格式或成功條件描述。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「可以選擇要包含哪些欄位」未定義可選欄位清單、選擇方式或匯出結果如何反映。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位後匯出報表",
+        "scope_in": [
+          "使用者可以匯出報表",
+          "匯出前可以選擇要包含哪些欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以匯出報表」缺少可觀察的匯出行為、格式或成功條件描述。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「可以選擇要包含哪些欄位」未定義可選欄位清單、選擇方式或匯出結果如何反映。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2232,
+    "completionTokens": 207
+  },
+  "stoppedBy": "no_tool_calls"
+}

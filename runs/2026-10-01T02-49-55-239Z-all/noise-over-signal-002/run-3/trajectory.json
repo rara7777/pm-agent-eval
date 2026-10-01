@@ -1,0 +1,85 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_xGMp5dni0uKC84b6Zi9huyOt",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "優化搜尋結果的排序，讓結果依相關性呈現。",
+            "scope_in": [
+              "搜尋結果排序改為依相關性排序",
+              "相關性排序納入標題命中與描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍支援",
+              "點擊數納入排序權重",
+              "建立時間作為搜尋結果排序依據"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「依相關性排序」未定義可驗證的排序規則或輸入輸出行為。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「權重高於」缺少可驗證的權重數值或排序比較條件。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "優化搜尋結果的排序，讓結果依相關性呈現。",
+        "scope_in": [
+          "搜尋結果排序改為依相關性排序",
+          "相關性排序納入標題命中與描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍支援",
+          "點擊數納入排序權重",
+          "建立時間作為搜尋結果排序依據"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「依相關性排序」未定義可驗證的排序規則或輸入輸出行為。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「權重高於」缺少可驗證的權重數值或排序比較條件。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2371,
+    "completionTokens": 220
+  },
+  "stoppedBy": "no_tool_calls"
+}

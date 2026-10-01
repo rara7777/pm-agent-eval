@@ -1,0 +1,97 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_skFiqHusZsuNLutjagTd2ZN1",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者期待的相關性。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯",
+              "依相關性而非建立時間排序搜尋結果",
+              "標題命中權重高於描述命中",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "將點擊數納入排序",
+              "其他搜尋體驗優化"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性的計算方式與驗收標準，無法判定何時算排序正確。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述權重的具體比例或可驗證的判定條件。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 提到的是目前每頁二十筆與翻頁很多頁的問題，AC 只寫支援分頁，未說明是否要調整每頁筆數或分頁行為。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者期待的相關性。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯",
+          "依相關性而非建立時間排序搜尋結果",
+          "標題命中權重高於描述命中",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "將點擊數納入排序",
+          "其他搜尋體驗優化"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性的計算方式與驗收標準，無法判定何時算排序正確。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述權重的具體比例或可驗證的判定條件。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 提到的是目前每頁二十筆與翻頁很多頁的問題，AC 只寫支援分頁，未說明是否要調整每頁筆數或分頁行為。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2355,
+    "completionTokens": 266
+  },
+  "stoppedBy": "no_tool_calls"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "conflicting-truth-001",
+  "name": "問卷填答",
+  "description": "活動問卷開放填寫，填完送出就可以領獎品。\n",
+  "acceptanceCriteria": [
+    "使用者填完問卷送出後可以領取獎品",
+    "同一個帳號只能填寫一次",
+    "使用者可以重複填寫更新答案",
+    "問卷關閉後不能再填寫"
+  ],
+  "goal": "讓使用者填寫活動問卷並在送出後領取獎品",
+  "scopeIn": [
+    "活動問卷開放填寫",
+    "填完送出後可領取獎品",
+    "同一個帳號只能填寫一次",
+    "問卷關閉後不能再填寫"
+  ],
+  "scopeOut": [
+    "重複填寫以更新答案"
+  ],
+  "acFlags": [
+    {
+      "ac": 1,
+      "type": "mismatch",
+      "note": "description 寫的是「填完送出就可以領獎品」，與 AC1 一致，未標註"
+    },
+    {
+      "ac": 2,
+      "type": "mismatch",
+      "note": "description 未提到填寫次數限制；此 AC 與描述不對應"
+    },
+    {
+      "ac": 3,
+      "type": "conflict",
+      "note": "與 AC2 互相衝突：一個帳號只能填一次 vs 可以重複填寫更新答案"
+    },
+    {
+      "ac": 4,
+      "type": "mismatch",
+      "note": "description 有提到關閉後不能再填寫，與此 AC 一致，未標註"
+    }
+  ],
+  "comments": []
+}

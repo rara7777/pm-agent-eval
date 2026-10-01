@@ -1,0 +1,87 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆需求：目前 description 只有「照上次那樣做」這種參照式描述，缺少可驗收細節；我需要先把可確定的範圍整理出來，並標出 AC 問題。接著我會直接寫回 ticket。",
+      "toolCalls": [
+        {
+          "id": "call_kkeonkGVU3Ke9xYfputy635k",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "通知樣式與上次完全一致的具體實作細節未在本票定義"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義「出貨後」的觸發時點與通知送達的驗收方式"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的欄位格式、來源與缺值時的處理方式"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」缺少可驗收的具體比對標準；需另附參考版本或明確規格"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "通知樣式與上次完全一致的具體實作細節未在本票定義"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義「出貨後」的觸發時點與通知送達的驗收方式"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的欄位格式、來源與缺值時的處理方式"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」缺少可驗收的具體比對標準；需另附參考版本或明確規格"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1999,
+    "completionTokens": 286
+  },
+  "stoppedBy": "no_tool_calls"
+}

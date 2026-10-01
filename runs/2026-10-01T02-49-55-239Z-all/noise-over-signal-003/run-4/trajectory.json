@@ -1,0 +1,69 @@
+{
+  "ticketId": "noise-over-signal-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理描述與檢查 AC。描述裡明確的是「讓大家可以自己匯出」、「可選欄位再匯出」；Excel/BI/各部門偏好屬於背景或過往討論，不直接列入範圍。AC 目前看起來有一條太籠統，另外格式只寫 CSV，和描述中的 Excel 偏好未必衝突但描述沒有要求雙格式，所以先不加。",
+      "toolCalls": [
+        {
+          "id": "call_Q3CUsuUYgK7SFPG8tLCDTyJT",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-003",
+            "goal": "讓使用者可自行選擇欄位並匯出報表",
+            "scope_in": [
+              "使用者可以匯出報表",
+              "匯出前可以選擇要包含哪些欄位",
+              "支援 CSV 格式"
+            ],
+            "scope_out": [
+              "串接 BI"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "「可以匯出報表」沒有定義可觀察的成功條件，例如匯出入口、格式或結果檔案內容。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-003",
+        "goal": "讓使用者可自行選擇欄位並匯出報表",
+        "scope_in": [
+          "使用者可以匯出報表",
+          "匯出前可以選擇要包含哪些欄位",
+          "支援 CSV 格式"
+        ],
+        "scope_out": [
+          "串接 BI"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "「可以匯出報表」沒有定義可觀察的成功條件，例如匯出入口、格式或結果檔案內容。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。\n\n重點：\n- goal：讓使用者可自行選擇欄位並匯出報表\n- scope_in：保留「匯出報表」、「可選欄位」、「CSV」\n- scope_out：排除 BI 串接\n- AC 標註：\n  - AC1：unverifiable\n    - 原因：只有「可以匯出報表」，沒有可驗證的具體行為或結果\n",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2300,
+    "completionTokens": 355
+  },
+  "stoppedBy": "no_tool_calls"
+}

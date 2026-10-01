@@ -1,0 +1,75 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先拆 description、檢查 AC，然後直接寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_3bo8lBYTnnERQKD2Mxn21bRp",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程，並調整課程列表預設排序為依上架時間由新到舊。",
+            "scope_in": [
+              "學員可在課程頁將課程加入收藏",
+              "學員可在個人頁面查看收藏清單",
+              "課程列表預設依上架時間由新到舊排序",
+              "學員可取消收藏課程"
+            ],
+            "scope_out": [
+              "其他未提及的課程排序規則調整",
+              "收藏功能以外的個人頁面改版",
+              "收藏清單以外的課程推薦或瀏覽功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "描述只提到把課程列表排序改成依上架時間，未說明是預設排序；AC 補了「預設」可能超出原意。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程，並調整課程列表預設排序為依上架時間由新到舊。",
+        "scope_in": [
+          "學員可在課程頁將課程加入收藏",
+          "學員可在個人頁面查看收藏清單",
+          "課程列表預設依上架時間由新到舊排序",
+          "學員可取消收藏課程"
+        ],
+        "scope_out": [
+          "其他未提及的課程排序規則調整",
+          "收藏功能以外的個人頁面改版",
+          "收藏清單以外的課程推薦或瀏覽功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "描述只提到把課程列表排序改成依上架時間，未說明是預設排序；AC 補了「預設」可能超出原意。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2063,
+    "completionTokens": 240
+  },
+  "stoppedBy": "no_tool_calls"
+}

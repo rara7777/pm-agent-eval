@@ -1,0 +1,89 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description，並檢查 AC。此卡沒有提供足夠背景需要外查，所以直接釐清與標註。",
+      "toolCalls": [
+        {
+          "id": "call_hurfHtR6epBpgZpzrPZa8j4G",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額",
+            "scope_in": [
+              "教練登入後台後可查看自己的課表",
+              "課程顯示已預約人數",
+              "課程顯示剩餘名額",
+              "活動期間的名額需另外計算，不併入一般名額",
+              "後台可手動取消學員預約"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 只說教練要能看到自己的課程預約狀況，沒有明確寫『登入後台可以看到自己的課表』；這條的表述偏向實作方式或介面，不完全對應原描述"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 有提到要看到課程預約狀況，但沒有明確寫需要顯示『已預約人數與剩餘名額』；屬於補充規格，和原描述不完全對應"
+              },
+              {
+                "ac": 4,
+                "type": "mismatch",
+                "note": "description 沒有提到後台手動取消學員預約，這是額外功能，不在原描述範圍內"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "教練可在後台查看自己的課程預約狀況，並正確區分活動名額與一般名額",
+        "scope_in": [
+          "教練登入後台後可查看自己的課表",
+          "課程顯示已預約人數",
+          "課程顯示剩餘名額",
+          "活動期間的名額需另外計算，不併入一般名額",
+          "後台可手動取消學員預約"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 只說教練要能看到自己的課程預約狀況，沒有明確寫『登入後台可以看到自己的課表』；這條的表述偏向實作方式或介面，不完全對應原描述"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 有提到要看到課程預約狀況，但沒有明確寫需要顯示『已預約人數與剩餘名額』；屬於補充規格，和原描述不完全對應"
+          },
+          {
+            "ac": 4,
+            "type": "mismatch",
+            "note": "description 沒有提到後台手動取消學員預約，這是額外功能，不在原描述範圍內"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2208,
+    "completionTokens": 347
+  },
+  "stoppedBy": "no_tool_calls"
+}

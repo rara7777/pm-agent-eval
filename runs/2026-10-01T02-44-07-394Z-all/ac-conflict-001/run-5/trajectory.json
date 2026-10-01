@@ -1,0 +1,95 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與檢查 AC，接著只寫回整理結果。",
+      "toolCalls": [
+        {
+          "id": "call_JqDKfV8qJGthAB3wWSxEGM3x",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "提供可在結帳時使用的優惠碼功能，讓使用者套用折扣，後台可設定優惠碼規則，並支援手機使用。",
+            "scope_in": [
+              "使用者可在結帳時輸入優惠碼並看到折扣後金額",
+              "後台可新增與設定優惠碼",
+              "後台可設定折扣百分比或固定金額",
+              "優惠碼使用規則需避免被濫用",
+              "優惠碼可在手機上使用"
+            ],
+            "scope_out": [
+              "結帳頁效能優化",
+              "已套用優惠碼的既有訂單處理以外的活動流程"
+            ],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2「一人只能用一次」互相衝突。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "「要順」是主觀描述，無法直接驗證；需改成具體流程或效能指標。"
+              },
+              {
+                "ac": 7,
+                "type": "unverifiable",
+                "note": "「體驗要好」是主觀描述，缺乏可驗證標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "提供可在結帳時使用的優惠碼功能，讓使用者套用折扣，後台可設定優惠碼規則，並支援手機使用。",
+        "scope_in": [
+          "使用者可在結帳時輸入優惠碼並看到折扣後金額",
+          "後台可新增與設定優惠碼",
+          "後台可設定折扣百分比或固定金額",
+          "優惠碼使用規則需避免被濫用",
+          "優惠碼可在手機上使用"
+        ],
+        "scope_out": [
+          "結帳頁效能優化",
+          "已套用優惠碼的既有訂單處理以外的活動流程"
+        ],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2「一人只能用一次」互相衝突。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "「要順」是主觀描述，無法直接驗證；需改成具體流程或效能指標。"
+          },
+          {
+            "ac": 7,
+            "type": "unverifiable",
+            "note": "「體驗要好」是主觀描述，缺乏可驗證標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2283,
+    "completionTokens": 313
+  },
+  "stoppedBy": "no_tool_calls"
+}

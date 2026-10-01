@@ -1,0 +1,99 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先釐清這張卡的描述與 AC，這裡沒有足夠上下文可以精準外查；我先直接整理成結構化 ticket 並標出有問題的 AC。",
+      "toolCalls": [
+        {
+          "id": "call_lckzsq1HkrC1PHCrFa4qcIH0",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "在訂單出貨後發送寵物訂閱盒的出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號"
+            ],
+            "scope_out": [
+              "通知樣式與文案完全沿用上次流程",
+              "其他未提及的通知渠道或觸發條件"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義「出貨後」的判定時點與通知發送成功的驗收方式。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義物流單號的呈現格式、來源與是否允許空值。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "「跟上次一樣」屬於參考既有實作，未明確描述本卡要交付的具體內容與驗收標準。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義「一樣」的比較基準，無法驗收。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "在訂單出貨後發送寵物訂閱盒的出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號"
+        ],
+        "scope_out": [
+          "通知樣式與文案完全沿用上次流程",
+          "其他未提及的通知渠道或觸發條件"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義「出貨後」的判定時點與通知發送成功的驗收方式。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義物流單號的呈現格式、來源與是否允許空值。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "「跟上次一樣」屬於參考既有實作，未明確描述本卡要交付的具體內容與驗收標準。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義「一樣」的比較基準，無法驗收。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2020,
+    "completionTokens": 307
+  },
+  "stoppedBy": "no_tool_calls"
+}

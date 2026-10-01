@@ -1,0 +1,65 @@
+{
+  "ticketId": "missing-context-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 ticket 內容並檢查 AC，這題不需要額外查外部資料。",
+      "toolCalls": [
+        {
+          "id": "call_0UR4p62kRQDhMudtNXoYjhfI",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-001",
+            "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+            "scope_in": [
+              "訂單出貨後發送通知",
+              "通知內容包含物流單號",
+              "沿用上次相同的通知流程與樣式"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「跟上次一樣」沒有定義可觀察的差異或驗收標準，無法直接驗證。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-001",
+        "goal": "訂單出貨後發送寵物訂閱盒的出貨通知。",
+        "scope_in": [
+          "訂單出貨後發送通知",
+          "通知內容包含物流單號",
+          "沿用上次相同的通知流程與樣式"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「跟上次一樣」沒有定義可觀察的差異或驗收標準，無法直接驗證。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我標了 1 條 AC 問題：\n\n- AC 3：`unverifiable`  \n  -「通知要跟上次一樣」沒有具體可驗收標準，無法直接判定是否完成。\n\n已寫回的內容包含：\n- goal\n- scope_in\n- scope_out\n- ac_flags",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1957,
+    "completionTokens": 237
+  },
+  "stoppedBy": "no_tool_calls"
+}

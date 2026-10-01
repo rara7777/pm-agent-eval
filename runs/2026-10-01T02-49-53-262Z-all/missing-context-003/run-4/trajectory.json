@@ -1,0 +1,85 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_3pqhFjykyYjeFgirtbSy4rm2",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人可以取消訂位，並依取消時間收取費用與寄送確認信。",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "取消訂位時依規則收取費用",
+              "取消後寄送確認信"
+            ],
+            "scope_out": [
+              "訂位建立流程",
+              "餐廳後台管理功能",
+              "惡意訂位防堵策略的完整機制",
+              "取消費用的計價規則細節"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義「太晚」的判定標準與費用計算方式，無法驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義確認信的寄送條件、內容與成功標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人可以取消訂位，並依取消時間收取費用與寄送確認信。",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "取消訂位時依規則收取費用",
+          "取消後寄送確認信"
+        ],
+        "scope_out": [
+          "訂位建立流程",
+          "餐廳後台管理功能",
+          "惡意訂位防堵策略的完整機制",
+          "取消費用的計價規則細節"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義「太晚」的判定標準與費用計算方式，無法驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義確認信的寄送條件、內容與成功標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我標了 2 條 AC 為 unverifiable：\n\n- AC 2：沒有定義「太晚」的判定標準與費用計算方式\n- AC 3：沒有定義確認信的寄送條件、內容與成功標準",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 1941,
+    "completionTokens": 261
+  },
+  "stoppedBy": "no_tool_calls"
+}

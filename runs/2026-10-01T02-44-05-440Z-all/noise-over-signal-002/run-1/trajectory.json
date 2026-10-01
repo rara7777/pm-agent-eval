@@ -1,0 +1,95 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_BUBFeNfRi2kZI5Ot0BkViUuW",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者期待的相關性。",
+            "scope_in": [
+              "調整搜尋結果排序邏輯",
+              "將標題命中納入相關性計算",
+              "將描述命中納入相關性計算",
+              "支援搜尋結果分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "使用點擊數作為排序訊號"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義相關性計算方式與驗收標準，無法判定何謂排序正確。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義標題與描述的權重數值或比較方式，無法驗證權重高低是否達成。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "未定義分頁規格，例如每頁筆數、頁碼傳遞方式或是否保留排序一致性。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "改善搜尋結果的排序體驗，讓結果更符合使用者期待的相關性。",
+        "scope_in": [
+          "調整搜尋結果排序邏輯",
+          "將標題命中納入相關性計算",
+          "將描述命中納入相關性計算",
+          "支援搜尋結果分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "使用點擊數作為排序訊號"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義相關性計算方式與驗收標準，無法判定何謂排序正確。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義標題與描述的權重數值或比較方式，無法驗證權重高低是否達成。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "未定義分頁規格，例如每頁筆數、頁碼傳遞方式或是否保留排序一致性。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2339,
+    "completionTokens": 250
+  },
+  "stoppedBy": "no_tool_calls"
+}

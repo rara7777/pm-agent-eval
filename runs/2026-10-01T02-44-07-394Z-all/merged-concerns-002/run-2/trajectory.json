@@ -1,0 +1,83 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理需求描述並檢查 AC，接著寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_GY2wyAeLyR7eVs4rLUAZRdQm",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可在課程頁加入收藏",
+              "可在個人頁面查看收藏清單",
+              "課程列表預設依上架時間由新到舊排序",
+              "取消收藏後該課程不再出現在收藏清單"
+            ],
+            "scope_out": [
+              "不涉及其他排序條件或手動排序功能",
+              "不涉及收藏以外的課程互動功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「個人頁面看到」較模糊，未說明是清單區塊、入口位置或顯示條件，難以直接驗收。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "「上架時間由新到舊」已可驗收，但缺少更明確的排序規則細節，如相同上架時間的處理方式；先不標 mismatch，僅提醒可驗證性邊界。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可在課程頁加入收藏",
+          "可在個人頁面查看收藏清單",
+          "課程列表預設依上架時間由新到舊排序",
+          "取消收藏後該課程不再出現在收藏清單"
+        ],
+        "scope_out": [
+          "不涉及其他排序條件或手動排序功能",
+          "不涉及收藏以外的課程互動功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「個人頁面看到」較模糊，未說明是清單區塊、入口位置或顯示條件，難以直接驗收。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "「上架時間由新到舊」已可驗收，但缺少更明確的排序規則細節，如相同上架時間的處理方式；先不標 mismatch，僅提醒可驗證性邊界。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2197,
+    "completionTokens": 294
+  },
+  "stoppedBy": "no_tool_calls"
+}

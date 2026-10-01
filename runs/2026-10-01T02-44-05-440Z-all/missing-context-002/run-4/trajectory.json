@@ -1,0 +1,97 @@
+{
+  "ticketId": "missing-context-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求並逐條檢查 AC。這張卡沒有提供足夠背景定義「活動期間的名額另外算」與「手動取消預約」的邊界，因此先依 ticket 文字做結構化整理，不另外查外部資料。",
+      "toolCalls": [
+        {
+          "id": "call_DY07xfxZeoERRVULhVlh0sbY",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-002",
+            "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動期間名額與一般名額。",
+            "scope_in": [
+              "教練登入後台後可查看自己的課表",
+              "每堂課顯示已預約人數與剩餘名額",
+              "活動期間的名額需與一般名額分開計算",
+              "後台可手動取消學員的預約"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "未定義『後台』與『自己的課表』的具體顯示條件或驗收方式。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "未定義已預約人數與剩餘名額的計算來源、刷新時機或顯示規則。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『活動的名額不計入一般名額』未說明活動名額的來源、分流規則與結算方式。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "未定義可取消哪些預約、取消後的狀態變更與權限限制。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-002",
+        "goal": "讓教練在後台查看自己的課程預約狀況，並正確區分活動期間名額與一般名額。",
+        "scope_in": [
+          "教練登入後台後可查看自己的課表",
+          "每堂課顯示已預約人數與剩餘名額",
+          "活動期間的名額需與一般名額分開計算",
+          "後台可手動取消學員的預約"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "未定義『後台』與『自己的課表』的具體顯示條件或驗收方式。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "未定義已預約人數與剩餘名額的計算來源、刷新時機或顯示規則。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『活動的名額不計入一般名額』未說明活動名額的來源、分流規則與結算方式。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "未定義可取消哪些預約、取消後的狀態變更與權限限制。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2144,
+    "completionTokens": 363
+  },
+  "stoppedBy": "no_tool_calls"
+}

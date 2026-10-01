@@ -1,0 +1,81 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求，這張卡的目標與範圍已足夠明確，不需要外查資料。接著檢查 AC 與 description 的對應與可驗證性。",
+      "toolCalls": [
+        {
+          "id": "call_HB46wExFORAVau5LiIsaZSdP",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人可取消訂位，並依取消時間收取對應費用",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "太晚取消時收取較高費用",
+              "取消訂位後寄送確認信"
+            ],
+            "scope_out": [
+              "訂位建立流程",
+              "惡意訂位防堵策略的其他實作"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "「太晚」與「比較多」未定義門檻或金額，無法直接驗收"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只提到取消收費與加重費用，未提取消後寄送確認信"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人可取消訂位，並依取消時間收取對應費用",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "太晚取消時收取較高費用",
+          "取消訂位後寄送確認信"
+        ],
+        "scope_out": [
+          "訂位建立流程",
+          "惡意訂位防堵策略的其他實作"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "「太晚」與「比較多」未定義門檻或金額，無法直接驗收"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只提到取消收費與加重費用，未提取消後寄送確認信"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n本次標註：\n- AC 2：unverifiable\n- AC 3：mismatch",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2055,
+    "completionTokens": 259
+  },
+  "stoppedBy": "no_tool_calls"
+}

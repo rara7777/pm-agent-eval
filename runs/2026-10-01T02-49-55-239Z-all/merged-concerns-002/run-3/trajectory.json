@@ -1,0 +1,77 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": null,
+      "toolCalls": [
+        {
+          "id": "call_zGffumBR7t7Kkbq38V7PLGuA",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可收藏課程並在個人頁查看收藏清單，且課程列表預設依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可以在課程頁把課程加入收藏",
+              "收藏清單可在個人頁面查看",
+              "課程列表預設按上架時間由新到舊排序",
+              "支援取消收藏後從收藏清單移除課程"
+            ],
+            "scope_out": [],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "mismatch",
+                "note": "description 只提到「把想上的課程加到收藏，之後回來再看」，未明確限定收藏入口一定在課程頁。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只提到要改課程列表排序成依上架時間，未提預設排序方向；AC 指定由新到舊。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可收藏課程並在個人頁查看收藏清單，且課程列表預設依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可以在課程頁把課程加入收藏",
+          "收藏清單可在個人頁面查看",
+          "課程列表預設按上架時間由新到舊排序",
+          "支援取消收藏後從收藏清單移除課程"
+        ],
+        "scope_out": [],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "mismatch",
+            "note": "description 只提到「把想上的課程加到收藏，之後回來再看」，未明確限定收藏入口一定在課程頁。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只提到要改課程列表排序成依上架時間，未提預設排序方向；AC 指定由新到舊。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2131,
+    "completionTokens": 228
+  },
+  "stoppedBy": "no_tool_calls"
+}

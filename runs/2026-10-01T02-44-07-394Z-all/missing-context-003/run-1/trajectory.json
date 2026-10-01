@@ -1,0 +1,83 @@
+{
+  "ticketId": "missing-context-003",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求與 AC，這張卡描述的是「訂位取消政策」，但內容只有高層說法，缺少可驗證的收費規則細節。AC 目前都是可理解但需要檢查是否與描述一致、是否可驗證。我先直接整理成結構化內容並標註問題。",
+      "toolCalls": [
+        {
+          "id": "call_sSuWa6kOEV3KmCxJFWxajnca",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "missing-context-003",
+            "goal": "讓客人可取消訂位，並依取消時間收取相對應費用。",
+            "scope_in": [
+              "訂位頁面提供取消訂位功能",
+              "取消訂位時依取消時間判定是否收費",
+              "取消後寄送確認信"
+            ],
+            "scope_out": [
+              "制定完整的取消費率表",
+              "處理惡意訂位防堵機制的其他方案",
+              "餐廳後台的政策管理介面"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "『太晚取消』沒有定義時間門檻或費率，無法驗證實作是否符合需求。"
+              },
+              {
+                "ac": 3,
+                "type": "mismatch",
+                "note": "description 只提到取消訂位要收費與晚取消收更多，未提到取消後需寄確認信。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "missing-context-003",
+        "goal": "讓客人可取消訂位，並依取消時間收取相對應費用。",
+        "scope_in": [
+          "訂位頁面提供取消訂位功能",
+          "取消訂位時依取消時間判定是否收費",
+          "取消後寄送確認信"
+        ],
+        "scope_out": [
+          "制定完整的取消費率表",
+          "處理惡意訂位防堵機制的其他方案",
+          "餐廳後台的政策管理介面"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "『太晚取消』沒有定義時間門檻或費率，無法驗證實作是否符合需求。"
+          },
+          {
+            "ac": 3,
+            "type": "mismatch",
+            "note": "description 只提到取消訂位要收費與晚取消收更多，未提到取消後需寄確認信。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回卡上。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2109,
+    "completionTokens": 291
+  },
+  "stoppedBy": "no_tool_calls"
+}

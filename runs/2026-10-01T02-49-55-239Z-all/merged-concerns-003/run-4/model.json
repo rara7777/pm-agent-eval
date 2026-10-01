@@ -1,0 +1,9 @@
+{
+  "model": "gpt-5.4-mini",
+  "promptVersion": "21c473b64845",
+  "fixture": "fixtures/merged-concerns-003.yaml",
+  "fixtureMode": "replay",
+  "filledCalls": 0,
+  "startedAt": "2026-10-01T02:52:29.724Z",
+  "finishedAt": "2026-10-01T02:52:32.402Z"
+}

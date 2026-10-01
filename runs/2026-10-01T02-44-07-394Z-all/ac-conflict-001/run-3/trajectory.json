@@ -1,0 +1,119 @@
+{
+  "ticketId": "ac-conflict-001",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理 description 與 AC，然後回寫卡片。這張卡看起來不需要查外部資料即可判斷。",
+      "toolCalls": [
+        {
+          "id": "call_obNHZahPrC79iusBk9eVE0GL",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "ac-conflict-001",
+            "goal": "提供可在結帳時套用的優惠碼功能，並支援後台設定折扣與到期控制。",
+            "scope_in": [
+              "使用者在結帳時輸入優惠碼後可看到折扣後金額",
+              "後台可新增優惠碼",
+              "後台可設定折扣百分比或固定金額",
+              "優惠碼可設定活動結束後失效",
+              "已套用優惠碼的既有訂單不受到期影響",
+              "手機上可使用優惠碼功能"
+            ],
+            "scope_out": [
+              "結帳頁效能優化",
+              "結帳流程其他流程改善",
+              "與優惠碼無關的活動行銷功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 2,
+                "type": "conflict",
+                "note": "與 AC 3 互相衝突：一人只能用一次 vs 無限次使用。"
+              },
+              {
+                "ac": 3,
+                "type": "conflict",
+                "note": "與 AC 2 互相衝突：無限次使用 vs 一人只能用一次。"
+              },
+              {
+                "ac": 4,
+                "type": "unverifiable",
+                "note": "『順』是主觀描述，沒有可觀察的行為或指標。"
+              },
+              {
+                "ac": 6,
+                "type": "mismatch",
+                "note": "description 提到要防止亂用、活動下週開始，未明確描述『活動結束後過期的碼不能用，但已套用的訂單不受影響』這個完整行為。"
+              },
+              {
+                "ac": 7,
+                "type": "unverifiable",
+                "note": "『體驗要好』是主觀描述，缺乏可驗證標準。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "ac-conflict-001",
+        "goal": "提供可在結帳時套用的優惠碼功能，並支援後台設定折扣與到期控制。",
+        "scope_in": [
+          "使用者在結帳時輸入優惠碼後可看到折扣後金額",
+          "後台可新增優惠碼",
+          "後台可設定折扣百分比或固定金額",
+          "優惠碼可設定活動結束後失效",
+          "已套用優惠碼的既有訂單不受到期影響",
+          "手機上可使用優惠碼功能"
+        ],
+        "scope_out": [
+          "結帳頁效能優化",
+          "結帳流程其他流程改善",
+          "與優惠碼無關的活動行銷功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 2,
+            "type": "conflict",
+            "note": "與 AC 3 互相衝突：一人只能用一次 vs 無限次使用。"
+          },
+          {
+            "ac": 3,
+            "type": "conflict",
+            "note": "與 AC 2 互相衝突：無限次使用 vs 一人只能用一次。"
+          },
+          {
+            "ac": 4,
+            "type": "unverifiable",
+            "note": "『順』是主觀描述，沒有可觀察的行為或指標。"
+          },
+          {
+            "ac": 6,
+            "type": "mismatch",
+            "note": "description 提到要防止亂用、活動下週開始，未明確描述『活動結束後過期的碼不能用，但已套用的訂單不受影響』這個完整行為。"
+          },
+          {
+            "ac": 7,
+            "type": "unverifiable",
+            "note": "『體驗要好』是主觀描述，缺乏可驗證標準。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2392,
+    "completionTokens": 406
+  },
+  "stoppedBy": "no_tool_calls"
+}

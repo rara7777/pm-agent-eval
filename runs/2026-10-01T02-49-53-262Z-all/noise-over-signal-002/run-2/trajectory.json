@@ -1,0 +1,103 @@
+{
+  "ticketId": "noise-over-signal-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "先整理需求描述與 AC，這個 ticket 的目標是搜尋結果排序，範圍提到關鍵字比對、排序邏輯、錯字容忍、分頁等，但目前 AC 只涵蓋排序與分頁。接著逐條檢查三類問題：conflict / unverifiable / mismatch。",
+      "toolCalls": [
+        {
+          "id": "call_KAfgcGpA6IsSyri4QM9LfZB3",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "noise-over-signal-002",
+            "goal": "調整搜尋結果的排序方式，讓使用者更容易找到相關內容。",
+            "scope_in": [
+              "搜尋結果依相關性排序",
+              "根據標題命中、描述命中與最近點擊等訊號調整排序",
+              "搜尋結果支援分頁"
+            ],
+            "scope_out": [
+              "關鍵字比對方式調整",
+              "錯字容忍",
+              "搜尋結果排序以外的搜尋功能"
+            ],
+            "ac_flags": [
+              {
+                "ac": 1,
+                "type": "unverifiable",
+                "note": "『依相關性排序』未定義相關性的計算方式與驗收方法，無法判定何時算完成。"
+              },
+              {
+                "ac": 2,
+                "type": "unverifiable",
+                "note": "『標題命中的權重高於描述命中』未定義權重數值、比較基準或可驗證的排序情境。"
+              },
+              {
+                "ac": 2,
+                "type": "mismatch",
+                "note": "description 只提到相關性可能參考標題、描述、最近點擊，未明確要求一定要做權重設定；此 AC 比原描述更具體。"
+              },
+              {
+                "ac": 3,
+                "type": "unverifiable",
+                "note": "『支援分頁』未定義頁碼、每頁筆數、翻頁方式或驗收條件。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "noise-over-signal-002",
+        "goal": "調整搜尋結果的排序方式，讓使用者更容易找到相關內容。",
+        "scope_in": [
+          "搜尋結果依相關性排序",
+          "根據標題命中、描述命中與最近點擊等訊號調整排序",
+          "搜尋結果支援分頁"
+        ],
+        "scope_out": [
+          "關鍵字比對方式調整",
+          "錯字容忍",
+          "搜尋結果排序以外的搜尋功能"
+        ],
+        "ac_flags": [
+          {
+            "ac": 1,
+            "type": "unverifiable",
+            "note": "『依相關性排序』未定義相關性的計算方式與驗收方法，無法判定何時算完成。"
+          },
+          {
+            "ac": 2,
+            "type": "unverifiable",
+            "note": "『標題命中的權重高於描述命中』未定義權重數值、比較基準或可驗證的排序情境。"
+          },
+          {
+            "ac": 2,
+            "type": "mismatch",
+            "note": "description 只提到相關性可能參考標題、描述、最近點擊，未明確要求一定要做權重設定；此 AC 比原描述更具體。"
+          },
+          {
+            "ac": 3,
+            "type": "unverifiable",
+            "note": "『支援分頁』未定義頁碼、每頁筆數、翻頁方式或驗收條件。"
+          }
+        ]
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。  \n我標出的 AC 問題如下：\n\n- AC 1：unverifiable\n- AC 2：unverifiable, mismatch\n- AC 3：unverifiable\n\n另外我已補上整理後的：\n- goal\n- scope_in\n- scope_out",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2472,
+    "completionTokens": 441
+  },
+  "stoppedBy": "no_tool_calls"
+}

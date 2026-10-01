@@ -1,0 +1,55 @@
+{
+  "ticketId": "merged-concerns-002",
+  "steps": [
+    {
+      "kind": "assistant",
+      "text": "我先整理需求、檢查 AC 是否有明顯衝突/不對齊/描述太空泛，然後直接寫回卡上。",
+      "toolCalls": [
+        {
+          "id": "call_LbaJjHxSbnbfU9igjGyXQLKG",
+          "name": "update_ticket",
+          "args": {
+            "ticket_id": "merged-concerns-002",
+            "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+            "scope_in": [
+              "學員可在課程頁將課程加入收藏",
+              "學員可在個人頁面查看收藏清單",
+              "課程列表預設依上架時間由新到舊排序",
+              "學員可取消收藏課程，且取消後該課程不再出現在收藏清單"
+            ],
+            "scope_out": [],
+            "ac_flags": []
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_result",
+      "name": "update_ticket",
+      "args": {
+        "ticket_id": "merged-concerns-002",
+        "goal": "讓學員可以收藏課程，並將課程列表預設改為依上架時間由新到舊排序。",
+        "scope_in": [
+          "學員可在課程頁將課程加入收藏",
+          "學員可在個人頁面查看收藏清單",
+          "課程列表預設依上架時間由新到舊排序",
+          "學員可取消收藏課程，且取消後該課程不再出現在收藏清單"
+        ],
+        "scope_out": [],
+        "ac_flags": []
+      },
+      "result": "已寫回卡上。"
+    },
+    {
+      "kind": "assistant",
+      "text": "已整理並寫回 ticket。",
+      "toolCalls": []
+    }
+  ],
+  "blocks": [],
+  "usage": {
+    "promptTokens": 2087,
+    "completionTokens": 184
+  },
+  "stoppedBy": "no_tool_calls"
+}
