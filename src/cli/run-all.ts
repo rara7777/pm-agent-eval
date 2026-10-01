@@ -30,7 +30,9 @@ const waiting = cases.filter((c) => Object.keys(c.case.goalState).length === 0);
 const startedAt = new Date();
 const stamp = startedAt.toISOString().replace(/[:.]/g, '-');
 const batchDir = join('runs', `${stamp}-all`);
-mkdirSync(batchDir, { recursive: true });
+mkdirSync('runs', { recursive: true });
+// Two batches started in the same millisecond would share a directory and overwrite each other's runs.
+mkdirSync(batchDir);
 writeFileSync(join(batchDir, 'prompt.txt'), systemPrompt ?? SYSTEM_PROMPT);
 
 if (waiting.length > 0) {
