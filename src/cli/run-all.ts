@@ -3,7 +3,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadCase } from '../dataset/case.ts';
 import { runOnce, promptVersion } from '../runner/run-once.ts';
-import { formatAll, formatChecklist, type CaseRow } from '../runner/report-all.ts';
+import { formatAll, formatChecklist, formatRelease, releaseDecision, type CaseRow } from '../runner/report-all.ts';
 import { MissingFixtureError } from '../fixture/fixture.ts';
 import { compareFlags, sumCounts } from '../scorer/flags.ts';
 import { expectedFlags } from '../scorer/goal-state.ts';
@@ -62,6 +62,7 @@ for (const { path, case: testCase } of ready) {
   const annotation = expectedFlags(testCase.goalState);
   const counts = [];
   let passes = 0;
+  let completed = 0;
   let flagged: string[] = [];
 
   for (let i = 1; i <= k; i++) {
@@ -69,6 +70,7 @@ for (const { path, case: testCase } of ready) {
       const run = await runOnce({ casePath: path, systemPrompt, fillMissing, outDir: join(batchDir, testCase.id, `run-${i}`) });
       flagged = run.actual.ac_flags ?? [];
       counts.push(compareFlags(annotation, flagged));
+      completed += 1;
       if (run.score.pass) passes += 1;
     } catch (err) {
       if (!(err instanceof MissingFixtureError)) throw err;
@@ -86,6 +88,7 @@ for (const { path, case: testCase } of ready) {
     caseId: testCase.id,
     category: testCase.category,
     k,
+    completed,
     passes,
     counts: sumCounts(counts),
     annotation,
@@ -98,8 +101,11 @@ const report = formatAll(rows, {
   model: process.env.LLM_MODEL ?? '(未設定)',
   promptVersion: version,
 });
+const decision = releaseDecision(rows);
+const verdict = formatRelease(decision);
 const reportPath = join('runs', `${stamp}-all.md`);
-writeFileSync(reportPath, report + '\n');
-writeFileSync(join(batchDir, 'all.json'), JSON.stringify({ k, rows }, null, 2));
+writeFileSync(reportPath, `${report}\n\n## 放行判定\n\n${verdict.replace('\n', '\n\n')}\n`);
+writeFileSync(join(batchDir, 'all.json'), JSON.stringify({ k, rows, release: decision }, null, 2));
 
+console.log(`\n${verdict}`);
 console.log(`\n總表寫到 ${reportPath}`);

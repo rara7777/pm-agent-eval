@@ -5,6 +5,8 @@ export type CaseRow = {
   caseId: string;
   category: string;
   k: number;
+  /** Runs that produced a verdict; a run stopped on a fixture miss does not count. */
+  completed: number;
   passes: number;
   /** Summed over the k runs of this case. */
   counts: FlagCounts;
@@ -49,6 +51,38 @@ export function formatAll(rows: CaseRow[], meta: { model: string; promptVersion:
   );
 
   return out.join('\n');
+}
+
+export type Release = { release: boolean; k: number; passed: string[]; failed: string[]; incomplete: string[] };
+
+/**
+ * The Day 27 threshold: every case passes all k runs. A case missing runs is
+ * "incomplete", not failed, and blocks the release on its own line.
+ */
+export function releaseDecision(rows: Pick<CaseRow, 'caseId' | 'k' | 'completed' | 'passes'>[]): Release {
+  const passed: string[] = [];
+  const failed: string[] = [];
+  const incomplete: string[] = [];
+  for (const r of rows) {
+    if (r.passes < r.completed) failed.push(r.caseId);
+    else if (r.completed < r.k) incomplete.push(r.caseId);
+    else passed.push(r.caseId);
+  }
+  return {
+    release: failed.length === 0 && incomplete.length === 0,
+    k: rows[0]?.k ?? 0,
+    passed,
+    failed,
+    incomplete,
+  };
+}
+
+export function formatRelease(d: Release): string {
+  const total = d.passed.length + d.failed.length + d.incomplete.length;
+  return [
+    `${d.release ? '放行' : '擋下'}　門檻 pass^${d.k} ${total}/${total}，這批 pass^${d.k} ${d.passed.length}/${total}`,
+    `判定失敗 ${d.failed.length} 筆　評估未完成 ${d.incomplete.length} 筆`,
+  ].join('\n');
 }
 
 /** The sheet the author fills in by hand: one row per case still missing its goal state. */
